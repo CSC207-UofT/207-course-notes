@@ -806,8 +806,8 @@ if (classSize > 500)
     System.out.println("Wow, that's big!");
 ```
 
+But this code is risky!  If we added more code, we might indent it nicely and fool ourselves into thinking it's inside the if-block:
 
-But this code is vulnerable!  If we add more code, we may indent it nicely and fool ourselves into thinking it's inside the if-block:
 ```java
 if (classSize > 500)
     System.out.println("Wow, that's big!");
