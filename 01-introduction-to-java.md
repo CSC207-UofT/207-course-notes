@@ -421,7 +421,7 @@ And remember, IntelliJ's code completion can remind you what attributes and meth
 
 ### 1.5.6. Getting rid of unused objects
 
-When we construct an object, memory is allocated for it, but when is memory ever de-allocated? In some programming languages, such as C, memory is only de-allocated when the code explicitly says to do so. However, Java does automatic "garbage collection": it keeps track of all objects and when it can confirm that no variable refers to an object, it de-allocates that memory, making it available for other uses.
+When we construct an object, memory is allocated for it, but when is memory ever de-allocated? In some programming languages, such as C, heap memory is only de-allocated when the code explicitly says to do so. However, Java does automatic "garbage collection": it keeps track of all objects and when it can confirm that no variable refers to an object, it de-allocates that memory, making it available for other uses.
 
 If we know that we don't need an object any more, we can explicitly drop a reference by setting the variable holding the reference to `null`. This can hasten garbage collection and improve performance, but it may also be unneccesary and just make your code needlessly messy - just depending on what you are doing. There is a good discussion of this at https://stackoverflow.com/questions/449409/does-assigning-objects-to-null-in-java-impact-garbage-collection for anyone interested. 
 
