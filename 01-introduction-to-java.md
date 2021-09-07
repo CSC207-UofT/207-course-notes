@@ -817,7 +817,7 @@ if (classSize > 500)
 
 But to Java, these extra lines are **OUTSIDE** the if-block.  They happen regardless of the condition. For this reason, you should always use the curly brackets on your code blocks, even when they are not (currently) required.
 
-Similar to Pytohn, an if-statement can have a sequence of additional conditions, and they can end with an else. The meaning is just as you've seen in Python, but notice that we say `else if` rather than `elif`.
+Similar to Python, an if-statement can have a sequence of additional conditions, and they can end with an else. The meaning is just as you've seen in Python, but notice that we say `else if` rather than `elif`.
 
 ```java
 int grade = 86;
@@ -1028,7 +1028,7 @@ n = count;
 s = word;
 ```
 
-If an argument to a method is a variable, what we assign to the method's parameter is simply the value contained in the variable. Lets examine the implications of this in different scenarios.
+If an argument to a method is a variable, what we assign to the method's parameter is simply the value contained in the variable. Let's examine the implications of this in different scenarios.
 
 ### 1.9.1. Passing a primitive
 
