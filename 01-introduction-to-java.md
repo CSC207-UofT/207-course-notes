@@ -348,7 +348,7 @@ When Java evaluates the expression `new StringBuilder("Viriyakattiyaporn")`, it 
 
 ```java
 System.out.println(new StringBuilder("Professor").append(" Horton"));
-System.out.println(new StringBuilder("Balakrishnan").indexOf("kris"));`
+System.out.println(new StringBuilder("Balakrishnan").indexOf("kris"));
 ```
 
 ### 1.5.2. APIs
