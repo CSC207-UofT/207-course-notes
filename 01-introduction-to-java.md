@@ -240,7 +240,7 @@ This syntax should remind you of how `str` are declared in Python. However, don'
 Strings have various methods available to them. More information on these can be found using the Java API here: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 
 ### 1.4.2. Strings are Immutable
-Just as in Python, `String` objects are immutalbe in Java. This means that we can never change a `String` object once it has been created. We *can* perform operations on `String`s, but rather than change an existing `String`, they return a new one.
+Just as in Python, `String` objects are immutable in Java. This means that we can never change a `String` object once it has been created. We *can* perform operations on `String`s, but rather than change an existing `String`, they return a new one.
 
 ### 1.4.3. String Operations and Methods
 `String`s can be concatenated to produce a new `String` object:
