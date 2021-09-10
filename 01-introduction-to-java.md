@@ -1135,7 +1135,7 @@ public static void main(String[] args) {
 
 This code prints plain old `moo`. The reason is that, although we set up an alias just like before, we don't (and can't) change the object that both `sound` and `s` reference; we make a new object. Here's the state of memory right before the method returns:
 
-![Immutable parameter aliasing memory model](images/Java-1-13-2.png)
+![Immutable parameter aliasing memory model](images/Java-1-13-3.png)
 
 If you want to change the argument, the solution is the same as when passing a primitive: return the new value and assign it to the argument:
 
