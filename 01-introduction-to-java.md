@@ -1068,8 +1068,8 @@ The reason, however, is different. Can you draw the memory model for this code, 
 
 How can we get use a method to change the value of `cost`? In either language, we use the same approach: Return the changed value and in the calling code, assign it to the variable we wished to change. Here it is in Java:
 ```java
-static String increased(String s) {
-    return s + s + "!";    
+static int increased(int i) {
+    return i + 10;
 }
 public static void main(String[] args) {
     int cost = 9;
