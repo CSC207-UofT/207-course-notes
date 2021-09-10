@@ -9,6 +9,7 @@ You may also download the files locally. There are various viewers available to 
 
 - [Chapter 0. Introduction to GitHub](00-introduction-to-git.md)
 - [Chapter 1. Introduction to Java](01-introduction-to-java.md)
+- [Chapter 2. Classes in Java](02-classes-in-java.md)
 
 ## Raising issues
 If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.
