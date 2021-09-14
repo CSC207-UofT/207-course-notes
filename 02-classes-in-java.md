@@ -43,7 +43,7 @@ public Something(String name) {
 Even better: we could rewrite the above to call on the first constructor we wrote:
 
 ```java
-public Something(String name, int size) {
+public Something(String name) {
     this(name, 1);
 }
 ```
