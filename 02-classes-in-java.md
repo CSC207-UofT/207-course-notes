@@ -104,7 +104,7 @@ public boolean equals(Object obj) {
         return false;
     }
     if (this.getClass() != obj.getClass()){
-        return False;
+        return false;
     }
 
     MyClass other = (MyClass) obj;  // Here we're casting the type of obj to our class
