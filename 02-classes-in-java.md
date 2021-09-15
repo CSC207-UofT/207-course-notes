@@ -16,7 +16,7 @@ Unlike Python, we have to declare variables before using them in Java. There are
 Attributes and methods can be either **public** or **private**. In Python we used a single underscore (`_`) at the start of a variable name to denote whether an attribute was private or not. In Java we use the `public` or `private` keywords to make this distinction: private variables *cannot* be accessed from outside of a class. We can also use the `protected` keyword, making the attribute or method accessible to the entire package and a class' subclasses, but not to anything else.
 
 ## 2.4. Constructors
-Equivalent to the `__init__` method in Python, we ahve constructors in Python. These are methods with no return type (not even void), which get called whenever a new instance of a class is created.
+Equivalent to the `__init__` method in Python, we have constructors in Python. These are methods with no return type (not even void), which get called whenever a new instance of a class is created.
 
 In Java, we can define as many constructors as we want so long as the method signatures are different: either taking a different number of arguments, having different argument types, or a combination of these.
 
@@ -104,7 +104,7 @@ public boolean equals(Object obj) {
         return false;
     }
     if (this.getClass() != obj.getClass()){
-        return False;
+        return false;
     }
 
     MyClass other = (MyClass) obj;  // Here we're casting the type of obj to our class
@@ -453,5 +453,4 @@ Dunkirk (95): Gifted ensemble cast and masterful direction; likes = 0
 ### 2.9.1. When to use Comparable vs. Comparator? 
 If you are not the author of the class, you cannot make it Comparable. Your only option is to define one or or more comparators.
 
-
-If you are the author of the class, you have both options available to you!s
+If you are the author of the class, you have both options available to you!
