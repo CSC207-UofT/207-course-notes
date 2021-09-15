@@ -453,5 +453,4 @@ Dunkirk (95): Gifted ensemble cast and masterful direction; likes = 0
 ### 2.9.1. When to use Comparable vs. Comparator? 
 If you are not the author of the class, you cannot make it Comparable. Your only option is to define one or or more comparators.
 
-
-If you are the author of the class, you have both options available to you!s
+If you are the author of the class, you have both options available to you!
