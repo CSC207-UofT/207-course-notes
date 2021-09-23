@@ -203,7 +203,7 @@ public static void main(String[] args) {
 
 ```
 
-The sort method has another requirement: all elements in the array must be **mutually** comparable. This prevents us from trying to sort an array with a mixture of `DateTime` objects and `File` objects, for instance. These objects are comparable *within* each class, but not *across* classes.
+The sort method has another requirement: all elements in the array must be **mutually** comparable. This prevents us from trying to sort an array with a mixture of `DateTime` objects and `File` objects, for instance. These objects are comparable *within* each class, but not *across* classes (Unless the classes which the objects are instances of share a parent class implementing `Comparable`).
 
 ### 2.8.2. Being comparable enables comparisons
 If we ever wish simply to compare a MonthDay to any other MonthDay, we can do this as well:
