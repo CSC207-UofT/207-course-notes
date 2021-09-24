@@ -107,7 +107,7 @@ In Java, we have the `super` keyword that functions in a similar way. If we want
 Note the difference between Python and Java: `super()` is used in Python and has brackets while `super` is used in Java with no brackets!
 
 ### 3.3.1. Constructors with super
-When extending another class, Java *requires* a call to a superclass' constructor to be made in the subclass' constructor. Furthermore, this call *must* be the very first thing done. If no constructor call is explicitly made in the subclass' constructor, than an *implicit* call the `super()` will be made.
+When extending another class, Java *requires* a call to a superclass' constructor to be made in the subclass' constructor. Furthermore, this call *must* be the very first thing done. If no constructor call is explicitly made in the subclass' constructor, then an *implicit* call to the `super()` will be made.
 
 For instance, this code:
 
