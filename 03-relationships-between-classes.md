@@ -69,7 +69,7 @@ For example, suppose we're writing a program to simulate plants. We would have a
 In cases where we want to define a property of a class, we can use interfaces. Interfaces are similar to classes, except they have no implementation details at all: only method signatures! They can also have variables, but these variables must be `static` and `final`. In addition, **everything** in an interface must be `public`.
 
 
-For our example, we would define an Edible interface such as:
+For our example, we would define an `Edible` interface such as:
 ```java
 interface Edible {
     void eat();
@@ -88,7 +88,7 @@ class Corn extends Plant implements Edible {
 
 We can implement as many interfaces as we want! In addition, interfaces can also `extend` other interfaces (*not* `implements` -- an interface doesn't implement anything!)
 
-As an example, some food can be steamed so we might want a `Steamable` class. These are also edible, so we could do the following:
+As an example, some food can be steamed so we might want a `Steamable` interface. These are also edible, so we could do the following:
 ```java
 interface Steamable extends Edible {
     void steam();
