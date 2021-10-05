@@ -157,7 +157,7 @@ ArrayList<Integer> ma = new ArrayList<Integer>();
 ma.add(1);
 Integer my_item = ma.get(0) + 5;
 ```
-The `<Integer>` specifiest that we're working with an ArrayList containing only Integers: we don't need to cast items back constantly.
+The `<Integer>` specifies that we're working with an ArrayList containing only Integers: we don't need to cast items back constantly.
 
 Going back to our original example of `MyItem`, we can use a generic as follows:
 ```java
