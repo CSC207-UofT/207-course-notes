@@ -239,6 +239,29 @@ This syntax should remind you of how `str` are declared in Python. However, don'
 
 Strings have various methods available to them. More information on these can be found using the Java API here: https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
 
+### 1.4.1.1 String Pool
+
+Nevertheless, there is a difference between using the `new` keyword to create a `String` variable and not using the `new` keyword. Consider the following Python code:
+
+```python
+>>> s1 = "Hello"
+>>> s2 = "Hello"
+>>> s1 == s2
+True
+```
+
+The final expression evaluates to `True` since the two strings have the same phrase. However, this is slightly different in Java. To avoid excessive memory, Java has a special "String Pool" to store strings that are not direct instances of the `String` class. For example, if we create a `String` variable by `String s1 = "Hello"` without using the `new` keyword, then Java automatically throws the value of the string "Hello" into the string pool, which is NOT an instance of the `String` class. Now if we create another string variable by `String s2 = "Hello"` without the `new` keyword as well, to avoid excessive memory, Java goes to the string pool and find this phrase. Since "Hello" has already been added to the string pool, the consequence is that `s2` will be pointing to the same "Hello" phrase as `s1`, so `s1 == s2` will also evaluate to `True`, just like in Python.
+
+Now if we have the following code:
+
+```java
+String s1 = new String("Hello");
+String s2 = new String("Hello");
+System.out.println(s1 == s2);
+```
+
+We will get `false` as the outcome! The reason is that in this case, we have created two INSTANCEs of the `String` class. Hence, since `s1` and `s2` are different objects, the result is `false`. In summary, be careful with this nuance when comparing values of `String` objects as this might lead to opposite results.
+
 ### 1.4.2. Strings are Immutable
 Just as in Python, `String` objects are immutable in Java. This means that we can never change a `String` object once it has been created. We *can* perform operations on `String`s, but rather than change an existing `String`, they return a new one.
 
