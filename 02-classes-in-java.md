@@ -72,7 +72,7 @@ public int my_method(int something){
 In Python, we could re-define a method from a parent class in order to override it. We do a similar thing in Java, but we also include the `@Override` annotation. This lets Java (and any reader of our code) know that we're overriding an inherited method. The annotation will also enforce that we use the correct method signature for the overridden method -- this way, we can be certain that we don't have any silly typos in our method or the incorrect argument types!
 
 ### 2.6.1. toString
-One common method that we'll want to override is the `toString` method. This is Java's equivalent to `__str__`: a method that gives the string representation of our object.
+One common method that we'll want to override is the `toString` method. This is Python's equivalent to `__str__`: a method that gives the string representation of our object.
 
 This method takes no parameters and returns a String. For example:
 
