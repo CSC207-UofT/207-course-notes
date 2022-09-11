@@ -262,6 +262,10 @@ System.out.println(s1 == s2);
 
 We will get `false` as the outcome! The reason is that in this case, we have created two INSTANCEs of the `String` class. Hence, since `s1` and `s2` are different objects, the result is `false`. In summary, be careful with this nuance when comparing values of `String` objects as this might lead to opposite results.
 
+The above information is also known as string intern. Refer to the following links for more information on string pool and string intern:
+1. https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#intern--
+2. https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5
+
 ### 1.4.2. Strings are Immutable
 Just as in Python, `String` objects are immutable in Java. This means that we can never change a `String` object once it has been created. We *can* perform operations on `String`s, but rather than change an existing `String`, they return a new one.
 
