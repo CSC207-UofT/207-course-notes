@@ -1,7 +1,7 @@
 # Chapter 2: Classes in Java
 
 ## 2.1. Classes
-Classes in Java are similar to those Python: they consist of attributes and methods, both private and public. We can inherit from other classes, override methods, and define constructors.
+Classes in Java are similar to those in Python: they consist of attributes and methods, both private and public. We can inherit from other classes, override methods, and define constructors.
 
 While this section talks about classes at a higher level, the file [Monster.java](code/Monster.java) provides a larger example with in-line explanations which you may find helpful. You'll want to look at this file to get a better understanding of the syntax that we use.
 
