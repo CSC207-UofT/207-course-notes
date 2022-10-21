@@ -183,7 +183,7 @@ Here, we did the following changes:
 2. Everywhere we used `Object`, we switched it with `T`.
 3. When we create an instance of `MyItem`, we specify that `T` should be `Integer`.
 
-Note the mapping in syntax between `MyItem<T>` and `MyItem<Integer>`! Everywhere we use `T` in our class, we can pretend it says `Integer` for this instance. Furthermore, we don't need to do any casting as we know `mi.item` will be of typeInteger since `mi` is of type `MyItem<Integer>`. We can make new `MyItem` objects with other types too, if we'd like!
+Note the mapping in syntax between `MyItem<T>` and `MyItem<Integer>`! Everywhere we use `T` in our class, we can pretend it says `Integer` for this instance. Furthermore, we don't need to do any casting as we know `mi.item` will be of type `Integer` since `mi` is of type `MyItem<Integer>`. We can make new `MyItem` objects with other types too, if we'd like!
 
 We can add as many generics as we want (e.g. `MyItem<T1, T2, T3, ...>`) and even restrict our the generic types using the `extends` keyword (e.g. `MyItem<T extends Integer>` enforces the fact that `T` must be `Integer` or a subclass of it).
 
