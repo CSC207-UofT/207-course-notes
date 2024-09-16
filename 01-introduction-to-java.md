@@ -806,7 +806,7 @@ class_size = 124
 sections = 1;
 if class_size > 100:
     sections = 2
-    lass_size = class_size / 2;
+    class_size = class_size / 2;
 print('Sections: {} and class size: {}'.format(sections, class_size))
 ```
 
