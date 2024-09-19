@@ -427,7 +427,7 @@ It makes sense to say "Hey String class, tell me the String value for this integ
 ### 1.5.5. Accessing data members
 How we access data members (also known as attributes or instance variables) is exactly analogous to how we access methods.
 
-If a class has an instance or class variable (also know as a `static` variable, since it is declared with the keyword `static`) that is accessible to code outside of the class, it can be referred to via an instance variable or the class name, respectively.
+If a class has an instance or class variable (also known as a `static` variable, since it is declared with the keyword `static`) that is accessible to code outside of the class, it can be referred to via an instance variable or the class name, respectively.
 
 For example, class `Integer` has a class variable called `BYTES` that reports the number of bytes of memory used to store an int value. Since it is a class variable, we access it using the class name:
 
