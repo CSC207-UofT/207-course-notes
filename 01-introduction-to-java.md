@@ -1019,7 +1019,7 @@ int i = 0;
 while (A[i++] < 7); 
 ```
 
-This kind of code may seem unfamilar or be confusing, so usage of this form is not recommended. The information is just for reference.
+This kind of code may seem unfamiliar or be confusing, so usage of this form is not recommended. The information is just for reference.
 
 ## 1.9. Parameters
 
