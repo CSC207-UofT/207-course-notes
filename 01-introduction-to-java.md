@@ -492,7 +492,7 @@ With arrays, we have some special syntax that looks a bit different. This syntax
 numbers = new int[5];
 ```
 
-An array object now exists on the heap, has 5 spots, each spot can hold an `int` and has the default value `0`, and the variable numbers refers to the whole object.
+An array object now exists on the heap, has 5 spots, each spot can hold an `int` and has the default value `0`, and the variable `numbers` refers to the whole object.
 
 In this case, we have defined the size of the array at the time we wrote the code. It is also possible to determine the size of the array when the program is running, either by reading it from the input or by computing it from other values. This is because the size of the array is not part of its type. The type of our array `numbers` above, for instance, is simply `int[]`; we can assign any `int` array, of any length, to it.
 
