@@ -481,7 +481,7 @@ As you know by now, this means we must construct the object, and in Java, we do 
 
  
 ```java
-house = new String("Hufflepuff");
+String house = new String("Hufflepuff");
 ```
 
 to construct an object of type `String` and store the value `"Hufflepuff"` in it.
@@ -489,7 +489,7 @@ to construct an object of type `String` and store the value `"Hufflepuff"` in it
 With arrays, we have some special syntax that looks a bit different. This syntax mimics the syntax used in languages like C, that pre-date object-oriented programming. We use the keyword `new` and the name of the type, but rather than round brackets, we use **square brackets**. The only argument we need send the constructor is the **size** of the array. Continuing with our `int` array `numbers`, we could construct it as follows:
 
 ```java
-numbers = new int[5];
+int[] numbers = new int[5];
 ```
 
 An array object now exists on the heap, has 5 spots, each spot can hold an `int` and has the default value `0`, and the variable `numbers` refers to the whole object.
@@ -505,7 +505,7 @@ We have assigned no values to these 5 spots, but they are initialized automatica
 
 We can combine the construction and initialization of an array into one step:
 ```java
-numbers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
+int[] numbers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 ```
 
 This constructs an array of exactly the right length to hold the given values, and then assigns them to the elements of the array.
