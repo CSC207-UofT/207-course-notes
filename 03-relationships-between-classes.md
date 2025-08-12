@@ -66,24 +66,41 @@ In Java, you can only extend a single class: you have one parent class, and that
 
 For example, suppose we're writing a program to simulate plants. We would have a class called `Plant`: all `Plant`s are able to `breathe` and `grow`! We could also have subclasses such as `Wheat` and `Flower`s with their own subclasses. However, suppose we want to indicate that some plants are edible for humans: for instance `Corn` would have an `eat` method, and so would `Basil`. Not all plants are edible, so we can't add that method to `Plant`. We *could* define an `EdiblePlant` class, but then we would also need `EdibleWheat`, `EdibleFlower`, and so on: this isn't a very clean solution!
 
-In cases where we want to define a property of a class, we can use interfaces. Interfaces are similar to classes, except they have no implementation details at all: only method signatures! They can also have variables, but these variables must be `static` and `final`. In addition, **everything** in an interface must be `public`.
+In cases where we want to define a property of a class, we can use interfaces. Interfaces are similar to classes, except traditionally, they could have no implementation details at all; only method signatures! They can also have variables, but these variables must be `static` and `final`. However, as of Java 8, interfaces can include `default` methods and `static` methods that provide implementation. Default methods allow developers to add new methods to interfaces while preserving backward compatibility. Additionally, everything in an interface must be `public`.
 
 
 For our example, we would define an `Edible` interface such as:
 ```java
 interface Edible {
+    // Method that must be implemented by any class implementing Edible
     void eat();
 }
 ```
+And to define a `Washable` interface with a `default` method `wash`, we must use the keyword `default` when defining:
 
-And to use it, we would use the `implements` keyword:
 ```java
-class Corn extends Plant implements Edible {
-    void eat(){
-        ...    // Our implementation here!
+interface Washable {
+    // Default method that provides a basic implementation
+    default void wash() {
+        System.out.println("Washing the edible item...");
     }
 }
+```
 
+And to use both interfaces, we would use the `implements` keyword:
+
+```java
+class Corn extends Plant implements Edible, Washable {
+    void eat() {
+        ...    // Our implementation here!
+    }
+    
+    // Overriding the default wash method
+    @Override
+    public void wash() {
+        System.out.println("Thoroughly washing the corn...");
+    }
+}
 ```
 
 We can implement as many interfaces as we want! In addition, interfaces can also `extend` other interfaces (*not* `implements` -- an interface doesn't implement anything!)
