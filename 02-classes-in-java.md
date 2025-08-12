@@ -120,7 +120,7 @@ public boolean equals(Object obj) {
 ```
 
 ### 2.6.3. hashCode
-Whenever we override the equals method, we will often want to  override another inherited method called "hashCode".  The hashCode of an object is an integer value the obeys this property:
+Whenever we override the equals method, we will often want to  override another inherited method called "hashCode".  The hashCode of an object is an integer value that obeys this property:
 > If two objects are equal (according to the equals method), they have the same hashCode.
 
 If is not an if-and-only-if: it's fine for two objects with the same hashCode *not* to be equal.
