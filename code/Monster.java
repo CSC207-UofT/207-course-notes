@@ -390,7 +390,7 @@ public class Monster {
 
        Java's equals is analogous to Python's __eq__.
 
-       The equals method is NOT called implicitly if compare objects
+       The equals method is NOT called implicitly when comparing objects
        using "==". (Recall that, in Java, "==" means identity equality.)
        If we want to use the equals method, we must call it by name.
 
@@ -429,10 +429,11 @@ public class Monster {
        all this using a data structure called a "hash table". Hash tables have
        remarkable properties and are thus very important in computer science.
 
-       Here, we use the hash code of the Monster's name for simplicity. In
-       general, it is important to choose a good hashCode to help hash-based
-       structures like HashMap work efficiently. You will learn about hash
-       tables and their efficiency in csc263.
+       Here, we can safely use the hash code of the Monster's name as the name
+       variable is not changed once initially set in the constructor. In
+       general, it is important to carefully choose a good hashCode to ensure
+       that hash-based structures like HashMap work correctly and  efficiently.
+       You will learn about hash tables and their efficiency in csc263.
      */
 
     /**
