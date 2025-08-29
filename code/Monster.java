@@ -12,25 +12,25 @@ public class Monster {
     /* Variables defined at the class level
 
        Remember that in Java, unlike Python, we must declare variables before
-       using them.  There are two kinds of variables that we can declare
+       using them. There are two kinds of variables that we can declare
        outside of any method:
 
        (a) Instance variables.
        Every instance of the class will contain its own instance of each of
-       these variables.  They come into existence when the instance is
+       these variables. They come into existence when the instance is
        constructed (using "new").
 
        (b) Class variables.
        All instances of the class share a single instance of each class
-       variable.  This is useful, for example, if we want the instances to
-       accumulate a value together.  Below, we define a class variable called
+       variable. This is useful, for example, if we want the instances to
+       accumulate a value together. Below, we define a class variable called
        "population", that will be incremented by one every time a constructor
-       is called to create a new Monster.  If this were not a class variable,
+       is called to create a new Monster. If this were not a class variable,
        every instance would have its own "population", each with the the
        value 1 -- not very useful!
 
        We indicate that a variable is class variable by using the keyword
-       "static" in its declaration.  Although in English the word "static"
+       "static" in its declaration. Although in English the word "static"
        means unmoving or unchanging, in Java, the value of a class variable
        can certainly change.
     */
@@ -56,22 +56,22 @@ public class Monster {
     /* Representation Invariants
 
        It is important to record any constraints on the values of the instance
-       variables, including relationships between them.  These constraints
+       variables, including relationships between them. These constraints
        impact each method in two ways:
 
        (1) At the beginning of the method body, we can assume that these
-       constraints hold.  This can help us accomplish what the method is to do.
+       constraints hold. This can help us accomplish what the method is to do.
 
        (2) At the end of the method body, we must ensure that the constraints
-       are still true.  This guides the development of the method body -- it
+       are still true. This guides the development of the method body -- it
        tells us some of what we have to accomplish.
 
-       For example, consider the "eat" method below.  Suppose our
+       For example, consider the "eat" method below. Suppose our
        representation invariants said that the belly array must be sorted
-       according to Monster size.  On the one hand, the eat method would
+       according to Monster size. On the one hand, the eat method would
        have to make sure that the belly array is sorted by the end of the
-       method.  But on the other hand, it would be able to assume the array
-       was sorted at the beginning.  This means that the method wouldn't
+       method. But on the other hand, it would be able to assume the array
+       was sorted at the beginning. This means that the method wouldn't
        have to perform any sorting -- it could simply insert the new item
        into the right spot in the already sorted array.
     */
@@ -122,7 +122,6 @@ public class Monster {
         the instance variable "fullness", as desired. It's good practise,
         however, to use the "this" prefix anyway. That way, if we later
         add a parameter called fullness, the code will still work.
-        XXX agreed?
         */
 
         this.size = size;
@@ -159,7 +158,7 @@ public class Monster {
         it must occur on the very first line of the method.
         */
 
-        this("Monster" + String.valueOf(population), 10, 3);
+        this("Monster" + population, 10, 3);
     }
 
     /* No-arg constructors
@@ -183,12 +182,12 @@ public class Monster {
 
     /* Defining methods
 
-       A method must have a return type declared.  (The "size" method below
+       A method must have a return type declared. (The "size" method below
        returns an int.)  If nothing is returned, we specify "void" instead of
        giving a type.
 
        "return" statements look the same as in Python, except for the
-       semi-colon.  Of course, a void method cannot have one, since it has
+       semi-colon. Of course, a void method cannot have one, since it has
        declared that it doesn't return a value.
 
        Unlike Python, if the end of the method is reached without executing
@@ -211,14 +210,14 @@ public class Monster {
        overloaded.)  Java can tell which method we mean by looking at the
        number and typ of arguments provided.
 
-       There are multiple possible uses for overloading.  Here we have used it
-       to provide the option of using default values for arguments.  In some
+       There are multiple possible uses for overloading. Here we have used it
+       to provide the option of using default values for arguments. In some
        languages, this can be accomplished directly in the signature of a
-       method.  For example, in Python we could say
+       method. For example, in Python we could say
               def grow(factor = 2):
                  self.size = self.size * factor
        We could then call grow with no arguments and, by default, factor would
-       have the value 2.  Java does not provide this feature.
+       have the value 2. Java does not provide this feature.
 
        Note that although the word "overloaded" has a negative connotation in
        regular English, in Java, overloading is considered good style.
@@ -238,7 +237,7 @@ public class Monster {
      */
     public void grow() {
         /*
-           Again, we call the other "grow" method to do the work.  This method
+           Again, we call the other "grow" method to do the work. This method
            would be one line long either way, but it is still smart to not
            repeat the code here.
         */
@@ -264,7 +263,7 @@ public class Monster {
     }
 
     /**
-     * Digests the contents of this Monster's belly.  Its belly becomes
+     * Digests the contents of this Monster's belly. Its belly becomes
      * empty, and the Monster burps.
      *
      * @return a "burp" String, with the number of u letters equal to the
@@ -275,7 +274,7 @@ public class Monster {
         if (this.fullness == 0) {
             return "cough";
         } else {
-            String answer = new String(burp(this.fullness));
+            String answer = burp(this.fullness);
             this.fullness = 0;
             return answer;
         }
@@ -283,45 +282,45 @@ public class Monster {
 
     /* Accessibility modifiers
 
-       All the methods so far have had the keyword "public".  This means that
+       All the methods so far have had the keyword "public". This means that
        they are "visible" (can be accessed from) all classes, everywhere.
        These methods are part of the API for this class.
 
        Sometimes we have methods that we don't want to make part of the API.
        For instance, method "burp" is just a helper for method "digest".
        We can prevent client code from calling it directly be declaring it
-       to be "private".  A private method can only be called by other methods
-       in the same class.  Even subclasses of this class would not be able
+       to be "private". A private method can only be called by other methods
+       in the same class. Even subclasses of this class would not be able
        to access it.
 
        There are, in fact, 4 levels of accessibility that one can use.
        These allow for quite a lot of subtlety in how you control access.
-       You'll learn more about these in class.  This page is a great
+       You'll learn more about these in class. This page is a great
        reference:
        https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html
 
        You can control the accessibility of instance and class variables also.
-       We made ours private.  The philosophy in Java is to make everything
+       We made ours private. The philosophy in Java is to make everything
        private (both variables and methods) unless you have a good reason not
-       to.  Methods may legitimately be part of the API of a class, in which
-       case you have a good reason not to make them public.  But variables
-       rarely belong in the API.  Doing so ties you down to your current
-       implementation.  If you want client code to be able to know a value,
+       to. Methods may legitimately be part of the API of a class, in which
+       case you have a good reason not to make them public. But variables
+       rarely belong in the API. Doing so ties you down to your current
+       implementation. If you want client code to be able to know a value,
        rather than making the variable public, define a public method that
-       will return the value.  And if you want client code to also be able
+       will return the value. And if you want client code to also be able
        to *change* the value, provide a public method that will do that.
        These are called "getter" and "setter" methods, respectively.
 
        It may seem pointless to have to define getters and setters, but
        by doing so, we are free to change the implementation of the class in
-       any way we want, as long as we keep the API the same.  Suppose we decided
+       any way we want, as long as we keep the API the same. Suppose we decided
        to keep a Queue of all the Monsters and to get rid of the "population"
        instance variable -- we can call the Queue's size method to find out
-       the population.  No client code would have to change at all,
+       the population. No client code would have to change at all,
        because the population method can still return the number of Monsters;
        it would just do it in a new way (by calling the Queue's size method).
        Contrast this to the scenario if we had simply made the static population
-       count public.  Every piece of client code that touched that variable
+       count public. Every piece of client code that touched that variable
        would have to be rewritten.
      */
 
@@ -349,21 +348,21 @@ public class Monster {
 
        All classes are descendants of class Object, and if they don't
        define their own toString or inherit one from elsewhere, they
-       will inherit a toString method from class Object.  It simply
+       will inherit a toString method from class Object. It simply
        returns a unique identifier for the object whose toString was called.
      */
 
     /* @Override annotation
 
        Our Monster class inherits a toString method from class Object.
-       When we define our own toString, we are overriding the inheritted
-       one.  The @Override annotation tells the reader, and Java, that
+       When we define our own toString, we are overriding the inherited
+       one. The @Override annotation tells the reader, and Java, that
        this is what we intend to be doing.
 
-       It is very worthwhile to use this annotation.  If we accidentally
+       It is very worthwhile to use this annotation. If we accidentally
        mistype the method name, we will fail to actually override the
-       inherited method.  Without the annotation, the code would compile
-       and run, but its behaviour would be confusing!  With the annotation,
+       inherited method. Without the annotation, the code would compile
+       and run, but its behaviour would be confusing! With the annotation,
        the code won't even compile.
      */
 
@@ -376,12 +375,12 @@ public class Monster {
     @Override
     public String toString() {
         StringBuilder answer = new StringBuilder(this.name);
-        answer.append(" of size " + String.valueOf(this.size) + ": [");
+        answer.append(" of size ").append(this.size).append(": [");
         for (int i = 0; i < this.fullness; i++) {
-            // Below, this.belly[i] is an instance of Monster.  Appending
+            // Below, this.belly[i] is an instance of Monster. Appending
             // it to our StringBuilder causes its toString method to be
-            // called.  So this is a second way to call toString implicitely.
-            answer.append(" " + this.belly[i]);
+            // called. So this is a second way to call toString implicitly.
+            answer.append(" ").append(this.belly[i]);
         }
         answer.append("]");
         return answer.toString();
@@ -391,23 +390,23 @@ public class Monster {
 
        Java's equals is analogous to Python's __eq__.
 
-       The equals method is NOT called implicitly if compare objects
-       using "==".  (Recall that, in Java, "==" means identity equality.)
+       The equals method is NOT called implicitly when comparing objects
+       using "==". (Recall that, in Java, "==" means identity equality.)
        If we want to use the equals method, we must call it by name.
 
        All classes are descendants of class Object, and if they don't
        define their own equals or inherit one from elsewhere, they
-       will inherit an equals method from class Object.  It simply
-       checks identity equality.  If we prefer to define equals differently,
+       will inherit an equals method from class Object. It simply
+       checks identity equality. If we prefer to define equals differently,
        we can override it.
 
        The designer of a class gets to decide what has to be true in order
-       for two instances to be considered "equals".  We have chosen that
+       for two instances to be considered "equals". We have chosen that
        they must have the same name and size, and equivalent belly contents.
        This sounds trivial to implement, but there are a number of details
        to be handled (see below).
 
-       There is more to say about the equals method.  Any implementation of
+       There is more to say about the equals method. Any implementation of
        it must obey these properties:
        (1) Symmetry: For non-null references a and b,
                      a.equals(b) if and only if b.equals(a)
@@ -415,26 +414,26 @@ public class Monster {
        (3) Transitivity: If a.equals(b) and b.equals(c), then a.equals(c)
 
        In addition, whenever we override the equals method, we should also
-       override another inherited method called "hashCode".  The hashCode
-       of an object is an integer value the obeys this property:
+       override another inherited method called "hashCode". The hashCode
+       of an object is an integer value that obeys this property:
            If two objects are equal (according to the equals method),
            they have the same hashCode.
        If is not an if-and-only-if: it's fine for two objects with the same
        hashCode *not* to be equal.
 
        Why do objects have a hashCode and why must it satisfy this property?
-       Because there are a some important classes such as HashMap that use the
-       hashCode of an object to decide where to store it.  This allows them to
-       retrieve the object later by just comparing hashCodes and thus avoiding
-       costly calls to the equals method.  The HashMap class does all this
-       using a data structure called a "hash table".  Hash tables have
+       Because there are some important classes such as HashMap that use the
+       hashCode of an object to decide where to store it. This allows them to
+       efficiently retrieve the object later by just comparing hashCodes and
+       thus avoiding costly calls to the equals method. The HashMap class does
+       all this using a data structure called a "hash table". Hash tables have
        remarkable properties and are thus very important in computer science.
-       You will learn about them in csc263.
 
-       Here we have broken the rule and overriden equals without overriding
-       hashCode.  That's because there is quite a lot involved in figuring out
-       an appropriate implementation of hashCode.  You will learn about that
-       in class.
+       Here, we can safely use the hash code of the Monster's name as the name
+       variable is not changed once initially set in the constructor. In
+       general, it is important to carefully choose a good hashCode to ensure
+       that hash-based structures like HashMap work correctly and  efficiently.
+       You will learn about hash tables and their efficiency in csc263.
      */
 
     /**
@@ -458,7 +457,7 @@ public class Monster {
         // certainly aren't equivalent.
         if (getClass() != obj.getClass())
             return false;
-        // We are comparing two Monster objects.  We must cast obj from its
+        // We are comparing two Monster objects. We must cast obj from its
         // declared type (Object) to Monster so that Java will know it has
         // Monster-specific attributes, like belly.
         Monster other = (Monster) obj;
@@ -466,9 +465,7 @@ public class Monster {
         // We can't check name equality until we are sure we are comparing
         // two non-null Strings.
         if (this.name == null) {
-            if (other.name != null) {
-                return false;
-            }
+            return other.name == null;
         } else if (!this.name.equals(other.name)) {
             return false;
         } else if (this.size != other.size) {
@@ -476,46 +473,51 @@ public class Monster {
         } else if (!Arrays.equals(this.belly, other.belly)) {
             // Arrays.equals is true iff the two arrays have the same length,
             // and each pair of their elements at corresponding positions
-            // are equals.
+            // are equal.
             return false;
         }
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
+
     /* Class methods
 
-       Like class variables, we can have class methods.  Again, we use the
+       Like class variables, we can have class methods. Again, we use the
        keyword "static" to declare that a method is a class method, as in
        method "population" below.
 
        Since a class method is associated with the class not the instances,
-       when we call it, we prefix it with the class name.  For example,
+       when we call it, we prefix it with the class name. For example,
        we can say:
               System.out.println("Monster population: " + Monster.population());
 
        We could have defined method "population" to be an instance method
-       instead by omitting the keyword "static".  The code would still work;
+       instead by omitting the keyword "static". The code would still work;
        there is nothing wrong with an instance method accessing a class
-       variable.  In fact our no-arg constructor does so.  But if "population"
+       variable. In fact our no-arg constructor does so. But if "population"
        were an instance method, we would have to use an instance to access
-       the method.  For example, we could do this:
+       the method. For example, we could do this:
               m1 = new Monster("Grok", 21, 3);
               System.out.println("Monster population: " + m1.population());
        This would certainly work, but it feels a bit odd to talk about
        "m1.population()".
 
        Although an instance method can reference a class variable (or call
-       a class method), the opposite is not true.  A class method cannot
+       a class method), the opposite is not true. A class method cannot
        access an instance variable or call an instance method directly.
        So in class method "population", the following won't compile:
                return size;
        And a class method can't use this to get at instance variables or
-       methods either.  There is no "this" when you are in a class method!
+       methods either. There is no "this" when you are in a class method!
        So the following won't work:
                return this.size;
        The only way for a class method to access an instance variable or call
        an instance method is if a reference to an object is passed to the
-       method.  Through that reference, the instance variables and instance
+       method. Through that reference, the instance variables and instance
        methods of the object are accessible.
     */
 
@@ -528,16 +530,16 @@ public class Monster {
         /* Using a class variable
 
         Because population was declared "static", there is only one,
-        shared by all instances of Monster.  It is not stored in every
-        instance of Monster.  So it would not make sense to say:
+        shared by all instances of Monster. It is not stored in every
+        instance of Monster. So it would not make sense to say:
               return this.population;
-        and in fact, that line would not compile.  We can access the
-        variable through the class name, as below.  If we omit the
+        and in fact, that line would not compile. We can access the
+        variable through the class name, as below. If we omit the
         class name and say simply:
               return population;
         Java would still find the class variable and the code would
-        work the same.  However, it's good practise to be explicit
-        and say that you mean to refer to a class variable. XXX Agreed?
+        work the same. However, it's good practise to be explicit
+        and say that you mean to refer to a class variable.
          */
         return Monster.population;
     }
@@ -561,6 +563,11 @@ public class Monster {
         for (int i = 0; i < scarey.length; i++) {
             System.out.println(scarey[i]);
         }
+        // tip: the above loop can be replaced with an enhanced for-loop
+        // similar to what you are familiar with from Python:
+        // for (Monster monster : scarey) {
+        //     System.out.println(monster);
+        // }
 
         // Do some digesting and see what we have.
         System.out.println(m0.digest());
