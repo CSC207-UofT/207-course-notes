@@ -1,5 +1,161 @@
 # Chapter 1: Introduction to Java
 
+## 1.0 Why Learn Java?
+
+This is a course about object-oriented software design, so why not stick with Python,
+a language you're already familiar with? This is a common question at the beginning of
+CSC207! While we could continue to work with Python,
+there are several benefits to learning Java, including:
+
+- Java remains one of the most widely used programming languages in industry,
+  especially in enterprise software and large-scale systems.
+- By comparing the Python and Java implementations of OOP, you'll gain a deeper
+  understanding of OOP fundamentals.
+- As you continue in computer science, you'll encounter many programming languages.
+  Learning Java now helps you build the skills to pick up new languages more easily.
+
+In the next course, CSC209, you'll work with C programming language that operates
+much closer to the hardware. Java sits between Python and C in terms of abstraction.
+It’s still high-level, but introduces features like static typing and manual compilation,
+that prepare you for working with C.
+
+Before we get to any code, we'll learn just a bit about how Java works.
+
+### 1.0.1 Running a Program
+
+Let’s take a step back: what does it mean to “run” a program?
+
+When you write code in a high-level language like Java or Python, the computer
+can’t directly understand it. The code must be translated into machine code
+that is eventually executed on the physical hardware.
+
+There are two main ways this translation happens:
+
+- **Interpretation**: The program is read and executed line-by-line by another
+  program called an interpreter. (e.g., Python)
+- **Compilation**: The entire program is translated into machine code ahead of
+  time by a compiler, producing an executable file. (e.g., C)
+
+Java uses a combination of these two in a hybrid approach.
+The Java compiler (`javac`) translates source code into **bytecode**,
+an intermediate form. The **Java Virtual Machine (JVM)** then interprets and
+optimizes this bytecode at runtime.
+
+To run a Java program, you must first **compile** it and then **execute** it.
+
+If you had a simple program in a file called `HelloWorld.java`,
+you could compile it by running `javac HelloWorld.java` in the terminal. This produces a file called
+`HelloWorld.class`, which contains the bytecode. To then run the program,
+you could run `java HelloWorld` in the terminal.
+
+> Note: If `javac` isn't on your "PATH", then you won't be able to directly run
+> this command without some configuration steps.
+
+As projects grow in complexity, you may have hundreds of source code files
+that need to be compiled. Directly running `javac` yourself would be tedious,
+so modern development environments like IntelliJ automate this process using
+**build systems** such as Maven or Gradle. These tools manage compilation,
+dependencies, and execution, allowing you to focus on writing code. However,
+understanding the underlying process is important — especially if you plan
+to later take CSC209, where you'll need to compile C programs without the
+help of your IDE.
+
+### 1.0.2 Computer Architecture
+
+As we just learned, Java programs need to be compiled before they are then run.
+To better understand why Java is designed in this way, we'll take a very high-level
+look at computer architecture.
+
+In earlier courses (CSC108/148 and CSC110/111), you focused on writing applications.
+But those applications don’t run in isolation — they rely on the
+**operating system (OS)** to manage resources and interact with hardware.
+The OS acts as a bridge between your program and the physical computer.
+It handles tasks like memory management, file access, and process scheduling.
+
+Here’s a simplified view of the architecture:
+
+```
+Applications
+---------------
+Operating System
+---------------
+Hardware
+```
+
+Notice how we visualize this architecture in **layers** — we'll talk much
+more about this fundamental idea of layers throughout the course.
+
+A language like C is compiled directly into machine code that runs on a specific OS.
+This means the compiled program is **not portable** — it must be recompiled for
+each operating system that it will run on!
+
+---
+
+#### 1.0.2.1 Virtual Machine Architecture
+
+A **Virtual Machine (VM)** is a software application that simulates a computer.
+It provides a consistent environment for running programs, regardless of the
+underlying OS.
+
+A language like Java uses VMs to achieve **portability**. A program written for a
+VM can run on _any system that has the appropriate VM installed_.
+
+We can update our computer architecture diagram to include this new layer between
+the applications layer and the operating system layer.
+
+```
+Applications
+---------------
+Virtual Machine
+---------------
+Operating System
+---------------
+Hardware
+```
+
+This design allows developers to write code once and run it anywhere — without
+worrying about OS-specific details. Of course, a VM itself is just another
+application running on an OS, so those OS-specific details still need to be
+taken care of in the VM code. What has changed is that the VM is now solely
+responsible for worrying about such details. The application developer
+can then focus on their own application without needing to worry about such
+details.
+
+---
+
+#### 1.0.2.2 Java Architecture
+
+Java’s architecture is built around the **Java Virtual Machine (JVM)**.
+As the name suggests, the JVM has the benefits of being a VM that we just
+discussed. Recall that when a Java source file is compiled, the result is
+**bytecode** in a `.class` file that can then be executed by the JVM.
+This means the same `.class` file can run on Windows, macOS, or Linux,
+as long as a JVM is installed!
+
+To summarize, our layers look like:
+
+```
+Java Applications
+---------------
+Java Virtual Machine (JVM)
+---------------
+Operating System
+---------------
+Hardware
+```
+
+Primarily, we'll only need to concern ourselves with writing Java source
+files (`.java` files), but it is good to start thinking about the
+big picture of how our source code eventually gets executed. The above
+also introduced a few ideas related to design: the use of layers to organize
+systems and different parts of a system having separate responsibilities.
+
+In other CS courses, you can learn more about related topics to the above,
+such as C programming (CSC209), hardware (CSC258),
+operating systems (CSC369), compilers (CSC488), and programming languages (CSC324).
+
+Now, we can turn our attention to writing Java code!
+
 ## 1.1. A first look at Java
 Let's begin by looking at something very simple in Python:
 
@@ -386,8 +542,8 @@ refer to different objects, the result is `false`.
 In summary, be careful with this nuance when comparing values of `String` objects
 as this might lead to opposite results.
 
-The above information is also known as string interning.
-Refer to the following links for more information on string pool and string interning:
+The above was describing string interning.
+You can refer to the following links for more information on the string pool and string interning:
 1. https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#intern--
 2. https://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5
 
@@ -834,17 +990,12 @@ Object[] miscellany = new Object[5];
 // We can put a String object into the array.
 miscellany[0] = new String("Songbird");
 
-// Every primitive type has a "wrapper" class. It lets you wrap up a value
-// in an object. Perfect for times like this when you need some kind of
-// Object rather than a primitive.
-miscellany[1] = new Integer(1872);
-
 // If we have a class called Monster, we can put Monster objects in too -- 
 // no problem!
-miscellany[2] = new Monster("Fred");
+miscellany[1] = new Monster("Fred");
 // Although it has some special syntax, an array is still a kind of Object,
 // so it satisfies the type requirements of our array of Objects too.
-miscellany[3] = new int[50];
+miscellany[2] = new int[50];
 
 ```
 
@@ -876,14 +1027,14 @@ At runtime, if the object we are casting to type `String` didn't turn out
 to be a string, we would get a runtime error. Here's an example of that:
  
 ```java
-// This time, we access element 1, which is an Integer. Java doesn't complain
-// when it reads the code, but does when it runs the code and finds that
-// it is trying to cast an Integer as a String.
+// This time, we access element 1, which is a Monster. Java doesn't complain
+// when it reads the code, but does when we run the code and find that
+// it is trying to cast a Monster as a String.
 String s = (String) miscellany[1];
 ```
 
 This code generates the error
-`java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String`.
+`java.lang.ClassCastException: Monster cannot be cast to java.lang.String`.
 
 ### 1.6.6. Two-dimensional arrays
 We can also create arrays with multiple dimensions.
@@ -1225,6 +1376,9 @@ if (precipitation) {
 
 Remember that it is the **curly braces**, *not* the indentation,
 that associates the else with the inner (vs the outer) if-condition.
+
+> **Important**: Unlike Python, Java doesn't have `and`, `or`, and `not` operators.
+> The equivalent operators in Java are `&&`, `||`, and `!`, respectively.
 
 ### 1.8.2. for Loops
 The syntax for a basic for-loop comes from the C language.
