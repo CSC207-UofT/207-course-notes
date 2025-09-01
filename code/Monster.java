@@ -4,10 +4,10 @@
 
 import java.util.Arrays;
 
+/**
+ * A monster.
+ */
 public class Monster {
-    /**
-     * A monster.
-     */
 
     /* Variables defined at the class level
 
@@ -317,7 +317,7 @@ public class Monster {
        to keep a Queue of all the Monsters and to get rid of the "population"
        instance variable -- we can call the Queue's size method to find out
        the population. No client code would have to change at all,
-       because the population method can still return the number of Monsters;
+       because the population method can still return the number of Monsters --
        it would just do it in a new way (by calling the Queue's size method).
        Contrast this to the scenario if we had simply made the static population
        count public. Every piece of client code that touched that variable
