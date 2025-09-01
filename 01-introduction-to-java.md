@@ -156,6 +156,10 @@ operating systems (CSC369), compilers (CSC488), and programming languages (CSC32
 
 Now, we can turn our attention to writing Java code!
 
+> Note: throughout, we'll show related Python code and highlight similarities
+> and differences between the two languages to help you quickly get up to speed
+> with the syntax of Java so that you'll be writing Java code in no time!
+
 ## 1.1. A first look at Java
 Let's begin by looking at something very simple in Python:
 
