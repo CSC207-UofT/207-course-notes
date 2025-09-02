@@ -146,6 +146,9 @@ to check for equality.
 The default behaviour of `equals` is to check for identity equality (like `==`),
 but often we'll want to override this behaviour.
 
+> For primitives, since only the value is stored, two primitives are always
+> checked for value equality.
+
 The designer of a class gets to decide what has to be true in order for two
 instances to be considered "equals". This sounds trivial to implement, but
 there are a number of details to be handled. Any implementation of it must

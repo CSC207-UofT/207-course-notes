@@ -104,23 +104,94 @@ In Java, we have to define types and adhere to our type declarations,
 otherwise our code will not compile. However, **autoboxing** is a conversion
 that the Java compiler makes automatically between primitive types and their
 corresponding object wrapper class and vice versa (e.g. `int` and `Integer`).
+When converting from the wrapper class to the primitive it is referred to
+as **unboxing**.
+
 For instance, we can do:
 ```java
 int x = 4;
-Integer y = new Integer(x);
+Integer y = new Integer(x); // equivalently Integer y = x
 int z = y;
 ```
 
-As of Java 9, we can even change `Integer y = new Integer(x);` into
-`Integer y = x;`! The former is deprecated at that point, so the autoboxing
-becomes even more apparent.
+In the second assignment statement, we could just write
+`Integer y = x;` and the 4 will get autoboxed! In the third line,
+`y` is unboxed and `z` gets the value 4.
+With this autoboxing feature of Java, we are able to simply work with
+the primitive type and let Java autobox and unbox as needed since this
+simplifies the code writing process for you.
+
+### 4.3.1. Value Comparison
+Consider comparing `int` values and `Integer` objects.
+If **one operand is a primitive**, Java will **unbox** the `Integer`
+and compare values:
+
+```java
+Integer a = 100;
+int b = 100;
+
+System.out.println(a == b); // true — compares values; a is unboxed
+```
+
+This makes sense, since if `b` had been autoboxed instead, then
+we might be in for a surprise as we'll see next!
+
+### 4.3.2. Reference Comparison
+If **both operands are `Integer` objects**, `==` compares **references**,
+not values:
+
+```java
+Integer x = new Integer(100);
+Integer y = new Integer(100);
+
+System.out.println(x == y); // false — different objects
+System.out.println(x.equals(y)); // true — same value
+```
+
+This can be a source of bugs, so just as we saw with strings and objects
+in general in Java, one should make sure to always use `equals` when
+comparing objects. Luckily, your IDE will warn you since this is such a common
+source of bugs.
+
+### 4.3.3. Integer Caching
+Similar to string interning that we saw previously,
+Java caches `Integer` values from **-128 to 127** for efficiency, so:
+
+```java
+Integer a = 100;
+Integer b = 100;
+System.out.println(a == b); // true — same cached object
+
+Integer c = 200;
+Integer d = 200;
+System.out.println(c == d); // false — not cached
+```
+
+### 4.3.4. Null Safety
+Unboxing a `null` `Integer` causes a `NullPointerException` at runtime:
+
+```java
+Integer a = null;
+int b = 100;
+
+System.out.println(a == b); // throws NullPointerException
+```
+
+In order to compare `a` and `b`, as we saw above, `a` will be unboxed.
+Unboxing an `Integer` corresponds to replacing `a` with `a.intValue()`
+when the code is compiled.
+
+> If you were to run this example, the exact error message reveals the exact error:
+> `java.lang.NullPointerException: Cannot invoke "java.lang.Integer.intValue()"
+> because "a" is null`
 
 For more details on autoboxing and the corresponding wrappers for each
 primitive class, see the
 [official Java tutorial](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)!
 
-You may be wondering what the purpose of wrapper classes are for the primitives.
-The following discussion of Generics in Java should make this clear.
+You may be wondering what the purpose of wrapper classes are for the primitives,
+as the above seemed to just suggest that using wrappers can lead to bugs if
+used carelessly. The following discussion of Generics in Java should make this clear.
 
 ## 4.4. Generics
 
