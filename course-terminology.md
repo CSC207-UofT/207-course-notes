@@ -9,6 +9,7 @@ repository, git, add, commit, push, pull, clone, fork, "branch-and-merge workflo
 * A repository is a directory that contains your project work, as well as a few files (hidden by default) which are used to communicate with Git.
 
 command line (terminal)
+* The command line is an interface that provides us with an alternative way to interact with our devices. Instead of clicking on graphical buttons and icons to launch programs and switch between tabs and windows, you can run instructions to perform these actions by explicitly writing commands to the command line, akin to a programming language.
 
 "Strongly typed language"
 
