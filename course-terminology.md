@@ -19,6 +19,7 @@ constructor
 * You call a constructor to instantiate (an object of) a class.
 
 static information vs. instance information (methods and variables)
+* Static information belongs to the class itself and is shared by all its instances, while instance information is unique to each object created from the class.
 
 class vs. instance
 
