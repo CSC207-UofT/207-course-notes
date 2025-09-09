@@ -1273,7 +1273,7 @@ To predict the outcome, we again need a clear picture of what is happening in me
 
 ![Shallow copy memory model diagram](images/1.7-6.png)
 
-So changing `copy[1][1]` did change table: it has `-9999999` at index `[1][1]`.
+So changing `copy[1][1]` did change table: it has `-99999` at index `[1][1]`.
 To avoid this, we would have to make a copy of `table` at *every* level.
 This is called a **deep copy**.
 
@@ -1295,7 +1295,7 @@ class_size = 124
 sections = 1;
 if class_size > 100:
     sections = 2
-    lass_size = class_size / 2;
+    class_size = class_size / 2;
 print('Sections: {} and class size: {}'.format(sections, class_size))
 ```
 
