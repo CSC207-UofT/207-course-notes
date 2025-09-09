@@ -50,7 +50,7 @@ To create a new branch and use it, you can use `git checkout -b <branch name>`. 
 
 If you want to switch branches, just use `git checkout <branch>` to change to that branch.
 
-When you want to finally merge your branch into the master repository, you simply checkout your master branch, and then run `git merge <branch name>`. However, a nicer method is to make a [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request), such that people can see and review the changes you're trying to push in.
+When you want to finally merge your branch into the master repository, you simply checkout your master branch, and then run `git merge <branch name>`. However, a nicer method is to make a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request), such that people can see and review the changes you're trying to push in.
 
 ## 0.4. More resources on Git
 There is extensive documentation surrounding git, which you'll likely discover as you use it. Instead of rewriting everything, we've collected a few such resources for you:
