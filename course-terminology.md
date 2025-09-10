@@ -19,7 +19,8 @@ constructor
 * You call a constructor to instantiate (an object of) a class.
 
 static information vs. instance information (methods and variables)
-* Static information belongs to the class itself and is shared by all its instances, while instance information is unique to each object created from the class.
+* Static information belongs to the class itself. A single copy is shared by all instances, and static methods can be called without creating an object.
+Instance information belongs to individual objects. Each object has its own copy of instance variables, and instance methods operate on the specific state of the object they are called on.
 
 class vs. instance
 
