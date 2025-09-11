@@ -3,6 +3,7 @@
 ## 3.1. Inheritance
 You may recall that we could inherit methods from another class in Python as
 follows:
+
 ```python
 class Child(Parent):
     ...
@@ -12,6 +13,7 @@ The syntax above defines class `Child` to be a subclass of class `Parent`.
 
 In Java, inheritance works in a similar manner. However, instead of using brackets,
 we use the `extends` keyword:
+
 ```java
 class Child extends Parent {
     ...
@@ -43,6 +45,7 @@ abstract class AbstractClass{
 
 Any non-abstract class that extends an abstract class then has to implement the
 body of _all_ abstract methods.
+
 ```java
 class NonAbstract extends AbstractClass{
     void something(){
@@ -59,6 +62,7 @@ While the annotation is not required, including it helps us prevent errors
 (e.g., misspelling the name of a method, forgetting a parameter, etc.).
 
 For example, if we have the following parent class:
+
 ```java
 class Parent {
     void something(){
@@ -68,6 +72,7 @@ class Parent {
 ```
 
 We can override the method `something` as follows:
+
 ```java
 class Child extends Parent {
     @Override
@@ -157,6 +162,7 @@ interfaces can also `extend` other interfaces.
 
 As an example, some food can be steamed so we might want a
 `Steamable` interface. These are also edible, so we could do the following:
+
 ```java
 interface Steamable extends Edible {
     void steam();
@@ -228,7 +234,6 @@ omit a constructor in the subclass if we don't need to perform any additional
 information. Java will implicitly call the parent constructor when creating
 a new instance of our subclass.
 
-
 ## 3.4. Polymorphism
 
 **Polymorphism** is the ability of an object to take on many forms. 
@@ -270,6 +275,7 @@ Polymorphism enables flexible and reusable code by allowing objects to be treate
 according to their capabilities rather than their exact types.
 
 As an example, the following would exhibit polymorphism:
+
 ```java
 Animal[] animals = {new Cat(), new Dog(), new Axolotl()};
 
@@ -370,6 +376,7 @@ one of the primitive types. They are all defined as static methods in the
 `Arrays` class.
 
 Here we use the `sort` method that takes an array of `int` values:
+
 ```java
 int[] ages = {10, 24, 3, 45, 83, 9};
 Arrays.sort(ages);
@@ -413,6 +420,7 @@ this method and declare that the class **implements** the `Comparable` interface
 This means that if we pass an array of `MonthDay` objects to sort, it is *guaranteed*
 to be able to use `compareTo` to put them in order. Here is an example of code that
 takes advantage of this capability:
+
 ```java
 public static void main(String[] args) {
     // Create some MonthDay objects and put them in an array.
@@ -454,6 +462,7 @@ many built-in classes, such as `String`, `File`, `Integer`, and `Double`.
 
 ### 3.6.3. Making our own classes Comparable
 Consider this class:
+
 ```java
 class Review {
     /**
@@ -521,6 +530,7 @@ reviews should be compared. Here's one possible implementation, based on ratings
 
 Second, we must change the class declaration to indicate that we have fulfilled
 the requirements of implementing the `Comparable` interface:
+
 ```java
 class Review implements Comparable<Review> {
 ```
@@ -534,6 +544,7 @@ so we use this syntax.
 
 Now that we have implemented `Comparable`, we can do the same sorts of things
 we did with `MonthDays`:
+
 ```java
 public static void main(String[] args) {
     Review r1 = new Review("Emoji Movie", 10,
@@ -586,6 +597,7 @@ We didn't write this class, so we can't change what its `compareTo` does.
 We can accomplish these goals by defining a "comparator" class for each
 kind of comparison we want. A "comparator" class implements the
 `Comparator` interface, which requires this method:
+
 ```java
 int compare(T o1, T o2)    
     Compares its two arguments for order.
@@ -595,6 +607,7 @@ int compare(T o1, T o2)
 ```
 
 Here's an example of a `Comparator` that orders `Reviews` according to likes:
+
 ```java
 import java.util.Comparator;
 
@@ -654,6 +667,7 @@ Emoji Movie (10): Cinematic malware; likes = 3
 ```
 
 We can define another `Comparator` that orders `Review` objects differently. This one does it by length:
+
 ```java
 import java.util.Comparator;
  
