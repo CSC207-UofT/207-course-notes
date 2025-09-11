@@ -51,7 +51,7 @@ SwingUtilities.invokeLater(() -> {
     // whatever code you want executed
 });
 ```
-Read the complete example in `src/gui/MainFrame.java`.
+Read the complete example in [MainFrame.java](code/gui/MainFrame.java).
 
 We will now explore a few of the components that can be added to a `JFrame` to display
 and collect information.
@@ -99,7 +99,7 @@ Here, we create the main `JPanel`, set its layout to vertical (on the Y axis), a
 It isn't all that pretty, but it's simple, and you can use nested `JPanel`s to quickly
 organize your user interface.
 
-Make sure you read and understand the complete example in `src/gui/NestedPanelsExample.java`.
+Make sure you read and understand the complete example in [NestedPanelsExample.java](code/gui/NestedPanelsExample.java).
 
 Next, we'll learn the basics of how user interactions work.
 
@@ -146,10 +146,10 @@ You can access the local variables declared in the enclosing method!
 That means that its enclosing scope must include the enclosing method's local variables.
 This is so weird and fun.
 
-When you run `src/gui/ButtonClickExample.java`, you'll see a popup window.
+When you run `ButtonClickExample.java`, you'll see a popup window.
 `JOptionPane.showMessageDialog` does this for us.
 
-Make sure you read and understand the example in `src/gui/ButtonClickExample.java`.
+Make sure you read and understand the example in [ButtonClickExample.java](code/gui/ButtonClickExample.java).
 
 ### 4.3.1 Exercise: click `Cancel` to clear the text fields
 
