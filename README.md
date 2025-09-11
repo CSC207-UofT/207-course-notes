@@ -11,7 +11,10 @@ You may also download the files locally. There are various viewers available to 
 - [Chapter 1. Introduction to Java](01-introduction-to-java.md)
 - [Chapter 2. Classes in Java](02-classes-in-java.md)
 - [Chapter 3. Relationships between Classes](03-relationships-between-classes.md)
-- [Chapter 4. Assorted Topics in Java](04-assorted-topics-in-java.md)
+- [Chapter 4. GUIs with Swing](04-GUIs-with-swing.md)
+- [Chapter 5. Java Gotchas and Subtleties](05-java-gotchas-and-subtleties.md)
+- [Chapter 6. Generics](06-generics.md)
+- [Chapter 7. Collections](07-collections.md)
 
 ## Raising issues
 If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.
