@@ -727,6 +727,3 @@ If you are not the author of the class, you cannot make it `Comparable`.
 Your only option is to define one or more comparators.
 
 If you are the author of the class, you have both options available to you!
-
-Now that we know the basics of defining our own classes, we are ready
-to further explore relationships between classes.
