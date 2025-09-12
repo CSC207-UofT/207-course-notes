@@ -3,6 +3,7 @@
 ## 3.1. Inheritance
 You may recall that we could inherit methods from another class in Python as
 follows:
+
 ```python
 class Child(Parent):
     ...
@@ -12,6 +13,7 @@ The syntax above defines class `Child` to be a subclass of class `Parent`.
 
 In Java, inheritance works in a similar manner. However, instead of using brackets,
 we use the `extends` keyword:
+
 ```java
 class Child extends Parent {
     ...
@@ -23,8 +25,6 @@ defined in `Parent`, and that `Child` is an instance of `Parent`.
 
 Throughout this chapter, we will be using the terms parent class/child class and
 superclass/subclass interchangeably.
-
-TODO do we need to elaborate on any of this????
 
 ### 3.1.1. Abstract classes
 Abstract classes are classes that are not meant to be initialized directly.
@@ -45,6 +45,7 @@ abstract class AbstractClass{
 
 Any non-abstract class that extends an abstract class then has to implement the
 body of _all_ abstract methods.
+
 ```java
 class NonAbstract extends AbstractClass{
     void something(){
@@ -61,6 +62,7 @@ While the annotation is not required, including it helps us prevent errors
 (e.g., misspelling the name of a method, forgetting a parameter, etc.).
 
 For example, if we have the following parent class:
+
 ```java
 class Parent {
     void something(){
@@ -70,6 +72,7 @@ class Parent {
 ```
 
 We can override the method `something` as follows:
+
 ```java
 class Child extends Parent {
     @Override
@@ -159,6 +162,7 @@ interfaces can also `extend` other interfaces.
 
 As an example, some food can be steamed so we might want a
 `Steamable` interface. These are also edible, so we could do the following:
+
 ```java
 interface Steamable extends Edible {
     void steam();
@@ -230,7 +234,6 @@ omit a constructor in the subclass if we don't need to perform any additional
 information. Java will implicitly call the parent constructor when creating
 a new instance of our subclass.
 
-
 ## 3.4. Polymorphism
 
 **Polymorphism** is the ability of an object to take on many forms. 
@@ -272,6 +275,7 @@ Polymorphism enables flexible and reusable code by allowing objects to be treate
 according to their capabilities rather than their exact types.
 
 As an example, the following would exhibit polymorphism:
+
 ```java
 Animal[] animals = {new Cat(), new Dog(), new Axolotl()};
 
@@ -361,3 +365,365 @@ to 3.7.
 
 Primitive casting can be **implicit** (e.g., `int` to `double`) or **explicit**
 (e.g., `double` to `int`), depending on whether there's a risk of data loss.
+
+## 3.6. Comparable
+### 3.6.1. Being comparable enables sorting
+In Python, we had the `list.sort()` method and `sorted()` function to allow us
+to sort lists. Similarly, Java provides a `sort` method capable of sorting an
+array of `int` values or of any other primitive type. In fact, `sort` is
+overloaded: there is a series of `sort` methods, each one capable of handling
+one of the primitive types. They are all defined as static methods in the
+`Arrays` class.
+
+Here we use the `sort` method that takes an array of `int` values:
+
+```java
+int[] ages = {10, 24, 3, 45, 83, 9};
+Arrays.sort(ages);
+```
+
+Great! But what if we want to sort objects of some other type?
+For instance, Java provides a class called `MonthDay` that can keep track of
+the month and day parts of a date. (It, and many other classes related to time,
+are defined in `java.time`.) What if we wanted to sort an array of
+`MonthDay` objects? And what if we wanted to also sort an array of `File`
+objects and an array of `Double` objects? The designers of Java could have made
+a general sort method that accepts an array of `Object`, like:
+
+```java
+public static void sort(Object[] a)
+```
+But in order for `sort` to do its job, it must be able to compare the elements
+of the array to decide on their order. It can't simply use operators like `<`
+to compare two instances of `MonthDay`. These operators will not accept instances
+of `MonthDay` as operands.
+
+Instead, the `sort` method requires that all elements in the array must implement
+the `Comparable` interface. This interface in turn requires any class that implements
+it to define this method:
+
+```java
+int compareTo(T o)
+    Compares this object with the specified object for order.
+    Returns a negative integer, zero, or a positive integer
+    as this object is less than, equal to, or greater than
+    the specified object.
+```
+
+In Python, we had a similar concept: if we implemented the `__lt__` method,
+we could compare and sort our objects! Java is just slightly different,
+where we return a negative integer, zero, or positive integer instead of
+`True` or `False`.
+
+Returning to our `MonthDay` example: the authors of the `MonthDay` class define
+this method and declare that the class **implements** the `Comparable` interface.
+This means that if we pass an array of `MonthDay` objects to sort, it is *guaranteed*
+to be able to use `compareTo` to put them in order. Here is an example of code that
+takes advantage of this capability:
+
+```java
+public static void main(String[] args) {
+    // Create some MonthDay objects and put them in an array.
+    // This class does not provide any constructors. Instead, we
+    // call static method "of" to make an instance.
+    MonthDay md1 = MonthDay.of(1, 5);
+    MonthDay md2 = MonthDay.of(7, 24);
+    MonthDay md3 = MonthDay.of(7, 24);
+    MonthDay md4 = MonthDay.of(1, 28);
+    MonthDay md5 = MonthDay.of(2, 14);
+    MonthDay[] dates = {md1, md2, md3, md4, md5};
+
+    // Because MonthDay implements Comparable, we can call sort,
+    // which depends on that:
+    Arrays.sort(dates);
+}
+
+```
+
+The sort method has another requirement: all elements in the array must
+be **mutually** comparable. This prevents us from trying to sort an array
+with a mixture of `DateTime` objects and `File` objects, for instance.
+These objects are comparable *within* each class, but not *across* classes
+(unless the classes which the objects are instances of share a parent
+class implementing `Comparable`).
+
+### 3.6.2. Being comparable enables comparisons
+If we ever wish simply to compare a MonthDay to any other MonthDay,
+we can do this as well:
+
+```java
+        System.out.println(md1.compareTo(md2)); // -6
+        System.out.println(md2.compareTo(md1)); //  6
+        System.out.println(md2.compareTo(md3)); //  0
+```
+
+The same holds for any class that implements `Comparable`, which includes
+many built-in classes, such as `String`, `File`, `Integer`, and `Double`.
+
+### 3.6.3. Making our own classes Comparable
+Consider this class:
+
+```java
+class Review {
+    /**
+     * A review, for example of a book or movie.
+     */
+
+    // === Class Variables ===
+
+    // The name of the item that this Review is about.
+    String item;
+    // The numeric rating, between 0 and 100, associated with this Review.
+    private int rating;
+    // The written component of this review.
+    private String text;
+    // The number of likes that this review has received.
+    private int likes;
+
+    public Review(String item, int rating, String text) {
+        this.item = item;
+        this.rating = rating;
+        this.text = text;
+        this.likes = 0;
+    }
+
+    public String toString() {
+        return this.item + " (" + this.rating + "): " +
+            this.text + "; likes = " + this.likes;
+    }
+
+    /**
+     * Records a like for this Review.
+     */
+    public void like() {
+        this.likes += 1;
+    }
+}
+```
+
+To make instances of this class comparable, we need to do two things.
+First, we must implement the `compareTo` method. It's up to us to decide how two
+reviews should be compared. Here's one possible implementation, based on ratings:
+
+```java
+    /**
+     * Compares this object with the specified object for order.
+     *
+     * Returns a negative integer, zero, or a positive integer as this
+     * object is less than, equal to, or greater than the specified object.
+     *
+     * @param other the object to be compared.
+     * @return a negative integer, zero, or a positive integer as this
+     * object is less than, equal to, or greater than the specified object.
+     */
+    @Override
+    public int compareTo(Review other) {
+        if (this.rating < other.rating) {
+            return -1;
+        } else if (this.rating > other.rating) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+```
+
+Second, we must change the class declaration to indicate that we have fulfilled
+the requirements of implementing the `Comparable` interface:
+
+```java
+class Review implements Comparable<Review> {
+```
+
+Notice that we wrote `Comparable<Review>` rather than just `Comparable`.
+The `Comparable` interface is specified using generics, which we will discuss
+in more detail later. For now, we just need to know that we need to specify
+what kinds of objects we are declaring that we can compare with. We want to be
+able to compare instances of our `Review` class with other `Review` objects,
+so we use this syntax.
+
+Now that we have implemented `Comparable`, we can do the same sorts of things
+we did with `MonthDays`:
+
+```java
+public static void main(String[] args) {
+    Review r1 = new Review("Emoji Movie", 10,
+        "Cinematic malware");
+    Review r2 = new Review("Dunkirk", 95,
+        "Gifted ensemble cast and masterful direction");
+    Review r3 = new Review("Spider Man: Homecoming", 95,
+        "A fun adventure");
+    Review r4 = new Review("My Neighbour Totoro", 99,
+        "A work of art");
+    Review r5 = new Review("Despicable Me 3", 60,
+        "Zany but scattershot humour");
+
+    System.out.println(r1.compareTo(r2)); // -1
+    System.out.println(r2.compareTo(r1)); // 1
+    System.out.println(r2.compareTo(r3)); // 0
+
+    Review[] badFruit = {r1, r2, r3, r4, r5};
+    Arrays.sort(badFruit);
+    for (int i = 0; i < badFruit.length; i++) {
+        System.out.println(badFruit[i]);
+    }
+
+}
+```
+
+The reviews come out sorted by rating:
+
+```
+Emoji Movie (10): Cinematic malware; likes = 0
+Despicable Me 3 (60): Zany but scattershot humour; likes = 0
+Dunkirk (95): Gifted ensemble cast and masterful direction; likes = 0
+Spider Man: Homecoming (95): A fun adventure; likes = 0
+My Neighbour Totoro (99): A work of art; likes = 0 
+```
+
+### 3.6.4. Being comparable enables more
+In addition to enabling sorting, a class that implements `Comparable`
+can be used in certain "Collections" that care about order, such as `SortedSet`.
+You will learn about Collections in later readings.
+
+## 3.7. Comparator
+What if we want to be able to choose between ordering reviews according
+to their rating, the length of their text or the number of likes they have?
+There can only be one `compareTo` method in the class. Or what if we want to make
+instances of `MonthDay` comparable according to just the month,
+so February 14th and February 20th would be considered tied?
+We didn't write this class, so we can't change what its `compareTo` does.
+
+We can accomplish these goals by defining a "comparator" class for each
+kind of comparison we want. A "comparator" class implements the
+`Comparator` interface, which requires this method:
+
+```java
+int compare(T o1, T o2)    
+    Compares its two arguments for order.
+    Returns a negative integer, zero, or a positive integer
+    as the first argument is less than, equal to, or greater
+    than the second.
+```
+
+Here's an example of a `Comparator` that orders `Reviews` according to likes:
+
+```java
+import java.util.Comparator;
+
+class LikesComparator implements Comparator<Review> {
+     /**
+      * Compares its two arguments for order.
+      *
+      * Returns a negative integer, zero, or a positive integer
+      * as r1 is less than, equal to, or greater than r2 in terms
+      * of number of likes.
+      *
+      * @param r1 the first Review to compare
+      * @param r2 the second Review to compare
+      * @return a negative integer, zero, or a positive integer
+      *      as r1 is less than, equal to, or greater than r2
+      */
+    @Override
+    public int compare (Review r1, Review r2) {
+        return r1.getLikes() - r2.getLikes();
+    }
+}
+```
+
+(Sidenote: The `compare` method needs to know the number of likes a review has received.
+Since this is stored in a private instance variable, we have added a getter method
+to provide access to it.)
+
+
+Now we can use a version of `sort` that accepts a `Comparator` as a second argument,
+and uses it to determine how things are sorted. Here, we call it with
+our `LikesComparator`:
+
+```java
+public static void main(String[] args) {
+    Review[] freshVeg = {r1, r2, r3, r4, r5};
+    // Let's add some likes so the sorting will be interesting.
+    r1.like();
+    r1.like();
+    r1.like();
+    r4.like();
+    r3.like();
+    Arrays.sort(freshVeg, new LikesComparator());
+    for (int i = 0; i < freshVeg.length; i++) {
+        System.out.println(freshVeg[i]);
+    }
+}
+```
+
+The output produced is indeed in order according to likes:
+
+```
+Dunkirk (95): Gifted ensemble cast and masterful direction; likes = 0
+Despicable Me 3 (60): Zany but scattershot humour; likes = 0
+Spider Man: Homecoming (95): A fun adventure; likes = 1
+My Neighbour Totoro (99): A work of art; likes = 1
+Emoji Movie (10): Cinematic malware; likes = 3
+```
+
+We can define another `Comparator` that orders `Review` objects differently. This one does it by length:
+
+```java
+import java.util.Comparator;
+ 
+
+class TextComparator implements Comparator<Review> {
+
+    /**
+     * Compares its two arguments for order.
+     *
+     * Returns a negative integer, zero, or a positive integer
+     * as r1 is less than, equal to, or greater than r2 in terms
+     * of length of text.
+     *
+     * @param r1 the first Review to compare
+     * @param r2 the second Review to compare
+     * @return a negative integer, zero, or a positive integer
+     *      as r1 is less than, equal to, or greater than r2
+     */
+    @Override
+    public int compare (Review r1, Review r2) {
+        return r1.getText().length() - r2.getText().length();
+    }
+}
+```
+
+(Here, we needed to add a getter for the `text` instance variable.)
+
+Now we can write code that sorts `Review` objects using this `TextComparator`
+instead of the `LikesComparator`:
+
+```java
+    public static void main(String[] args) {
+        Review[] rottenVeg = {r1, r2, r3, r4, r5};
+        r1.like();
+        r1.like();
+        r1.like();
+        r4.like();
+        r3.like();
+        Arrays.sort(rottenVeg, new TextComparator());
+        for (int i = 0; i < rottenVeg.length; i++) {
+            System.out.println(rottenVeg[i]);
+        }
+    }
+```
+
+This output is in order according to the length of the review text:
+```
+My Neighbour Totoro (99): A work of art; likes = 2
+Spider Man: Homecoming (95): A fun adventure; likes = 2
+Emoji Movie (10): Cinematic malware; likes = 6
+Despicable Me 3 (60): Zany but scattershot humour; likes = 0
+Dunkirk (95): Gifted ensemble cast and masterful direction; likes = 0
+```
+
+### 3.7.1. When to use Comparable vs. Comparator?
+If you are not the author of the class, you cannot make it `Comparable`.
+Your only option is to define one or more comparators.
+
+If you are the author of the class, you have both options available to you!
