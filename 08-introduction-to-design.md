@@ -7,7 +7,6 @@ A _dependency_ is when one part of a program relies directly on another part. Cl
 "High cohesion", on the other hand, is about a single class, and it means that the methods and data within a class are closely related.
 
 An example of a class with low cohesion is a `Student` class that has methods to sign up for a club, register in a section of a course, calculate the student's GPA, and print information about the student.
-
 # Event-driven programming: a network of objects
 
 As you know from the Python memory model, a running program uses a _stack_ to track method calls, including local values and return values, and a collection of objects representing the data in the program. The collection of objects is often called the _heap_.
@@ -61,7 +60,7 @@ The event listener method will call a method in the controller/presenter/viewmod
 
 Here is a typical MVC thought process. 
 
-![Model View Controller information flow](images%2FMVCPackt.png)
+![Model View Controller information flow](images/MVCPackt.png)
 
 _Retrieved from https://subscription.packtpub.com/book/programming/9781788624060/7/ch07lvl1sec56/the-model-view-controller-pattern on 14 September 2025._
 
@@ -82,7 +81,7 @@ The MVC architecture pattern was the first one to be widely adopted in the softw
 
 You'll notice that the Presenter is largely playing the same role as the Controller in MVP, but the View and Model don't depend on each other.
 
-![MVP.png](images%2FMVP.png)
+![MVP.png](images/MVP.png)
 
 * The user interacts with the View, which creates an event
 * The Java system calls a listener method in a View object

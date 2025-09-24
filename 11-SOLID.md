@@ -1,8 +1,24 @@
-# SOLID principles
+# Chapter XXX: SOLID principles
 
-A set of five software design principles has been developed over the decades to help keep coupling low and cohesion high. Robert Martin, the CSC207 textbook author, put them together in 2000, although they were each invented earlier.
+## XXX.1. Toward a set of software design principles
 
-These [SOLID principles](https://en.wikipedia.org/wiki/SOLID) are very widely used in industry, and they may come up in software internship interviews.
+In 1935, Alan Turing came up with a definition of what it meant to be a computer, including a mathematical model of computation (the Turing machine). 
+
+In the 1950s, "structured programming" languages were invented — before then, programs were written in assembly language or machine code. (The earliest programs involved flipping switches to set bits!) FORTRAN, COBOL, and LISP were invented for humans to better express algorithms. These programming languages each required a compiler or interpreter to automatically translate programs into machine code.
+
+In the 1960s, [Margaret Hamilton](https://en.wikipedia.org/wiki/Margaret_Hamilton_(software_engineer)) coined the term "software engineering". She was director of the Software Engineering Division at the MIT Instrumentation Laboratory, and is credited for being a [pioneer in reliable software design](https://web.archive.org/web/20101124231727/http://www.nasa.gov/home/hqnews/2003/sep/HQ_03281_Hamilton_Honor.html).
+
+In the 1970s, IBM and others began to study how to design large software systems, and in the mid-70's coupling and cohesion were recognized foundational concepts for good software design.
+
+Up through the 1990s, software development projects often went far over budget and were delivered late. A lot of work went into looking for a "silver bullet" to address this, and many tools and processes were invented. Some of them helped a bit, but no silver bullet was ever found.
+
+XXX.2. The SOLID principles
+
+Over all those decades, software design principles were invented/discovered that helped make software more understandable, maintainable, and flexible with respect to adding new features. A set of five of these principles has been widely accepted as being fundamental to good design, with all of them helping keep coupling low and cohesion high. In the 2000s, Robert Martin proposed that they be consolidated into a single acronym: SOLID.
+
+These [SOLID principles](https://en.wikipedia.org/wiki/SOLID) are very widely used in industry, and oten come up in software internship interviews.
+
+Throughout CSC207, we'll use these principles to analyze software design choices.
 
 1. _Single responsibility principle_ (SRP): a class should have only one reason to change
 2. _Open/closed principle_ (OCP): a class should be open for extension but closed for modification
@@ -10,13 +26,13 @@ These [SOLID principles](https://en.wikipedia.org/wiki/SOLID) are very widely us
 4. _Interface segregation principle_ (ISP): programmers should not be forced to write interface methods they do not use
 5. _Dependency inversion principle_ (DIP): high-level modules should not depend on low-level modules. Both should depend on abstractions
 
-# SRP: a class should have only one reason to change
+# XXX.2.1 SRP: a class should have only one reason to change
 
 The Single-Responsibility Principle means "Gather together the things that change for the same reasons. Separate those things that change for different reasons." (Robert Martin, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html)
 
 Robert Martin went on to say that the SRP is essentially just describing high cohesion and low coupling. There's more to it philosophically, but that's the basic idea.
 
-# OCP: a class should be open for extension but closed for modification
+# XXX.2.2 OCP: a class should be open for extension but closed for modification
 
 The Open/Closed Principle means that you should be able to add new functionality to a program without editing the code.
 
@@ -26,7 +42,7 @@ This is often done using inheritance or interfaces. In Java, interfaces can be u
 
 [TODO: write up the shape AreaCalculator example as an activity.]
 
-# LSP: subclasses should be substitutable for their base classes
+# XXX.2.3 LSP: subclasses should be substitutable for their base classes
 
 Formally, if S is a subtype of T, then objects of type S may be substituted for objects of type T, without altering any of the desired properties of the program.
 
@@ -40,7 +56,7 @@ Instead, you might refactor the entire design to avoid this issue. For example, 
 
 [TODO: write up Square/Rectangle example as an activity.]
 
-# ISP: programmers should not be forced to write interface methods they do not use
+# XXX.2.4 ISP: programmers should not be forced to write interface methods they do not use
 
 The Interface Segregation Principle means that no programmer should be forced to write irrelevant methods.
 
@@ -50,10 +66,12 @@ Instead, you might split the `Animal` interface into smaller interfaces, such as
 
 [TODO: Paul likes to perform this in class http://blog.cleancoder.com/uncle-bob/2015/01/08/InterfaceConsideredHarmful.html]
 
-# DIP: high-level modules should not depend on low-level modules
+# XXX.2.5 DIP: high-level modules should not depend on low-level modules
 
 Methods in the Entities layer should not depend on code in any of the other layers.
 
 The Use Cases layer should not depend on code in the Interface Adapters layer, and code in the Interface Adapters layer should not depend on code in the Frameworks and Drivers layer.
 
 Instead, all layers should depend on abstractions, such as interfaces or abstract classes.
+
+
