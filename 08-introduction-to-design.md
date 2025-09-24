@@ -110,3 +110,4 @@ In the Clean Architecture, there are four layers:
 
 Here, the Model is in the Entities layer, the Controller/Presenter/ViewModel code is in in the Interface Adapter layer, the View and database are both in the Frameworks and Drivers layer, and the Use Case layer contains objects that are specific to a single user interaction. Each will have a method that the Controller calls to handle as much of the user interaction as possible.
 
+#

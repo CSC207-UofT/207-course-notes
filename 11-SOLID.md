@@ -74,4 +74,150 @@ The Use Cases layer should not depend on code in the Interface Adapters layer, a
 
 Instead, all layers should depend on abstractions, such as interfaces or abstract classes.
 
+## XXX.3. A case study: the Java Collections Framework
 
+Classes like `ArrayList` and `HashMap` are part of the the [Java Collections Framework](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/doc-files/coll-overview.html) (JCF), which provides a set of commonly-used data structures and algorithms. All of this code is under package `java.util`.
+
+The JCF has two interface hierarchies, one for collections and one for maps. Collection interfaces include `Set`, `List`, and `Queue`, plus several less-common ones like `Deque` (short for double-ended queue). Interface `Map` (key-value pairs) has a subinterface, `SortedMap`, which provides a total ordering for the keys so that iteration order is predictable. Again, there are other less-common ones.
+
+In the diagram below, the arrows indicate "extends". Notice the little green I's. Those mean "interface".
+
+![JCF_interfaces.png](images%2FJCF_interfaces.png)
+
+### XXX.3.1 Interface Set
+
+The people who designed the JCF created lots of classes that implement all these interfaces. Here is the one related to `Set`:
+
+![JCF_Set.png](images/JCF_Set.png)
+
+Notice the little blue C's. Those are classes.
+
+At the top is interface `Collection`. A `Set` is a `Collection` where no duplicate elements are allowed.
+
+Abstract class [`AbstractCollection`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/AbstractCollection.html) "provides a skeletal implementation of the Collection interface, to minimize the effort required to implement this interface". Class `AbstractSet` both extends `AbstractCollection` and implements `Set`.
+
+`HashSet` implements `Set` directly, and also extends `AbstractSet`. It's the most commonly used Java set implementation. (Thought question: Since `AbstractSet` already implements `Set`, does `HashSet` need to say it implements `Set` again?)
+
+The `HashSet` documentation is interesting:
+
+This class offers constant time performance for the basic operations (`add`, `remove`, `contains` and `size`), assuming the hash function disperses the elements properly among the buckets. Iterating over this set requires time proportional to the sum of the `HashSet` instance's size (the number of elements) plus the "capacity" of the backing `HashMap` instance (the number of buckets). Thus, it's very important not to set the initial capacity too high (or the load factor too low) if iteration performance is important.
+
+Most of the classes in the JCF discuss performance, helping programmers choose the right data structure for their situation.
+
+### XXX.3.2 Interfaces List and Queue
+
+`List` and `Queue` are a bit convoluted:  
+
+![JCF_list.png](images/JCF_list.png)
+
+Class `AbstractList` extends `AbstractCollection`. `ArrayList` is the most commonly used list implementation.
+
+Class `LinkedList` provides a doubly-linked list implementation, and implements both the `List` and `Deque` interfaces.
+
+### XXX.3.3 Unmodifiable vs immutable collections
+
+The JCF documentation makes a distinction between and unmodifiable and immutable collections:
+
+* Collections that do not support modification operations (such as `add`, `remove` and `clear`) are referred to as _unmodifiable_. Collections that are not unmodifiable are _modifiable_.
+* Collections that additionally guarantee that no change in the `Collection` object will be visible are referred to as `immutable`. Collections that are not immutable are `mutable`.
+
+The difference is subtle. Study the following code.
+```java
+import java.util.*;
+
+public class ModifiableMutable {
+    public static void main(String[] args) {
+        List<String> modifiableList = new ArrayList<>();
+        modifiableList.add("Apple");
+        modifiableList.add("Banana");
+
+        // Create an unmodifiable view of the same list — there's aliasing happening somewhere
+        List<String> unmodifiableList = Collections.unmodifiableList(modifiableList);
+
+        // unmodifiableList is really just another view on the same list data.
+        System.out.println("Original unmodifiable list: " + unmodifiableList);
+
+        try {
+            unmodifiableList.add("Cherry");
+        } catch (UnsupportedOperationException e) {
+            System.out.println("Caught expected exception when trying to modify unmodifiable list: " + e);
+        }
+
+        // Modify the underlying list
+        modifiableList.add("Cherry");
+
+        // The change is reflected in the unmodifiable view
+        System.out.println("After modifying original list: " + unmodifiableList);
+    }
+}
+```
+
+Here is the output:
+```
+Original unmodifiable list: [Apple, Banana]
+Caught expected exception when trying to modify unmodifiable list: java.lang.UnsupportedOperationException
+After modifying original list: [Apple, Banana, Cherry]
+```
+
+To get an immutable list, use `List.of`, which copies the elements into the new list so that changes to the original list are not reflected in the immutable list.
+
+There are similar methods for `Set` and `Map`.
+
+# XXX.3.4 Random Access
+
+Some classes, like `ArrayList`, provide constant-time access to elements using method `get`. Some do not — remember doubly-linked list performance when accessing the middle of the list.
+
+To indicate that a class provides fast random access, it implements the `RandomAccess` interface. This interface contains no methods! It's purely there so that programmers can better understand how a class performs.
+
+### XXX.3.5 Quotes from the JCF documentation
+
+* Reduces programming effort by providing data structures and algorithms so you don't have to write them yourself.
+* Increases performance by providing high-performance implementations of data structures and algorithms. Because the various implementations of each interface are interchangeable, programs can be tuned by switching implementations.
+* Provides interoperability between unrelated APIs by establishing a common language to pass collections back and forth.
+* Reduces the effort required to learn APIs by requiring you to learn multiple ad hoc collection APIs.
+* Reduces the effort required to design and implement APIs by not requiring you to produce ad hoc collections APIs.
+* Fosters software reuse by providing a standard interface for collections and algorithms with which to manipulate them.
+
+
+# XXX.3.6 Design Choices in the JCF
+
+The documentation states that _The main design goal was to produce an API that was small in size and, more importantly, in "conceptual weight." It was critical that the new functionality not seem too different to current Java programmers; it had to augment current facilities, rather than replace them. At the same time, the new API had to be powerful enough to provide all the advantages described previously._
+
+_To keep the number of core interfaces small, the interfaces do not attempt to capture such subtle distinctions as mutability, modifiability, and resizability. Instead, certain calls in the core interfaces are optional, enabling implementations to throw an `UnsupportedOperationException` to indicate that they do not support a specified optional operation. Collection implementers must clearly document which optional operations are supported by an implementation._
+
+# XXX.3.7 Always ask questions!
+
+Lots of programmers have asked lots of questions about [how the JCF was designed](https://docs.oracle.com/en/java//javase/17/docs/api/java.base/java/util/doc-files/coll-designfaq.html). Many design choices could have been made differently.
+
+Here are a few:
+
+Q: Why does `LinkedList` implement both `List` and `Deque`? It could have just implemented `Deque`, since `Deque` extends `Queue`, which extends `Collection`.  But then it wouldn't be usable as a `List`. Which SOLID principles does this seem to violate? Does it seem like a sensible choice?
+
+A: Interface Segregation Principle, because programmers using `LinkedList` as a `List` might be confused by the `Deque` methods. But it also seems like a sensible choice, since a doubly-linked list can be used as both a list and a deque.
+
+Q: The [Java Collections Framework](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/doc-files/coll-overview.html) documentation says this:
+
+Many of the modification methods in the collection interfaces are labeled _optional_. Implementations are permitted to not perform one or more of these operations, throwing a runtime exception (`UnsupportedOperationException`) if they are attempted. The documentation for each implementation must specify which optional operations are supported.
+
+Which SOLID principle does this seem to violate?
+
+A: Liskov Substitution Principle, because if a method expects to be able to call a modification method on a `Collection`, it might get an `UnsupportedOperationException` at runtime if the actual object is an unmodifiable collection.
+
+Q: Interface `Collection` implements interface `Iterable`, which has a single method, `iterator`. That means any `Collection` can be used in a Java foreach loop.
+
+Interface `Map`, on the other hand, does not implement `Iterable`. Why not? Would it have been a good idea for `Map` to implement `Iterable`? What SOLID principle(s) does this seem to relate to?
+
+Methods `keySet`, `values`, and `entrySet` return views of the keys, values, and entries, and so programmers can choose what behaviour they want.
+
+A: This seems related to the Interface Segregation Principle, because if `Map` implemented `Iterable`, programmers would be forced to use an iterator that might not return what they want. It's unclear whether it should return objects containing key-value pairs, or if it should just return keys, or just values, and any choice might confuse a subset of programmers.
+
+Q: `ArrayList` uses an array to store the contents. When it runs out of room, it makes a new, bigger array and copies over the items. For `add(e)`, `get(i)` and `remove(i)`, what are the best case running times? Worst? When does it perform well?
+
+`LinkedList` uses a doubly-linked list. For `add(e)`, `get(i)` and `remove(i)`, what are the best case running times? Worst? When does it perform well?
+
+When would you choose `LinkedList` over `ArrayList`?
+
+A:
+
+* `ArrayList`: when you need fast random access, and you don't do a lot of insertions and deletions in the middle of the list. 
+* `LinkedList`: when you do a lot of insertions and deletions in the middle of the list, and you don't need fast random access.
