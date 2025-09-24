@@ -110,7 +110,7 @@ Most of the classes in the JCF discuss performance, helping programmers choose t
 
 ![JCF_list.png](images/JCF_list.png)
 
-Class `AbstractList` extends `AbstractCollection`. `ArrayList` is the most commonly used list implementation.
+Class `AbstractList` extends `AbstractCollection` and also implements interface `List`. `ArrayList` extends `AbstractList` and is the most commonly used list implementation.
 
 Class `LinkedList` provides a doubly-linked list implementation, and implements both the `List` and `Deque` interfaces.
 
