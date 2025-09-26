@@ -1,0 +1,21 @@
+@startuml
+skinparam dpi 120
+hide empty members
+
+class Worker {
+    +work()
+}
+
+class SuperWorker {
+    +work()
+}
+
+class Manager {
+    -Worker worker
+    +setWorker(w: Worker)
+    +manage()
+}
+
+
+Manager --> Worker
+@enduml

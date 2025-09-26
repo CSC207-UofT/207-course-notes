@@ -30,9 +30,10 @@ documentation to find out the properties of the various options.
 
 We refer to the various interfaces, their implementations, provided static methods
 that operate on collections, and some additional infrastructure, together as the
-"Java Collections Framework".
+"Java Collections Framework" (JCF).
 
-Let's look at a few of the implementations to get a feel for them.
+Let's look at a few of the implementations to get a feel for them, as you frequently use
+these in your code.
 
 ### 7.2.1. List
 
@@ -75,7 +76,7 @@ public static void main(String[] args) {
 
     // And we can use autoboxing to avoid having to construct instances
     // of the wrapper class. So rather than say:
-    intList.add(new Integer(42));
+    // intList.add(new Integer(42));
     // ... we can say just:
     intList.add(42);
     System.out.println(intList);

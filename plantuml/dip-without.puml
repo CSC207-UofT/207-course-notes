@@ -1,0 +1,18 @@
+@startuml
+skinparam dpi 120
+hide empty members
+title Without DIP
+
+class HighLevel {
+- LowLevel l
++ fun()
+}
+
+class LowLevel {
+    +f()
+}
+
+
+LowLevel <-- HighLevel : depends on
+
+@enduml

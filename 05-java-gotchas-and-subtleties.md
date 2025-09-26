@@ -18,7 +18,7 @@ def f() -> None:
     print(f"f()'s x = {x}")
 ```
 
-This would print out the following:
+Running `f()` would print out the following:
 ```
 g()'s x = 20
 f()'s x = 10
