@@ -22,7 +22,8 @@ only Integers: we don't need to do any casting.
 
 For our purposes, we'll primarily be making use of existing code that is written
 using generics, like `ArrayList<T>` above. It is also possible to include generics
-in your own custom classes, as described next, but this typically won't be necessary in this course.
+in your own custom classes, as described next, but this typically won't be necessary for
+any code that you write in this course.
 
 ## 6.1. Custom Generic Classes
 
