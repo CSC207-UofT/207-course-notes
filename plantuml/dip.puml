@@ -1,0 +1,22 @@
+@startuml
+skinparam dpi 120
+hide empty members
+title With DIP
+
+class HighLevel {
+- Interface i
++ fun()
+}
+
+class LowLevel {
+    +f()
+}
+
+interface Interface {
+    +f()
+}
+
+Interface <-- HighLevel : depends on
+LowLevel ..|> Interface : implements
+
+@enduml

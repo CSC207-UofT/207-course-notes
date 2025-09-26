@@ -1,0 +1,25 @@
+@startuml
+skinparam dpi 120
+hide empty members
+
+class Worker implements IWorker{
+    +work()
+}
+
+class SuperWorker implements IWorker{
+    +work()
+}
+
+class Manager {
+    -IWorker worker
+    +setWorker(w: IWorker)
+    +manage()
+}
+
+interface IWorker {
+    +work()
+}
+
+
+Manager --> IWorker
+@enduml
