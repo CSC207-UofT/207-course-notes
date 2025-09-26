@@ -6,8 +6,12 @@ For example, if developing software in a medical setting, words like "doctor", "
 
 As you know from your first-year courses, we can perform a noun-verb analysis of such a specification to arrive at an initial set of classes (with variables and methods) and abstractions (abstract classes and interfaces in Java) to model the specific domain. We refer to these classes that represent the data of the program as _entities_. These will be the building blocks of our program.
 
+The output of this first step is often a set of UML class diagrams summarizing the initial set of proposed entities for our system.
+Such diagrams can then be turned into code by developers.
+
 This is a great first step, but what is missing is the bigger picture of **how** instances of these classes will be used to actually fulfill the specification!
-This is where user stories come in as a systematic way to reason about specific aspects of the program's functionality.
+This is where user stories come in as a systematic way to reason about specific aspects of the program's functionality and we begin
+to put things together.
 
 ## 8.1. User stories
 
