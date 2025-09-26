@@ -28,7 +28,7 @@ Throughout CSC207, we'll use these principles to analyze software design choices
 
 ### 9.2.1. SRP
 
->a class should have only one reason to change
+> a class should have only one reason to change
 
 This principle is one that is often misrepresented as "each class should have one responsibility", but that simplification doesn't capture the principle's complete meaning.
 
@@ -52,7 +52,7 @@ Suppose you have a `UserProfile` class that handles both displaying user informa
 
 ### 9.2.2. OCP
 
->a class should be open for extension but closed for modification
+> a class should be open for extension but closed for modification
 
 The Open/Closed Principle means that you should be able to add new functionality to a program without modifying the existing code.
 
@@ -129,6 +129,8 @@ This creates unnecessary coupling between your code and parts of the system you 
 ### 9.2.5. DIP:
 
 > high-level modules should not depend on low-level modules
+
+Here, "module" refers to a class or a set of closely-related classes, such as might be found in a `.java` file.
 
 When building a complex system, programmers are often tempted to define _low-level_ classes first and then build _higher-level_ classes that use the low-level classes directly. Here, low-level refers to the details of the implementation. Such details are often volatile and may change without warning, and they correspond to external dependencies. In contrast, high-level refers to what really matters in our program. That is, the core logic of what we are trying to accomplish.
 
