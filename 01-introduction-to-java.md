@@ -17,7 +17,7 @@ there are several benefits to learning Java, including:
 In the next course, CSC209, you'll work with C programming language that operates
 much closer to the hardware. Java sits between Python and C in terms of abstraction.
 It’s still high-level, but introduces features like static typing and manual compilation,
-that prepare you for working with C.
+which prepare you for working with C.
 
 Before we get to any code, we'll learn just a bit about how Java works.
 
@@ -288,7 +288,7 @@ to an object of any type.
 
 In Java, every value has a type, but so does *every variable*.
 We must specify a variable's type before assigning a value to the variable,
-and its type can never change. This is called declaring the variable.
+and its type can never change. This is called _declaring_ the variable.
 As an example:
 
 ```java
@@ -297,7 +297,7 @@ int i;
 
 Here we declare a variable called `i` to be of type `int`.
 Space is reserved in memory for this variable, and Java remembers that you
-have promised only to assign it to `int` values.
+have promised only to assign `int` values to it.
 
 ### 1.2.3. Declaration and Assignment
 If we wish, we can assign a value immediately after declaring the variable,
@@ -310,7 +310,7 @@ int i = 42;
 In our previous example with just `int i;` we would be postponing assigning
 a value to `i` until later. In the meanwhile, the variable's name is known
 to Java, space has been reserved to store its value, and it is given a default
-value. For an `int`, the default value is `0`; for objects,
+value. For an `int`, the default value is `0`; for class types,
 it is `null` (the equivalent to Python's `None`).
 
 
@@ -321,7 +321,7 @@ Java must keep track of four things associated with each variable:
 1. The variable's name, which we provide when we declare the variable.
 2. The variable's type, which we also provide when we declare the variable.
 3. The memory space used to hold the value of the variable.
-4. The value of the variable, which can be given with an assignment statement.
+4. The value of the variable, which can be given using an assignment statement.
 
 The only one of these that can change is the value of the variable.
 
@@ -662,6 +662,27 @@ we have been using classes, such as `String` and `StringBuilder`.
 Let's look at a few concepts we need in order to confidently write client
 code that uses other classes.
 In the next chapter, we will learn more about defining our own custom classes.
+
+
+### 1.5.1. Abstractions
+
+An _abstraction_ is a simplified view of something complex.
+For example, in first year, you saw the memory model,
+which is an abstraction of how computer memory works for a running program.
+We can simplify that memory model further:
+an arrow means that a variable contains the memory address of an object
+(and thus points to that object),
+and so we don't need to write those memory addresses —
+the particular memory addresses don't matter, just that the pointer exists.
+This is an abstraction on the abstraction!
+
+Classes and interfaces are another kind of abstraction.
+When we write a program that manipulates data —
+tax information, students at a university, it could be almost anything —
+we need to represent that data in our program.
+For example, a `Student` class would have a name and student number but probably not weight and height.
+Those details are not relevant to the program so we don't need to represent them.
+Class `Student` is an abstraction of a student.
 
 ### 1.5.1. Instantiating an object
 
