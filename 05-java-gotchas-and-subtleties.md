@@ -69,14 +69,15 @@ Both `lst` and `lst_copy` would contain the same items but have different
 memory addresses: modifying one would not modify the other. `lst_alias`,
 however, would be an alias to `lst`: if we modify one, we modify the other.
 
-The same concept applies to Java, except arrays have a `clone` method. For example:
+The same concept applies to Java, except arrays have a `clone` method. Notice how we switch
+to the Java naming conventions:
 ```java
 int[] lst = {1, 2, 3};
-int[] lst_copy = lst.clone();
-int[] lst_alias = lst;
+int[] lstCopy = lst.clone();
+int[] lstAlias = lst;
 ```
 
-The relationships between `lst` and `lst_copy` along with `lst` and `lst_alias`
+The relationships between `lst` and `lstCopy` along with `lst` and `lstAlias`
 are the same as what we had in our Python example.
 
 Furthermore, nested lists in Python behave the same as nested arrays in Java.
