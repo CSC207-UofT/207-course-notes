@@ -380,6 +380,10 @@ public class Monster {
             // Below, this.belly[i] is an instance of Monster. Appending
             // it to our StringBuilder causes its toString method to be
             // called. So this is a second way to call toString implicitly.
+            // Notice that this second call is not recursive since the representation
+            // invariant specifies that the fullness of each monster in the belly must be 0, so
+            // when the second toString call is made, the for loop never iterates and so
+            // it immediately terminates.
             answer.append(" ").append(this.belly[i]);
         }
         answer.append("]");
