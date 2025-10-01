@@ -922,7 +922,7 @@ int[] numbers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 As with all assignment statements, the expression on the right-hand side is evaluated first.
 Note the syntax of using curly braces around the values on the right-hand side.
 This constructs an array object of exactly the right length,
-and then initializes that array by assigning each value at the appropriate index.
+and then initializes the contents of that array by assigning each value at the appropriate index.
 
 Then the assignment statement assigns a reference to the new array object to variable `numbers`.
 
