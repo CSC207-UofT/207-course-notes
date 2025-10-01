@@ -914,14 +914,17 @@ Each built-in type has a default value, and the appropriate one is used.
 
 #### 1.6.2.2. Another way to construct an array: with an initializer
 
-We can combine the construction and initialization of an array into one step:
+We can combine array object construction and initialization into one step:
 ```java
 int[] numbers = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024};
 ```
 
-This constructs an array of exactly the right length to hold the given values,
-and then assigns them to the elements of the array.
-Note the syntax of using curly braces around the values on the right hand side.
+As with all assignment statements, the expression on the right-hand side is evaluated first.
+Note the syntax of using curly braces around the values on the right-hand side.
+This constructs an array object of exactly the right length,
+and then initializes that array by assigning each value at the appropriate index.
+
+Then the assignment statement assigns a reference to the new array object to variable `numbers`.
 
 ### 1.6.3. Determining length
 We can find the length of an array by accessing its `length` attribute.
@@ -1498,7 +1501,7 @@ while condition:
 
 Java is fairly similar, with while-loops having the form:
 ```java
-while (condition){
+while (condition) {
     ...
 }
 ```
