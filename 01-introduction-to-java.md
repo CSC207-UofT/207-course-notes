@@ -1491,7 +1491,7 @@ above that uses a regular for-loop. You should use enhanced for-loops whenever p
 You may remember shortcuts like `+=` and `-=` from Python, e.g.:
 ```python
 x += n    # Equivalently: x = x + n
-y -= n    # Equivalently: y = y + n
+y -= n    # Equivalently: y = y - n
 ```
 
 Java has the same, but with two others:
