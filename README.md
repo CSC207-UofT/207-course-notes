@@ -19,6 +19,9 @@ You may also download the files locally. There are various viewers available to 
 - [Chapter 8. Program Specification](08-program-specification.md)
 ### Module 2
 - [Chapter 9. Design Principles](09-design-principles.md)
+### Module 3
+- [Chapter 10. Introduction to Layered Architectures](10-introduction-to-layered-architectures.md)
+- [Chapter 11. The Clean Architecture](11-clean-architecture.md)
 
 ## Raising issues
 If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.

@@ -107,10 +107,10 @@ The core layer is often called the _domain_ layer, and it contains the entities 
 
 Briefly, the Clean Architecture consists of four layers:
 
-1. Entities: the core layer that represents the problem domain data and logic
-2. Use Cases: the layer that contains the application-specific business rules
-3. Interface Adapters: the layer that contains the code that converts data from the format most convenient for the use cases and entities to the format most convenient for the external layers such as databases and the user interface
-4. Frameworks and Drivers: the layer that contains the code that interacts externally with the user and with any databases
+1. Entities: the core layer that represents the problem domain data and logic (highest-level policies)
+2. Use Cases: the layer that contains the application-specific business rules (medium-level policies)
+3. Interface Adapters: the layer that contains the code that converts data from the format most convenient for the use cases and entities to the format most convenient for the external layers such as the user interface (lower-level policies)
+4. Frameworks and Drivers: the layer that contains the code that interacts externally with the user and with any databases (lowest-level policies)
 
 > In the CA book, the terminology of "Enterprise Business Rules" and "Application Business Rules" is used for what we have more informally called the "Entities" and "Use Cases" layers above. 
 
