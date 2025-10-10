@@ -1,0 +1,124 @@
+@startuml
+skinparam nodesep 40
+
+skinparam dpi 400
+
+skinparam titleFontSize 32
+'skinparam defaultFontSize 16
+title Clean Architecture\nTypical Scenario Diagram
+
+
+allowmixing
+
+skinparam linetype ortho
+
+skinparam packageStyle rectangle
+
+skinparam package {
+  BackgroundColor #ADD8E6
+  FontColor black
+  BorderColor white
+  TitleAlignment right
+}
+
+skinparam class {
+  BackgroundColor white '#ADD8E6
+  FontColor black
+  BorderColor black
+}
+
+together{
+package " " as foo #white {
+package "Interface Adapters" #lightgreen {
+  class "Controller"
+  class second
+  class "Presenter"
+  class "View Model"
+}
+
+package "Frameworks\n&\nDrivers" as "FD2" #lightblue {
+  class "View"
+}
+}
+
+second -[hidden]up-> "Controller"
+second -[hidden]down-> "Presenter"
+
+
+package "Application Business Rules" as ABR #pink {
+
+  together {
+  class "Use Case Interactor"
+
+  interface "Input Boundary"
+  }
+  class "Input Data"
+
+  interface "Output Boundary"
+  class "Output Data"
+  interface "Data Access Interface"
+}
+
+package "Enterprise              \nBusiness                \nRules                     " as EBR #lightyellow {
+  class "Entities"
+}
+
+
+package "Frameworks\n&\nDrivers" as FD #lightblue {
+  class "Data Access"
+  database "Database"
+}
+
+"Use Case Interactor" -[norank]-> "Input Data"
+
+"Data Access" -up--> "Entities"
+"Use Case Interactor" -right->  "Entities"
+'STEP 5 Use Case Interactor to Entities
+"Presenter" -down-> "View Model"
+'STEP 7 Presenter to View Model
+"View" -up-> "View Model"
+'"Data Access" -up--> "Entities"
+"Data Access" -[norank]---> "Database"
+'STEP 4 Data Access to Database
+"Data Access" -up-|> "Data Access Interface"
+"View" -up-----> "Controller"
+'STEP 1 View to Controller
+
+EBR -[hidden]down- "FD"
+"Interface Adapters" -[hidden]down- "FD"
+EBR -[hidden]down--- "FD"
+"Interface Adapters" -[hidden]right- ABR
+
+"Controller" -[hidden]down-> "Presenter"
+"Presenter" -[hidden]down-> "View Model"
+
+"Input Data" -[hidden]down- "Input Boundary"
+"Input Boundary" -[hidden]down- "Output Boundary"
+"Output Boundary" -[hidden]down- "Output Data"
+
+"Presenter" -right|> "Output Boundary"
+"Presenter" -right-> "Output Data"
+"Controller" -right-> "Input Data"
+"Controller" -right-> "Input Boundary"
+' STEP 2 Controller to Input Boundary
+
+"Use Case Interactor" -[norank]-> "Output Boundary"
+' STEP 6 Use Case Interactor to Output Boundary
+"Use Case Interactor" -[norank]-> "Output Data"
+"Use Case Interactor" -down--> "Data Access Interface"
+' STEP 3 Use Case Interactor to Data Access Interface
+
+"Use Case Interactor" -[norank]-|> "Input Boundary"
+
+"FD2" -[hidden]up-> "Output Data"
+
+"FD2" -[hidden]up-> "Output Data"
+
+"FD2" -[hidden]right---------> "FD"
+
+hide empty members
+
+hide hideme
+hide second
+
+@enduml

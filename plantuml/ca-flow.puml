@@ -1,0 +1,162 @@
+@startuml
+skinparam nodesep 40
+
+skinparam dpi 400
+
+allowmixing
+
+skinparam linetype ortho
+'skinparam handwritten true
+
+skinparam packageStyle rectangle
+
+'left to right direction
+
+skinparam package {
+  BackgroundColor #ADD8E6
+  FontColor black
+  BorderColor white
+  TitleAlignment right
+}
+
+skinparam class {
+  BackgroundColor white '#ADD8E6
+  FontColor black
+  BorderColor black
+}
+
+'class dummy
+
+together{
+package " " as foo #white {
+package "Interface Adapters" #lightgreen {
+  'class topx
+  class "Controller"
+  class second
+  class "Presenter"
+  class "View Model"
+  'class "bl"
+}
+
+package "Frameworks\n&\nDrivers" as "FD2" #lightblue {
+  'class righter
+  class "View"
+  'class lefter
+}
+}
+
+second -[hidden]up-> "Controller"
+second -[hidden]down-> "Presenter"
+'topx -[hidden]up-> "View Model"
+'bl -[hidden]up-> "Controller"
+'bl -[hidden]right-> "View Model"
+'bl -[hidden]right--> "View"
+
+'class leftfill
+
+'leftfill -[hidden]right-> "View"
+'bl -[hidden]down-> leftfill
+
+'"foo" <-left- dummy
+
+
+package "Application Business Rules" as ABR #pink {
+
+  'class "hideme"
+  'class "hideme2"
+  'class "hideme3"
+
+  together {
+  class "Use Case Interactor"
+
+  'together {
+  interface "Input Boundary"
+  }
+  class "Input Data"
+'  interface "Input Boundary"
+  '}
+  '}
+
+  interface "Output Boundary"
+  class "Output Data"
+  interface "Data Access Interface"
+}
+
+'package " " as "right" #white {
+package "Enterprise              \nBusiness                \nRules                     " as EBR #lightyellow {
+  class "Entities"
+}
+
+'"hideme" -down-> "Use Case Interactor"
+'"hideme2" -down--> "Use Case Interactor"
+'"hideme3" -down-> "Input Data"
+'"hideme2" -down-> "Output Boundary"
+'"hideme2" -up-> "Input Boundary"
+'package "Frameworks & Drivers" as "FD2" #lightblue {
+'  class "View"
+'}
+
+
+package "Frameworks\n&\nDrivers" as FD #lightblue {
+  class "Data Access"
+  database "Database"
+}
+
+"Use Case Interactor" -[norank]-> "Input Data"
+
+"Data Access" -up--> "Entities"
+"Use Case Interactor" "          STEP\n          5" -right->  "Entities"
+'STEP 5 Use Case Interactor to Entities
+"Presenter" "\n  STEP  \n  7  " -down-> "View Model"
+'STEP 7 Presenter to View Model
+"View" -up-> "View Model"
+'"Data Access" -up--> "Entities"
+"Data Access" "         STEP  \n          4   \n" -[norank]---> "Database"
+'STEP 4 Data Access to Database
+"Data Access" -up-|> "Data Access Interface"
+"View" "STEP         \n1         " -up-----> "Controller"
+'STEP 1 View to Controller
+
+EBR -[hidden]down- "FD"
+"Interface Adapters" -[hidden]down- "FD"
+EBR -[hidden]down--- "FD"
+"Interface Adapters" -[hidden]right- ABR
+
+"Controller" -[hidden]down-> "Presenter"
+"Presenter" -[hidden]down-> "View Model"
+
+"Input Data" -[hidden]down- "Input Boundary"
+"Input Boundary" -[hidden]down- "Output Boundary"
+"Output Boundary" -[hidden]down- "Output Data"
+
+"Presenter" -right|> "Output Boundary"
+"Presenter" -right-> "Output Data"
+"Controller" -right-> "Input Data"
+"Controller" "              STEP \n             2\n" -right-> "Input Boundary"
+' STEP 2 Controller to Input Boundary
+
+"Use Case Interactor" "\n\n\n STEP \n6" -[norank]-> "Output Boundary"
+' STEP 6 Use Case Interactor to Output Boundary
+"Use Case Interactor" -[norank]-> "Output Data"
+"Use Case Interactor" -down--> "STEP   \n3   " "Data Access Interface"
+' STEP 3 Use Case Interactor to Data Access Interface
+
+"Use Case Interactor" -[norank]-|> "Input Boundary"
+'"Use Case Interactor" -[norank]-> "Input Data"
+
+"FD2" -[hidden]up-> "Output Data"
+
+"FD2" -[hidden]up-> "Output Data"
+
+"FD2" -[hidden]right---------> "FD"
+
+hide empty members
+
+hide hideme
+hide second
+
+skinparam titleFontSize 32
+'skinparam defaultFontSize 16
+title Clean Architecture\nTypical Scenario Diagram
+
+@enduml
