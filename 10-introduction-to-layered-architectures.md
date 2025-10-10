@@ -5,12 +5,21 @@
 To achieve this, software is often structured into layers, each with a distinct role — such as managing the user interface, handling data persistence, or implementing the core logic of the program. These layers help reduce dependencies between parts of the program, making it easier to maintain and evolve.
 But what exactly are we organizing into layers?
 
-A computer program can be viewed as a set of **policies** — rules that govern how inputs are transformed into outputs. These policies exist at different **levels**:
+A computer program can be viewed as a set of **policies** — rules that govern how inputs are transformed into outputs. If it helps, you might think of it as a set of rules about how data needs to look at different points in a system. In CS terminology, a policy provides a set of invariants, preconditions, and postconditions.
+
+Policies exist at different **levels**:
 
 - **High-level policies** are far from input/output and represent the core logic of the application.
 - **Low-level policies** are close to input/output and deal with things like UI interactions, file access, or network communication.
 
 The level of a policy refers to its distance from the inputs and outputs. Separating policies by level helps isolate the core logic of a program from the technical details of how it interacts with the outside world.
+
+Here are two examples of high-level policies:
+
+- When a user checks out a book, it can't have a hold placed on it by another user.
+- When a customer withdraws money from their fancy bank account, they are allowed up to $1000 overdraft.
+
+Low-level policies might describe how users trigger events and how data is stored in a database.
 
 In layered architectures, the goal is to keep high-level policies independent of low-level ones. For example, in a library system, a policy might state that a book cannot be renewed if another user has placed a hold on it. This is a high-level decision about how the system should behave, regardless of how the user interacts with the program or how the data is stored. Whether the user clicks a “Renew” button or the system looks up information from a database are separate concerns. The high-level policy itself remains the same. This separation improves testability, reduces coupling, and makes the system easier to reason about.
 
