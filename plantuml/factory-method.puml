@@ -1,0 +1,32 @@
+@startuml
+skinparam dpi 200
+hide empty member
+interface Product
+class ConcreteProduct implements Product
+
+abstract class Factory {
+    {abstract} + createProduct(): Product
+}
+
+class ConcreteFactory extends Factory {
+    + createProduct(): Product
+}
+
+class Client {
+    + useFactory(factory: Factory)
+}
+
+
+Client --> Factory : uses
+Client --> Product : uses
+
+note right of Client::useFactory
+Product p = factory.createProduct();
+// use product p...
+end note
+
+note right of ConcreteFactory::createProduct
+return new ConcreteProduct();
+end note
+
+@enduml

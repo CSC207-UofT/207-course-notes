@@ -1,0 +1,36 @@
+@startuml
+skinparam dpi 200
+hide empty members
+
+class Product {
+    - partA: String
+    - partB: String
+    + setPartA(String): void
+    + setPartB(String): void
+}
+
+class ProductBuilder {
+    - product: Product
+    + ProductBuilder()
+    + buildPartA(String): ProductBuilder
+    + buildPartB(String): ProductBuilder
+    + build(): Product
+}
+
+class Client {
+    + {static} main(String[]): void
+}
+
+Client --> ProductBuilder
+ProductBuilder --> Product
+Client --> Product
+
+note right of Client::main
+Product product = new ProductBuilder()
+                             .buildPartA("Engine")
+                             .buildPartB("Wheels")
+                             .build();
+// do stuff with product
+end note
+
+@enduml

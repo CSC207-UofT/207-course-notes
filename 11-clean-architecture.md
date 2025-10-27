@@ -116,4 +116,4 @@ What this means is that we can create a different main component, sometimes call
 > Thought Question: Can you imagine how the code for constructing the CA engine might look in practice? We'll see concrete code examples soon, but for now it is a good exercise to think through your mental model of how our above conceptual discussion and the high-level UML class diagram of the CA engine might turn into concrete code.
 
 > Thought Question: Can you identify specific aspects of the design of the Clean Architecture that remind you of each SOLID principle?
-> 
+ 
