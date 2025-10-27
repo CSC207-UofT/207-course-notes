@@ -6,7 +6,28 @@ IntelliJ doesn't support the refactoring technique directly.
 
 > There are lots more refactoring techniques, but the goal here is to give a brief introduction to some of the most common ones.
 
-## `Extract Method`
+## 13.1. What is refactoring?
+
+ when you reorganize your program without changing the outcome
+
+The process of _refactoring_ refers to when programmers make a series of changes that improve the design of the software — but without changing the behaviour.
+There are lots of reasons for this:
+- to make the code easier for other programmers to understand
+and navigate (and debug),
+- to make it easier to automatically test, and
+- to make it easier to add new features.
+
+Some refactoring will involve style changes: naming, indentation, brace placement, and so on.
+Some refactoring will involve restructuring your code: adding a parameter to a method,
+moving a method from one place to another, reordering code to group related statements, and so on.
+
+**As a rule, when refactoring, the code should always pass the existing tests!**
+
+Let's take a look at a few common refactoring techniques!
+
+---
+
+## 13.2. `Extract Method`
 
 This refactoring technique will likely feel very familiar to you from your first-year CS courses.
 When developing code, you are generally advised to write helper methods (or functions) to break the code into smaller, more meaningful snippets. This can help greatly with understandability
@@ -29,7 +50,7 @@ in a computation.
 
 * * *
 
-## `Change Method Declaration`
+## 13.3. `Change Method Declaration`
 
 This refactoring technique involves modifying how a method is defined, such as altering what its parameters are. When doing so,
 one must be careful to update any client code, as well as the body of the method being altered.
@@ -40,7 +61,7 @@ In IntelliJ, `Change Signature` helps you perform such a refactoring.
 
 * * *
 
-## `Encapsulate Fields`
+## 13.4. `Encapsulate Fields`
 
 In Java, the convention is to make instance variables as private as possible. Transitioning from Python programming, where
 we tend to default to public attributes, you may not yet be in the habit of declaring your data to be private. This refactoring
@@ -56,7 +77,7 @@ https://rules.sonarsource.com/java/RSPEC-1104/ along with ways to fix it, with o
 
 * * *
 
-## `Split Loop`
+## 13.5. `Split Loop`
 
 Sometimes we lump together several computations within a single block of iterative code. When we do this, it can become
 difficult to extract related blocks of functionality from our code through refactoring techniques like `Extract Method`.
@@ -77,7 +98,7 @@ split. This is where the next refactoring technique will help us out.
 
 * * *
 
-## `Slide Statements`
+## 13.6. `Slide Statements`
 
 This technique simply refers to moving lines of code around to help group together code in more meaningful ways. For example,
 continuing with the example from above, we may want to move the declaration of each accumulator variable so that they are defined
@@ -90,7 +111,7 @@ This can be achieved using cut+paste, but it turns out IntelliJ has shortcuts wh
 
 * * *
 
- `Replace Constructor with Builder`
+## 13.7. `Replace Constructor with Builder`
 
 This technique involves refactoring how objects are constructed. The idea is to introduce a builder class that is responsible for constructing instances of the class in steps.
 
@@ -98,7 +119,7 @@ This technique involves refactoring how objects are constructed. The idea is to 
 
 * * *
 
-## `Replace Constructor with Factory Method`
+## 13.8. `Replace Constructor with Factory Method`
 
 This technique also involves refactoring how objects are constructed. The idea is to introduce
 a static method that is responsible for returning the instance of the class rather than having the code directly call
@@ -111,7 +132,7 @@ away the detail of how where the instance of the class actually comes from.
 
 * * *
 
-## Additional Reading:
+## 13.9. Additional Reading:
 
 Refactoring: second edition by Martin Fowler
 Free first chapter: https://www.thoughtworks.com/content/dam/thoughtworks/documents/books/bk_Refactoring2-free-chapter_en.pdf
@@ -124,7 +145,7 @@ https://objectcomputing.com/resources/publications/sett/february-2002-refactorin
 
 * * *
 
-## Helpful links:
+## 13.10. Helpful links:
 
 JetBrains blog post about the Extracting and Inlining, Change Signature, and Renaming (includes a video):
 https://blog.jetbrains.com/idea/2020/12/3-ways-to-refactor-your-code-in-intellij-idea/

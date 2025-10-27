@@ -24,6 +24,9 @@ You may also download the files locally. There are various viewers available to 
 - [Chapter 11. The Clean Architecture](11-clean-architecture.md)
 ### Module 4
 - [Chapter 12. Design Patterns](12-design-patterns.md)
+- [Chapter 13. Refactoring Techniques](13-refactoring-techniques.md)
+
+---
 
 ## Raising issues
 If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.
