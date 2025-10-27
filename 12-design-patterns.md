@@ -470,13 +470,19 @@ Here are the UML class diagrams for the two variants of the Adapter pattern. The
 
 ## 12.5. Summary
 
-
-
+The following table briefly summarizes the three categories of design patterns we covered in this chapter.
 
 | **Category of Pattern** | **Focus**                            | **Key Question**                                                                                                      | **Representative Patterns** |
 |-------------------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------|
-| **Creational**          | Object creation                      | Who is responsible for creating each object in our system?                                                            | Factory Method, Builder     |
+| **Creational**          | Object creation                      | Who is responsible for creating each object in our system?                                                            | Factory, Builder            |
 | **Behavioral**          | Object interaction and communication | How are responsibilities and behaviors distributed across objects, and how do objects communicate to get things done? | Strategy, Observer          |
 | **Structural**          | Object and class organization        | How can we connect and organize objects to work together?                                                             | Adapter, Façade             |
 
 ---
+
+## 12.6 Code Examples
+
+Runnable code examples that demonstrate the above patterns and their anti-patterns are included in the `code/design_patterns` directory.
+If you have `code` marked as your sources root in IntelliJ, you can try running the code.
+
+> **Tip:** You can also generate the UML class diagrams for the code to help visualize the structure of the patterns.
