@@ -7,8 +7,8 @@ By the end of this chapter, you should be familiar with:
 
 ## 12.1 What is a Design Pattern?
 
-**Design patterns** are descriptions of popular solutions to commonly experienced programming problems. If a less convenient solution has been implemented instead, we call that an **anti-pattern**.
-If code displays an **anti-pattern** you can improve the design of the code by refactoring to implement the design pattern instead.
+**Design patterns** are descriptions of popular solutions to commonly-experienced programming problems. If a less convenient solution has been implemented instead, we call that an **anti-pattern**.
+If code displays an anti-pattern, you can improve the design of the code by refactoring to implement a design pattern instead.
 
 These patterns describe the structure of the code rather than the details.
 They are a means of communicating design ideas. 
@@ -25,7 +25,7 @@ such as "low coupling and high cohesion" and the SOLID principles.
 
 ### 12.1.2. An Analogy: Mathematical Axioms and Theorems
 
-In math, axioms are foundational truths that are assumed to be true without proof.
+In math, _axioms_ are foundational truths that are assumed to be true without proof.
 In software design, design principles (like SOLID) are foundational guidelines that we follow to build "good" systems.
 These principles are intended to be quite general.
 
@@ -55,7 +55,7 @@ To connect this back to our analogy: If someone has already proven a theorem thr
 <img src="https://m.media-amazon.com/images/I/51nL96Abi1L._SY522_.jpg" height=200px align="right" alt="cover of the design patterns book"/>
 
 The idea of design patterns was first published by the Gang of Four in 1995.
-The original book described 23 patterns: 11 behavioural, 5 creational, and 7 structural patterns.
+The original book described 23 patterns: 11 _behavioural_, 5 _creational_, and 7 _structural_ patterns.
 More patterns have been added since, and other authors have written many more books on the topic.
 
 In the following, we will look at the three categories of patterns, and consider two examples of patterns from each category.
@@ -63,13 +63,13 @@ For each pattern, we will focus on what the common programming problem is, and h
 
 ## 12.2. Creational Patterns
 
-Creational patterns focus on the creation of objects. These patterns help avoid common pitfalls such as tight coupling, excessive use of constructors, or inflexible instantiation logic that introduces hard dependencies in our systems.
+Creational patterns focus on the creation of objects. These patterns help avoid common pitfalls such as tight coupling, excessive use of constructors, and inflexible instantiation logic that introduces hard dependencies in our systems.
 
-Fundamentally, creational patterns address the question of where `new MyClass(...)` calls should occur in our code.
+Fundamentally, creational patterns address the question of where `new MyClass(...)` calls should occur in our code, and how the created objects are linked together.
 
 > Put another way, these patterns address the question of _who is responsible for creating each object in our system?_
 
-We'll consider Factory and Builder patterns as two representative examples of creational patterns.
+Factory and Builder patterns are two representative examples of creational patterns.
 
 ### 12.2.1. Factory: theme and variations
 
@@ -190,11 +190,11 @@ The client uses a provided factory to create instances of the product that it ne
 
 We'll end off our discussion of factories with a quick summary of how the key aspects of the Simple Factory and Factory Method differ:
 
-Aspect | Simple Factory                                 | Factory Method                            |
--------|------------------------------------------------|-------------------------------------------|
-Creation logic | All in one class                               | Distributed across subclasses             |
-Adding new types| Add a new if-statement (modify existing code)  | Add a new subclass (extend existing code) |
-Client usage | Client specifies type through String parameter | Client chooses the factory                |
+| Aspect           | Simple Factory                                 | Factory Method                            |
+|------------------|------------------------------------------------|-------------------------------------------|
+| Creation logic   | All in one class                               | Distributed across subclasses             |
+| Adding new types | Add a new if-statement (modify existing code)  | Add a new subclass (extend existing code) |
+| Client usage     | Client specifies type through String parameter | Client chooses the factory                |
 
 ---
 
@@ -251,11 +251,11 @@ They address the question of how responsibilities and behaviors are distributed 
 
 ### 12.3.1. Strategy
 
-**Problem:** You have several ways to do the same task, and you want to switch between them easily.
+**Problem:** You have several algorithms to do the same task, and you want to switch between them easily.
 
-**Solution:** Put each method into its own class and make them interchangeable, so that you can change the algorithm without changing the code that uses it.
+**Solution:** Implement each algorithm in its own class and make them interchangeable, so that you can change the algorithm without changing the code that uses it.
 
-For example, consider a class called `Map` that requires a `getDirections` method which should return a different `String` depending on whether the directions are for driving or public transit.
+For example, consider a class called `Map` that requires a `getDirections` method, which should return a different `String` depending on whether the directions are for driving or public transit.
 ```java
 public class Map {
 
@@ -282,7 +282,7 @@ Here is the UML for the Strategy pattern:
 
 In our example, the `Map` is the Context. `DirectionGenerator` is the Strategy interface, and `DrivingDirections` and `TransitDirections` are the Concrete Strategies.
 
-> Extra:
+> Notes:
 > - Setting which Strategy to use is often done either through the constructor (like in the example) or a setter (like in the UML class diagram).
 > - Strategies often correspond to code that may be useful in multiple contexts.
 
@@ -294,7 +294,7 @@ In our example, the `Map` is the Context. `DirectionGenerator` is the Strategy i
 
 **Solution:** Define a one-to-many relationship: when the observed object changes, all related objects get notified so that they can respond. The observed object doesn't need to know anything about the specifics of the objects observing it.
 
-For example, consider the `ActionListener` objects we attach to `JButton` components. When the button is clicked (event), the listener’s `actionPerformed` method is called (reaction).
+For example, consider the `ActionListener` objects that we attach to `JButton` components. When the button is clicked (event), the listener’s `actionPerformed` method is called (reaction).
 
 ### ViewModel example
 
@@ -327,7 +327,7 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 }
 ```
 
-Here is a simple ViewModel that uses `PropertyChangeSupport` to notify its Observers when its state changes. In the Login example, this happens in each Presenter when it is done updating its ViewModel.
+Here is a simple ViewModel that uses `PropertyChangeSupport` to notify its Observers when its state changes. In the Login example, this happens when a Presenter is done updating its ViewModel.
 ```java
 public class ViewModel<T> {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -336,7 +336,7 @@ public class ViewModel<T> {
         this.support.addPropertyChangeListener(listener);
     }
 
-    // This gets called when the state changes. (The Presenter  It delegates to a helper method, below.
+    // This gets called by the Presenter when it is done updating the ViewModel. (Note that this delegates to a helper method.
     public void firePropertyChanged() {
         this.support.firePropertyChange("state", null, this.state);
     }
@@ -358,14 +358,14 @@ Structural patterns focus on how classes and objects are combined to form larger
 
 **Problem:** A subsystem exposes many classes and operations to clients, forcing them to deal with unnecessary complexity.
 
-**Solution:** Create a simple client-facing class (the façade) that provides methods for common tasks while hiding the subsystem's complex details.
+**Solution:** Create a simple client-facing class (the _façade_) that provides methods for common tasks while hiding the subsystem's complex details.
 
 For example, you may recall the `EmployeeFacade` class in the "Single Responsibility Principle" section of the SOLID slides that contained variables of type:
 - `EmployeeCalculator` that is responsibility for calculating the employee's pay,
 - `EmployeeReporter` that reports the employee's hours, and
 - `EmployeeSaver` that sends the updated employee information to a database.
 
-When you call `employee.calculatePay()` the code that is actually executed is this method, which delegates work to the appropriate private variable:
+When you call `employee.calculatePay()` here is the code that is executed. Note that it delegates work to one of those three objects using the appropriate private variable:
 
 ```java
 public class EmployeeFacade {
@@ -396,10 +396,10 @@ Here is the UML class diagram for the Façade pattern:
 
 **Problem:** Two components can’t work together because their interfaces don’t match. This often happens when you need to reuse an existing class that was designed for a different context.
 
-**Solution:** Introduce an adapter — a class that translates between the expected interface and the existing one. The adapter exposes the interface your client code expects and internally forwards calls to the legacy class, converting inputs and outputs as needed. This can be done by:
+**Solution:** Introduce an _adapter_ — a class that translates between the expected interface and the existing one. The adapter exposes the interface your client code expects and internally forwards calls to the legacy class, converting inputs and outputs as needed. This can be done by:
 
 - Delegation: The adapter holds a reference to the legacy class and delegates work to it.
--Inheritance: The adapter extends the legacy class and adds code to be consistent with the expected interface.
+- Inheritance: The adapter extends the legacy class and adds code to be consistent with the expected interface.
 
 > Analogy: Think of a USB-C to HDMI adapter. Many laptops can output video through USB-C, but your monitor only accepts HDMI input. The adapter doesn’t change the laptop or the monitor — it simply translates between the two interfaces so that they work together.
 
