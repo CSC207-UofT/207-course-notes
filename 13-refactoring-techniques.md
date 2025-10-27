@@ -1,8 +1,10 @@
-# Some Common Refactoring Techniques
+# Chapter 13: Refactoring Techniques
 
-This document covers some common refactoring techniques. For each technique, there is a short description
+This chapter covers some common refactoring techniques. For each technique, there is a short description
 followed by a link to documentation for how to apply the technique in IntelliJ or a short explanation if
 IntelliJ doesn't support the refactoring technique directly.
+
+> There are lots more refactoring techniques, but the goal here is to give a brief introduction to some of the most common ones.
 
 ## `Extract Method`
 
@@ -23,7 +25,7 @@ but they are no longer forced to see them if they aren't important.
 You may find that you need to apply this technique several times for complicated methods with several logical steps involved
 in a computation.
 
-See: https://www.jetbrains.com/help/idea/extract-method.html
+> See: https://www.jetbrains.com/help/idea/extract-method.html
 
 * * *
 
@@ -34,7 +36,7 @@ one must be careful to update any client code, as well as the body of the method
 
 In IntelliJ, `Change Signature` helps you perform such a refactoring.
 
-See: https://www.jetbrains.com/help/idea/change-signature.html
+> See: https://www.jetbrains.com/help/idea/change-signature.html
 
 * * *
 
@@ -46,11 +48,11 @@ involves changing the access modifiers on your instance variables, introducing g
 access to your data, and updating any client or implementation code to use the getters and setters where the data was
 directly accessed previously.
 
-> * You can use IntelliJ's support for this to save you time. Dclare your instance variables, then select `Refactoring -> Encapsulate Fields...`
-> * Declaring an instance variable to be public will be flagged by SonarLint. You can read more about the issue at
+> * You can use IntelliJ's support for this to save you time. Declare your instance variables, then select `Refactoring -> Encapsulate Fields...`
+> * Declaring an instance variable to be public will be flagged by SonarQube. You can read more about the issue at
 https://rules.sonarsource.com/java/RSPEC-1104/ along with ways to fix it, with one of the ways being to encapsulate fields.
 
-See: https://www.jetbrains.com/help/idea/encapsulate-fields.html
+> See: https://www.jetbrains.com/help/idea/encapsulate-fields.html
 
 * * *
 
@@ -70,8 +72,8 @@ hide the existence of the loops entirely from the reader of the code, enhancing 
 assuming we are still defining our accumulator variables above the first loop, we still don't have the code completely
 split. This is where the next refactoring technique will help us out.
 
-Note: this refactoring is not directly supported by IntelliJ, but is straightforward to implement using copy+paste followed by
-deleting the duplicated parts of the loop bodies.
+> Note: this refactoring is not directly supported by IntelliJ, but is straightforward to implement using copy+paste followed by
+> deleting the duplicated parts of the loop bodies.
 
 * * *
 
@@ -84,7 +86,7 @@ favourite `Extract Method` technique.
 
 This can be achieved using cut+paste, but it turns out IntelliJ has shortcuts which allow you to move lines of code.
 
-See: https://www.jetbrains.com/guide/java/tutorials/rearranging-code/moving-statements-around/
+> See: https://www.jetbrains.com/guide/java/tutorials/rearranging-code/moving-statements-around/
 
 * * *
 
@@ -92,7 +94,7 @@ See: https://www.jetbrains.com/guide/java/tutorials/rearranging-code/moving-stat
 
 This technique involves refactoring how objects are constructed. The idea is to introduce a builder class that is responsible for constructing instances of the class in steps.
 
-See: https://www.jetbrains.com/help/idea/replace-constructor-with-builder.html
+> See: https://www.jetbrains.com/help/idea/replace-constructor-with-builder.html
 
 * * *
 
@@ -103,9 +105,9 @@ a static method that is responsible for returning the instance of the class rath
 the constructor. This can enhance understandability and hiding the constructor call effectively abstracts
 away the detail of how where the instance of the class actually comes from.
 
-e: https://www.jetbrains.com/help/idea/replace-constructor-with-factory-method.html
+> See: https://www.jetbrains.com/help/idea/replace-constructor-with-factory-method.html
 
-See also: Static Factory methods are discussed in more detail in Effective Java by Joshua Bloch.
+> See also: Static Factory methods are discussed in more detail in Effective Java by Joshua Bloch.
 
 * * *
 
