@@ -1,0 +1,32 @@
+@startuml
+skinparam dpi 200
+hide empty members
+
+class Client {
+  + {static} main(String[]) : void
+}
+
+class Context {
+  - strategy : Strategy
+  + setStrategy(strategy : Strategy)
+  + doSomething()
+}
+
+interface Strategy {
+  + execute(data)
+}
+
+class ConcreteStrategy {
+  + execute(data)
+}
+
+Client --> Context
+Context --> Strategy
+ConcreteStrategy -|> Strategy
+
+note left of Client::main
+  Context context = new Context();
+  context.setStrategy(new ConcreteStrategy());
+  context.doSomething();
+end note
+@enduml

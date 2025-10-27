@@ -1,0 +1,47 @@
+@startuml
+skinparam dpi 200
+hide empty members
+
+interface Observer {
+    + update(state : State)
+}
+
+class Observable {
+    - observers : List<Observer>
+    - state : State
+    + addObserver(Observer: Observer)
+    + removeObserver(Observer: Observer)
+    + notifyObservers()
+    + performLogic()
+}
+
+class Client {
+    + {static} main(String[]) : void
+}
+
+class ConcreteObserver {
+    + update(state : State)
+}
+
+Observable --> Observer
+ConcreteObserver -|> Observer
+Client --> Observable
+Client --> ConcreteObserver
+
+note right of Client::main
+  Observable observable = new Observable();
+  observable.addObserver(new ConcreteObserver());
+end note
+
+note left of Observable::notifyObservers
+  for (Observer o : observers) {
+      o.update(this.state);
+  }
+end note
+
+note left of Observable::performLogic
+  // state gets updated...
+  notifyObservers();
+end note
+
+@enduml

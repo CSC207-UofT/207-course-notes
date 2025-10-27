@@ -1,0 +1,35 @@
+@startuml
+skinparam dpi 200
+hide empty members
+
+class Facade {
+  - subsystemA: SubsystemA
+  - subsystemB: SubsystemB
+  - subsystemC: SubsystemC
+  + operation()
+}
+
+class SubsystemA {
++ operationA()
+}
+
+class SubsystemB {
++ operationB()
+}
+
+class SubsystemC {
++ operationC()
+}
+
+note left of Facade::operation
+  // delegate to subsystem
+  // methods to do work
+  subsystemA.operationA();
+  subsystemB.operationB();
+  subsystemC.operationC();
+end note
+
+Facade --> SubsystemA
+Facade --> SubsystemB
+Facade --> SubsystemC
+@enduml

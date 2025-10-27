@@ -1,0 +1,24 @@
+@startuml
+skinparam dpi 200
+hide empty members
+title Adapter (with Inheritance)
+
+class Adapter {
+  +doThis(y : NewInputType) : NewOutputType
+}
+class LegacyComponent {
+  +doThat(x : LegacyInputType) : LegacyOutputType
+}
+
+Adapter --|> LegacyComponent : inherits
+
+note left of Adapter::doThis
+// translate input as needed
+LegacyInputType x = ...
+// call the inherited legacy operation
+LegacyOutputType legacyOutput = doThat(x)
+// translate output as needed
+NewOutputType output = ...
+return output;
+end note
+@enduml
