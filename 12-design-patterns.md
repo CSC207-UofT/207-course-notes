@@ -71,19 +71,19 @@ Fundamentally, creational patterns address the question of where `new MyClass(..
 
 Factory and Builder patterns are two representative examples of creational patterns.
 
-### 12.2.1. Factory: theme and variations
+### 12.2.1. Factory
 
-**Problem:** You need to create objects that are all subclasses or implementing class of the same abstraction, but you don’t want your code to depend on the exact class names or how they’re built.
+**Problem:** You need to create objects that are all subclasses or implementing classes of the same abstraction, but you don’t want your code to depend on the exact class names or how they’re built.
 
 **Solution:** Use a special “factory” object or method that decides which class to create and returns a ready-to-use instance.
 
 There are several variations of the Factory pattern, but they all share the same basic idea.
 
-1. The first variation is the **Simple Factory** pattern, which uses a (usually static) method to create objects based on input parameters. This creates a single type of object.
-2. The second variation is the **Factory Method** pattern, which uses inheritance to decide which class to instantiate. This creates a single type of object.
-3. The third variation is the **Abstract Factory** pattern, which uses composition to delegate the instantiation logic to another object. This creates a family of related objects*.
+1. The first variation is the **Simple Factory** pattern, which _uses a (usually static) method to create objects based on input parameters_. It can produce different concrete types that share a common interface or superclass.
+2. The second variation is the **Factory Method** pattern, which _uses inheritance to allow subclasses to decide which concrete class to instantiate_.
+3. The third variation is the **Abstract Factory** pattern, which _uses composition to delegate the instantiation logic to another object_. This creates a family of one or more related objects.
 
-> *Note: we will not cover the Abstract Factory pattern in this course.
+> **Note:** we will focus on the Simple Factory and Abstract Factory.
 
 ### Simple Factory example
 
@@ -123,13 +123,13 @@ Shape shape = shapeFactory.getShape(userInput);
 > 
 > since we don't need to create an instance of the `ShapeFactory` at all!
 
-### Factory Method example
+### Abstract Factory example
 
-Let's look at the same example, but written using a factory method instead.
+Let's look at the same example, but written using an abstract factory instead.
 With the simple factory, we ended up with conditional logic inside the `ShapeFactory.getShape` method based on what kind of `Shape` was requested.
 When adding a new shape, this means we need to modify this method.
 
-With this observation, a factory method can be used to shift this conditional logic out of this method entirely. This means
+With this observation, an abstract factory can be used to shift this conditional logic out of this method entirely. This means
 that the user will specify the type of shape they want to create _before_ they make the factory.
 
 The first class we need is then an abstract class that defines what it means to be a "shape factory":
@@ -178,23 +178,26 @@ Of course, if we decided on which factory to use based on user input, then that 
 would again appear, but where this logic appears in the code has changed. Most notably,
 once we have determined which factory we are using, there is no longer any conditional logic anywhere else in our code.
 
-### UML Class Diagram for the Factory Method
+### UML Class Diagram for the Abstract Factory
 
-The Factory Method can be represented with a UML class diagram as below:
+The Abstract Factory can be represented with a UML class diagram as below:
 
-![](images/factory-method.png)
+![](images/abstract-factory.png)
 
 The client uses a provided factory to create instances of the product that it needs for its work. 
 
-### Simple Factory and Factory Method Comparison
+> **Note:** if you read about Factory Method, it is similar except that the roles of the Client and Factory classes are combined.
+> Effective Java by Joshua Bloch has a section devoted to Static Factory Methods, which are also similar to the Factory Method pattern.
 
-We'll end off our discussion of factories with a quick summary of how the key aspects of the Simple Factory and Factory Method differ:
+### Simple Factory and Abstract Factory Comparison
 
-| Aspect           | Simple Factory                                 | Factory Method                            |
-|------------------|------------------------------------------------|-------------------------------------------|
-| Creation logic   | All in one class                               | Distributed across subclasses             |
-| Adding new types | Add a new if-statement (modify existing code)  | Add a new subclass (extend existing code) |
-| Client usage     | Client specifies type through String parameter | Client chooses the factory                |
+We'll end off our discussion of factories with a quick summary of how the key aspects of the Simple Factory and Abstract Factory differ:
+
+| Aspect           | Simple Factory                                 | Abstract Factory                                  |
+|------------------|------------------------------------------------|---------------------------------------------------|
+| Creation logic   | All in one class                               | Distributed across subclasses                     |
+| Adding new types | Add a new if-statement (modify existing code)  | Add a new factory subclass (extend existing code) |
+| Client usage     | Client specifies type through String parameter | Client chooses the factory                        |
 
 ---
 
