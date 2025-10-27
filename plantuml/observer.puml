@@ -2,16 +2,16 @@
 skinparam dpi 200
 hide empty members
 
-interface Listener {
+interface Observer {
     + update(state : State)
 }
 
 class Observable {
-    - listeners : List<Listener>
+    - observers : List<Observer>
     - state : State
-    + addListener(listener: Listener)
-    + removeListener(listener: Listener)
-    + notifyListeners()
+    + addObserver(Observer: Observer)
+    + removeObserver(Observer: Observer)
+    + notifyObservers()
     + performLogic()
 }
 
@@ -19,29 +19,29 @@ class Client {
     + {static} main(String[]) : void
 }
 
-class ConcreteListener {
+class ConcreteObserver {
     + update(state : State)
 }
 
-Observable --> Listener
-ConcreteListener -|> Listener
+Observable --> Observer
+ConcreteObserver -|> Observer
 Client --> Observable
-Client --> ConcreteListener
+Client --> ConcreteObserver
 
 note right of Client::main
   Observable observable = new Observable();
-  observable.addListener(new ConcreteListener());
+  observable.addObserver(new ConcreteObserver());
 end note
 
-note left of Observable::notifyListeners
-  for (Listener l : listeners) {
-      l.update(this.state);
+note left of Observable::notifyObservers
+  for (Observer o : observers) {
+      o.update(this.state);
   }
 end note
 
 note left of Observable::performLogic
   // state gets updated...
-  notifyListeners();
+  notifyObservers();
 end note
 
 @enduml
