@@ -25,10 +25,9 @@ public class Parcel {
      */
     private Company company;
 
-
     /**
-     * Constructs a new Parcel with tracking number trackingNumber and
-     * location location.
+     * Constructs a new Parcel with the given tracking number and
+     * location.
      *
      * @param trackingNumber This Parcel's tracking number.
      * @param location       This Parcel's location.
@@ -39,11 +38,9 @@ public class Parcel {
 
     }
 
-
     public void setCustomer(Customer cust) {
         this.customer = cust;
     }
-
 
     public void setCompany(Company comp) {
         this.company = comp;
@@ -56,7 +53,7 @@ public class Parcel {
 
 
     /**
-     * Sets this Parcel's location to newLocation and calls locationChanged method.
+     * Sets this Parcel's location to newLocation and calls the locationChanged method.
      *
      * @param newLocation This Parcel's new location.
      */
@@ -69,18 +66,12 @@ public class Parcel {
     }
 
     /**
-     * ######## This code is problematic and does not follow SOLID principles. #######
-     * <p>
-     * This method is responsible to update all the classes for which location
-     * of parcel is important.
+     * This method is responsible for updating all the classes for which the location
+     * of the parcel is important.
      */
     public void locationChanged(String propertyName, String oldValue, String newValue) {
 
         this.company.update(this, propertyName, oldValue, newValue);
         this.customer.update(this, propertyName, oldValue, newValue);
-
-
     }
-
-
 }
