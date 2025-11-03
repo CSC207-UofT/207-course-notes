@@ -4,7 +4,7 @@ package design_patterns.behavioural.observer.without_observer;
 /**
  * A company.
  */
-class Company {
+public class Company {
 
     /**
      * This Company's name.

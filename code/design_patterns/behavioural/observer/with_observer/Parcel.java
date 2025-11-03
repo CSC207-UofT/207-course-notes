@@ -18,7 +18,9 @@ public class Parcel {
      */
     private String location;
 
-    /*  Helper class for making this class as an observable  */
+    /**
+     * Helper class for making this class be observable
+     */
     private final PropertyChangeSupport observableSupport;
 
     /**
@@ -39,18 +41,16 @@ public class Parcel {
         return "Parcel " + trackingNumber + ".";
     }
 
-
-    /*
-     * Add a new observer to observe the changes to this class.
-     * @param observer
+    /**
+     * Add a new observer to observe the changes to this parcel.
+     * @param observer the observer to associate with this parcel
      */
     public void addObserver(PropertyChangeListener observer) {
         observableSupport.addPropertyChangeListener("location", observer);
     }
 
-
     /**
-     * Sets this Parcel's location to newLocation and notifies its Observers.
+     * Sets this Parcel's location to newLocation and notifies its observers.
      *
      * @param newLocation This Parcel's new location.
      */
@@ -59,8 +59,5 @@ public class Parcel {
         String oldLocation = this.location;
         this.location = newLocation;
         observableSupport.firePropertyChange("location", oldLocation, newLocation);
-
     }
-
-
 }

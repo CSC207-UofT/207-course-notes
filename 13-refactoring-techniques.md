@@ -8,12 +8,9 @@ IntelliJ doesn't support the refactoring technique directly.
 
 ## 13.1. What is refactoring?
 
- when you reorganize your program without changing the outcome
-
 The process of _refactoring_ refers to when programmers make a series of changes that improve the design of the software — but without changing the behaviour.
 There are lots of reasons for this:
-- to make the code easier for other programmers to understand
-and navigate (and debug),
+- to make the code easier for other programmers to understand and navigate (and debug),
 - to make it easier to automatically test, and
 - to make it easier to add new features.
 

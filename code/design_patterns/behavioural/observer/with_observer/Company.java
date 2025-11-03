@@ -6,7 +6,7 @@ import java.beans.PropertyChangeListener;
 /**
  * A company.
  */
-class Company implements PropertyChangeListener {
+public class Company implements PropertyChangeListener {
 
     /**
      * This Company's name.
