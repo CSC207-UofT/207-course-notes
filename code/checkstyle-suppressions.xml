@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.0//EN"
+    "https://checkstyle.org/dtds/suppressions_1_0.dtd">
+
+<!--
+    Style is not yet enforced on existing example files.
+-->
+<suppressions>
+    <suppress checks=".*" files="Monster\.java"/>
+    <suppress checks=".*" files="[/\\]design_patterns[/\\]"/>
+    <suppress checks=".*" files="[/\\]gui[/\\]"/>
+    <suppress checks=".*" files="[/\\]regex[/\\]"/>
+</suppressions>
