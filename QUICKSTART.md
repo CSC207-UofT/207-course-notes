@@ -59,7 +59,7 @@ cd 207-course-notes
 
 Maven enforces this standard layout so every Maven project looks the same.
 
-The `code/target/` directory (Maven build output) and `.idea/` (IntelliJ config) are excluded from Git via `.gitignore` — see [Section 6](#6-whats-in-gitignore) for details.
+The `code/target/` directory (Maven build output) and `.idea/` (IntelliJ config) are excluded from Git via `.gitignore` — see [Section 7](#7-whats-in-gitignore) for details.
 
 ---
 
