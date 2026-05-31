@@ -239,6 +239,10 @@ The root `.gitignore` excludes files that are either generated on demand or mach
 | `.idea/` | IntelliJ project config — regenerated on import |
 | `*.iml`, `*.ipr`, `*.iws` | IntelliJ module/project files — regenerated |
 | `out/` | IntelliJ output directory |
+| `*.class` | Compiled bytecode — rebuilt by `mvn compile` or `javac` |
+| `*.jar`, `*.war`, `*.ear` | Packaged artifacts — rebuilt by `mvn package` |
+| `*.log` | Log files |
 | `.DS_Store` | macOS filesystem metadata |
+| `hs_err_pid*`, `replay_pid*` | JVM crash logs |
 
 Never commit build artifacts or IDE-generated files. Anyone cloning the repo can regenerate them by running `mvn compile` or opening the project in IntelliJ.
