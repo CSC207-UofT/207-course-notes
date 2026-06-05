@@ -6,25 +6,78 @@ This guide walks you through cloning the repository, understanding the project s
 
 ## Prerequisites
 
-| Tool | Version | Check |
-|------|---------|-------|
-| JDK | 11 or later | `java -version` and `javac -version` |
-| Maven | 3.6 or later | `mvn -version` |
-| IntelliJ IDEA | any recent | optional but recommended |
+| Tool | Version | Check Command |
+|------|---------|---------------|
+| **Git** | Any recent | `git --version` |
+| **JDK** | 11 or later | `java -version` and `javac -version` |
+| **Maven**| 3.9 or later | `mvn -version` |
+| **IntelliJ IDEA** | Any recent | *Optional but highly recommended* |
 
-**Installing the JDK (OpenJDK 11):**
-- All platforms: Download the installer from [adoptium.net](https://adoptium.net/)
-- macOS with Homebrew: `brew install --cask temurin@11`
-- Ubuntu/Debian: `sudo apt install openjdk-11-jdk`
 
-**Installing Maven:**
-- Download from [maven.apache.org](https://maven.apache.org/download.cgi) and follow the install guide
-- macOS with Homebrew: `brew install maven`
-- Ubuntu/Debian: `sudo apt install maven`
+### 🛠️ Installation Guide by Platform
 
-**IntelliJ IDEA:**
-- [Community Edition](https://www.jetbrains.com/idea/download/) is free and sufficient for this course
-- University of Toronto students can get the Ultimate edition free via [JetBrains for Students](https://www.jetbrains.com/community/education/)
+#### Windows
+
+1. Open **PowerShell** or **Command Prompt** as an Administrator and run the following commands:
+```cmd
+:: Install Git
+winget install --id Git.Git -e --source winget
+
+:: Install OpenJDK 11 (Eclipse Temurin)
+winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
+```
+
+2. Install Apache Maven: Because Maven is not natively supported by WinGet, download the Binary zip archive directly from [maven.apache.org](maven.apache.org).
+
+3. Extract the downloaded folder to a permanent location (e.g., `C:\Program Files\maven\`).
+
+4. Search your Windows Start Menu for "Environment Variables", click Environment Variables, find Path under "System Variables", click edit, and add the path to your Maven bin folder (e.g., `C:\Program Files\maven\bin`).
+
+#### Windows Subsystem for Linux (WSL)
+
+If you prefer developing in a Linux environment on Windows, you can use WSL.
+
+1. Open **PowerShell** as an Administrator and ensure WSL is installed (if not, this installs Ubuntu by default):
+```powershell
+wsl --install
+```
+
+2. Restart your computer if prompted, and complete the Ubuntu username/password setup.
+
+3. Open your WSL/Ubuntu Terminal and run the standard Ubuntu setup commands:
+
+```bash
+sudo apt update
+sudo apt install git openjdk-11-jdk maven
+```
+
+#### macOS
+
+Open your terminal and run:
+
+```bash
+# Install Git (if not already installed via Xcode Command Line Tools)
+brew install git
+
+# Install OpenJDK 11 (Eclipse Temurin)
+brew install --cask temurin@11
+
+# Install Apache Maven
+brew install maven    
+```
+
+#### Ubuntu / Debian
+
+Open your terminal and run:
+
+```
+sudo apt update
+sudo apt install git openjdk-11-jdk maven
+```
+
+#### Installing IntelliJ IDEA
+- All Platforms: [Community Edition](https://www.jetbrains.com/idea/download/) is free and sufficient for this course
+- UofT Students: University of Toronto students can get the Ultimate edition free via [JetBrains for Students](https://www.jetbrains.com/community/education/)
 
 ---
 
