@@ -27,7 +27,7 @@ winget install --id Git.Git -e --source winget
 winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
 ```
 
-2. Install Apache Maven: Because Maven is not natively supported by WinGet, download the Binary zip archive directly from [maven.apache.org](maven.apache.org).
+2. Install Apache Maven: Because Maven is not natively supported by WinGet, download the Binary zip archive directly from [maven.apache.org](https://maven.apache.org/download.cgi).
 
 3. Extract the downloaded folder to a permanent location (e.g., `C:\Program Files\maven\`).
 
