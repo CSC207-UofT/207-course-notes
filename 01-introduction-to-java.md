@@ -1787,3 +1787,25 @@ The situation gets trickier when we have objects that contain other objects.
 The bottom line is this: know whether you are passing a primitive or a reference
 type and whether your objects are mutable — at each level of their structure.
 Memory model diagrams offer a concise visual way to represent that.
+
+## 1.10. Exercises
+
+Now try writing some Java yourself. Each exercise is a small, self-contained
+Maven module under the [exercises](exercises/README.md) folder that you can run
+directly in IntelliJ.
+
+The exercises are kept behind a Maven **profile** called `exercises` — a named
+group of build settings that is off by default, so an unfinished exercise can't
+break the main build. You activate it once: in IntelliJ open the **Maven** tool
+window (right edge), expand **Profiles**, tick **`exercises`**, and click
+**Reload All Maven Projects**; the exercise modules then appear and their green ▶
+run/test buttons light up. From the command line the equivalent is
+`mvn -P exercises test`. See [exercises/README.md](exercises/README.md) and
+[§4 Profiles in QUICKSTART.md](QUICKSTART.md#profiles) for more information.
+
+- **Exercise 1 — Odd-index sum** (arrays and for-loops). Open
+  [OddSum.java](exercises/ex01-odd-sum/src/main/java/OddSum.java) and complete the
+  `oddSum` method. Press the green ▶ next to `main` to run it, then open
+  [OddSumTest.java](exercises/ex01-odd-sum/src/test/java/OddSumTest.java) and press ▶
+  to run the tests — they start red and turn green once your implementation is
+  correct.
