@@ -218,6 +218,38 @@ Deletes all `target/` directories. Combine for a clean build: `mvn clean package
 mvn compile -pl code
 ```
 
+### Profiles
+
+A **profile** is a named bundle of Maven configuration that is *off by default* and only applied when you ask for it. Profiles let one `pom.xml` describe more than one kind of build — for example "the normal build" versus "the normal build plus the exercises."
+
+This repo uses a profile called `exercises`. The default build only compiles the `code` module:
+
+```bash
+mvn compile          # builds 'code' only — exercises are NOT touched
+```
+
+Activate the `exercises` profile with `-P` to additionally build and test the hands-on exercises under the [exercises](exercises/README.md) folder:
+
+```bash
+mvn -P exercises test               # build + test code AND all exercises
+mvn -P exercises test -pl exercises/ex01-odd-sum   # just one exercise
+```
+
+We keep the exercises behind a profile on purpose: a starter exercise may ship with intentionally-incomplete code that does not compile yet, and we don't want that to break the default build. The profile is declared in the root [pom.xml](pom.xml):
+
+```xml
+<profiles>
+    <profile>
+        <id>exercises</id>
+        <modules>
+            <module>exercises</module>
+        </modules>
+    </profile>
+</profiles>
+```
+
+In IntelliJ you don't use `-P` — open the **Maven** tool window, expand **Profiles**, and tick **`exercises`**, then click **Reload All Maven Projects**. The exercise modules then appear in the project and you can press the green ▶ on any of them. See [exercises/README.md](exercises/README.md) for more.
+
 ---
 
 ## 5. Opening in IntelliJ IDEA

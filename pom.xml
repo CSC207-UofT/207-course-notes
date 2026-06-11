@@ -30,6 +30,21 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--
+      Hands-on exercises are NOT built by default: an intentionally-incomplete
+      starter must not break `mvn compile` / CI / checkstyle for the whole repo.
+      Build/test them explicitly with `mvn -P exercises test`. IntelliJ picks
+      them up when you tick the `exercises` profile in the Maven tool window.
+    -->
+    <profiles>
+        <profile>
+            <id>exercises</id>
+            <modules>
+                <module>exercises</module>
+            </modules>
+        </profile>
+    </profiles>
+
     <build>
         <pluginManagement>
             <plugins>
