@@ -31,3 +31,12 @@ mvn -P exercises test
 mvn -P exercises test -pl exercises/ex01-odd-sum
 ```
 
+## Available exercises
+
+| Exercise | Chapter | Topic |
+|----------|---------|-------|
+| [ex01-odd-sum](ex01-odd-sum/src/main/java/OddSum.java) | 1. Introduction to Java | arrays, for-loops |
+| [ex02-first-letters](ex02-first-letters/src/main/java/FirstLetters.java) | 1. Introduction to Java | strings, `StringBuilder` |
+| [ex03-alias-side-effects](ex03-alias-side-effects/src/main/java/Aliasing.java) | 1. Introduction to Java | references vs. primitives, side effects |
+| [ex04-digit-sum](ex04-digit-sum/src/main/java/DigitSum.java) | 1. Introduction to Java | `while` loops, integer arithmetic |
+

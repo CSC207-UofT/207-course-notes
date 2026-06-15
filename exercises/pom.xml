@@ -28,5 +28,8 @@
 
     <modules>
         <module>ex01-odd-sum</module>
+        <module>ex02-first-letters</module>
+        <module>ex03-alias-side-effects</module>
+        <module>ex04-digit-sum</module>
     </modules>
 </project>

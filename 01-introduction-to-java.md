@@ -1809,3 +1809,17 @@ run/test buttons light up. From the command line the equivalent is
   [OddSumTest.java](exercises/ex01-odd-sum/src/test/java/OddSumTest.java) and press ▶
   to run the tests — they start red and turn green once your implementation is
   correct.
+- **Exercise 2 — First letters** (strings and `StringBuilder`). Complete
+  `firstLetters` in
+  [FirstLetters.java](exercises/ex02-first-letters/src/main/java/FirstLetters.java) so
+  it returns the first character of each word (e.g. `"Good Morning"` → `"GM"`), and
+  run [FirstLettersTest.java](exercises/ex02-first-letters/src/test/java/FirstLettersTest.java).
+- **Exercise 3 — Aliasing and side effects** (references vs. primitives). In
+  [Aliasing.java](exercises/ex03-alias-side-effects/src/main/java/Aliasing.java),
+  implement `addInPlace` (modifies the array the caller passed in) and `addCopy`
+  (returns a new array, leaving the original untouched), then run
+  [AliasingTest.java](exercises/ex03-alias-side-effects/src/test/java/AliasingTest.java).
+- **Exercise 4 — Digit sum** (`while` loops). Complete `digitSum` in
+  [DigitSum.java](exercises/ex04-digit-sum/src/main/java/DigitSum.java) so it sums the
+  digits of an integer, and run
+  [DigitSumTest.java](exercises/ex04-digit-sum/src/test/java/DigitSumTest.java).
