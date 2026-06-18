@@ -31,5 +31,6 @@
         <module>ex02-first-letters</module>
         <module>ex03-alias-side-effects</module>
         <module>ex04-digit-sum</module>
+        <module>ex05-cleanup</module>
     </modules>
 </project>

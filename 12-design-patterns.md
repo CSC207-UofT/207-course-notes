@@ -482,7 +482,7 @@ The following table briefly summarizes the three categories of design patterns w
 
 ## 12.6 Code Examples
 
-Runnable code examples that demonstrate the above patterns and their anti-patterns are included in the `code/design_patterns` directory.
+Runnable code examples that demonstrate the above patterns and their anti-patterns are included in the `code/designpatterns` directory.
 If you have `code` marked as your sources root in IntelliJ, you can try running the code.
 
 > **Tip:** You can also generate the UML class diagrams for the code to help visualize the structure of the patterns.

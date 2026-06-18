@@ -30,6 +30,9 @@
                     <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
+                    <!-- google_checks.xml reports at severity 'warning'; treat those as
+                         violations so the build actually enforces the style. -->
+                    <violationSeverity>warning</violationSeverity>
                     <includeTestSourceDirectory>false</includeTestSourceDirectory>
                 </configuration>
                 <executions>

@@ -39,4 +39,11 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 | [ex02-first-letters](ex02-first-letters/src/main/java/FirstLetters.java) | 1. Introduction to Java | strings, `StringBuilder` |
 | [ex03-alias-side-effects](ex03-alias-side-effects/src/main/java/Aliasing.java) | 1. Introduction to Java | references vs. primitives, side effects |
 | [ex04-digit-sum](ex04-digit-sum/src/main/java/DigitSum.java) | 1. Introduction to Java | `while` loops, integer arithmetic |
+| [ex05-cleanup](ex05-cleanup/src/main/java/Rectangle.java) | Code Style and Documentation | CheckStyle, JavaDoc |
+
+> **Note:** `ex05-cleanup` works differently from the others. Its code is already
+> correct (the tests pass from the start) but messy. The goal is to make
+> `mvn -P exercises -pl exercises/ex05-cleanup checkstyle:check` report **0
+> violations** while keeping the tests green. It is the one exercise module with
+> CheckStyle turned on.
 
