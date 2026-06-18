@@ -4,11 +4,8 @@
     "https://checkstyle.org/dtds/suppressions_1_0.dtd">
 
 <!--
-    Style is not yet enforced on existing example files.
+    Google Java Style is now enforced on all files under code/src/main/java.
+    Add a <suppress .../> entry here only if a specific file must be exempted.
 -->
 <suppressions>
-    <suppress checks=".*" files="Monster\.java"/>
-    <suppress checks=".*" files="[/\\]design_patterns[/\\]"/>
-    <suppress checks=".*" files="[/\\]gui[/\\]"/>
-    <suppress checks=".*" files="[/\\]regex[/\\]"/>
 </suppressions>

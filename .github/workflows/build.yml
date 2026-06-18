@@ -1,0 +1,34 @@
+name: Build
+
+# Verifies that the Maven build succeeds, including CheckStyle (which runs in the
+# `validate` phase via the maven-checkstyle-plugin in code/pom.xml) and the tests.
+#
+# Note: this builds the `code` module only. The hands-on
+# exercises live behind the `exercises` Maven profile and ship intentionally
+# incomplete starter code, so they are deliberately NOT built here.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+          cache: maven
+
+      - name: Build, check style, and test
+        # `verify` runs the full lifecycle up to and including the tests; CheckStyle
+        # runs first in the `validate` phase and fails the build on any violation.
+        run: mvn -B -ntp clean verify

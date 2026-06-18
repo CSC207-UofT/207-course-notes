@@ -11,6 +11,7 @@ You may also download the files locally. There are various viewers available to 
 ### Module 0
 - [Chapter 0. Introduction to GitHub](00-introduction-to-git.md)
 - [Chapter 1. Introduction to Java](01-introduction-to-java.md)
+- [Code Style and Documentation (CheckStyle & JavaDoc)](code-style-and-documentation.md)
 ### Module 1
 - [Chapter 2. Classes in Java](02-classes-in-java.md)
 - [Chapter 3. Relationships between Classes](03-relationships-between-classes.md)
