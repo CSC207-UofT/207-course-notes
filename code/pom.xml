@@ -26,8 +26,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
-                    <configLocation>google_checks.xml</configLocation>
-                    <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>
+                    <!-- A copy of checkstyle 10.26.1's google_checks.xml lives in
+                         the repo so the IDE (CheckStyle-IDEA) and Maven can point at the exact
+                         same rules. Update it if the checkstyle version is bumped. -->
+                    <configLocation>checkstyle/google_checks.xml</configLocation>
+                    <suppressionsLocation>checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <!-- google_checks.xml reports at severity 'warning'; treat those as
@@ -44,6 +47,26 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Auto-formatter. Not bound to any phase, so a normal build never
+                 runs it; invoke it on demand:
+                   mvn spotless:apply   reformats all Java to Google Java Style
+                   mvn spotless:check   verifies formatting without modifying
+                 google-java-format is pinned to 1.17.0: newer releases require
+                 JDK 17/21, while this still runs on JDK 11, and its output is
+                 verified to pass the CheckStyle config above. -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>1.17.0</version>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
             </plugin>
         </plugins>
     </build>
