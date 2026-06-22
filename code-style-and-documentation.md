@@ -45,7 +45,11 @@ configured rules, without ever running your program.
 
 CheckStyle is wired into Maven in [code/pom.xml](code/pom.xml). The
 `maven-checkstyle-plugin` is bound to the `validate` phase — the very first
-phase of a build — using Google's bundled `google_checks.xml` configuration:
+phase of a build — using the Google Java Style rules in
+[code/checkstyle/google_checks.xml](code/checkstyle/google_checks.xml). That file
+is a copy of the `google_checks.xml` that ships with the pinned CheckStyle
+version, included in the repo so the IDE can point at the *exact same file*
+(see below):
 
 ```bash
 mvn validate        # runs CheckStyle on code/src/main/java
@@ -64,8 +68,8 @@ is what you'd search for to learn more.
 
 The style is enforced on every file under `code/src/main/java`. If a specific
 file ever needs an exception, you can list it in
-[code/checkstyle-suppressions.xml](code/checkstyle-suppressions.xml), but that
-should be rare — new code is expected to be clean.
+[code/checkstyle/checkstyle-suppressions.xml](code/checkstyle/checkstyle-suppressions.xml),
+but that should be rare — new code is expected to be clean.
 
 ### Setting up CheckStyle in IntelliJ
 
@@ -74,10 +78,15 @@ see them highlighted as you type, using the **CheckStyle-IDEA** plugin:
 
 1. Install the plugin: **Settings → Plugins → Marketplace**, search
    *CheckStyle-IDEA*, install, and restart if prompted.
-2. Configure it: **Settings → Tools → Checkstyle**. Under *Configuration File*,
-   either pick the built-in **Google Checks**, or click **+** to add the same
-   `google_checks.xml` the build uses. Give it a description like
-   `CSC207 Checks` and tick it as active.
+2. Configure it: **Settings → Tools → Checkstyle**. Click **+** and add the
+   repo's own config file,
+   [code/checkstyle/google_checks.xml](code/checkstyle/google_checks.xml) — the
+   *same file the Maven build uses*. Give it a description like `CSC207 Checks`
+   and tick it as active. Do **not** use the plugin's built-in *Google Checks*:
+   that is the plugin's own bundled copy and can differ from our pinned version.
+   While you're in this panel, set the *Checkstyle version* dropdown (at the top)
+   to **10.26.1** — the version pinned in the root [pom.xml](pom.xml) — so the IDE
+   runs the same engine as the build.
 3. You'll now see style problems underlined in the editor. **Hover** over an
    underline (don't click) and a popup explains the problem — and often suggests
    a fix.
@@ -88,6 +97,9 @@ see them highlighted as you type, using the **CheckStyle-IDEA** plugin:
 > IntelliJ stores this configuration in `.idea/checkstyle-idea.xml`. In this
 > repo the entire `.idea/` folder is git-ignored, so each person sets the plugin
 > up once locally.
+
+With the same config file and the same engine version as the build, the editor
+flags exactly what `mvn validate` will.
 
 ### Common issues CheckStyle will flag
 
@@ -115,28 +127,38 @@ sure a "tidy-up" edit didn't change behaviour, and commit.
 ### Reformatting your code
 
 Most CheckStyle complaints are about pure formatting — indentation, spacing,
-line wrapping. **Don't fix these by hand**; let an auto-formatter do it.
+line wrapping. **Don't fix these by hand**; let an auto-formatter do it. All of
+the options below apply the same [Google Java
+Format](https://github.com/google/google-java-format) (GJF) style the build
+enforces.
 
-In IntelliJ, reformat the current file with **Code → Reformat Code**
-(**Ctrl+Alt+L** / **⌥⌘L**). By default, though, IntelliJ formats with 4-space
-indentation, while the course style (Google) uses 2 spaces — so reformatting
-with the stock settings will *not* satisfy CheckStyle. Point IntelliJ at the
-Google style once, in either of these ways:
-
-- **google-java-format plugin (recommended):** install *google-java-format* via
-  **Settings → Plugins → Marketplace**, then enable it under
-  **Settings → Other Settings → google-java-format**. Reformat Code now produces
-  Google-style output directly.
-- **Import the style scheme:** download `intellij-java-google-style.xml` from
-  [google/styleguide](https://github.com/google/styleguide) and import it via
-  **Settings → Editor → Code Style → Java → ⚙ → Import Scheme → IntelliJ IDEA
-  code style XML**.
-
-From the command line you can reformat in bulk with the standalone
-[`google-java-format`](https://github.com/google/google-java-format) tool:
+**Maven (no IDE needed).** The repo configures the Spotless plugin to run GJF.
+It isn't bound to any build phase, so a normal build never triggers it — you run
+it on demand:
 
 ```bash
-java -jar google-java-format-*-all-deps.jar --replace MyClass.java
+mvn spotless:apply -pl code    # reformat every file in place
+mvn spotless:check -pl code    # just check, don't modify (fails if not formatted)
+```
+
+This is the source of truth — its output matches what CheckStyle expects.
+
+**IntelliJ.** Reformat the current file with **Code → Reformat Code**
+(**Ctrl+Alt+L** / **⌥⌘L**). By default IntelliJ formats with 4-space indentation,
+while Google style uses 2 — so the stock settings will *not* satisfy CheckStyle.
+Install the **google-java-format** plugin (**Settings → Plugins → Marketplace**)
+and enable it under **Settings → Other Settings → google-java-format**. The
+plugin also needs some flags added to the IDE's own JVM: go to **Help → Edit
+Custom VM Options…** and paste these in, then restart IntelliJ
+([why](https://github.com/google/google-java-format/blob/master/README.md#intellij-jre-config)):
+
+```
+--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
+--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED
+--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
+--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED
+--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
+--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
 ```
 
 A formatter handles spacing, indentation, and wrapping, but it does **not** do
