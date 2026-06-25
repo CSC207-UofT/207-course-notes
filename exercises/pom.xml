@@ -32,5 +32,9 @@
         <module>ex03-alias-side-effects</module>
         <module>ex04-digit-sum</module>
         <module>ex05-cleanup</module>
+        <module>ex06-overloading</module>
+        <module>ex07-equality</module>
+        <module>ex08-comparable</module>
+        <module>ex09-instance-counter</module>
     </modules>
 </project>
