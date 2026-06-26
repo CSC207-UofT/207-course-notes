@@ -40,6 +40,10 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 | [ex03-alias-side-effects](ex03-alias-side-effects/src/main/java/Aliasing.java) | 1. Introduction to Java | references vs. primitives, side effects |
 | [ex04-digit-sum](ex04-digit-sum/src/main/java/DigitSum.java) | 1. Introduction to Java | `while` loops, integer arithmetic |
 | [ex05-cleanup](ex05-cleanup/src/main/java/Rectangle.java) | Code Style and Documentation | CheckStyle, JavaDoc |
+| [ex06-overloading](ex06-overloading/src/main/java/MyHashing.java) | 2. Classes in Java | overloading, constructors, static methods |
+| [ex07-equality](ex07-equality/src/main/java/Point.java) | 2. Classes in Java | `toString`, `equals`, `hashCode` |
+| [ex08-comparable](ex08-comparable/src/main/java/Word.java) | 2. Classes in Java | `Comparable` / `compareTo` |
+| [ex09-instance-counter](ex09-instance-counter/src/main/java/Robot.java) | 2. Classes in Java | static vs. instance fields |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make
