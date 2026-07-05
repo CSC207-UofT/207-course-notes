@@ -25,7 +25,7 @@ class SavingsAccount {
   + addInterest() : void
 }
 
-ChequingAccount --|> Account
-SavingsAccount --|> Account
-SavingsAccount ..|> InterestBearing
+Account <|-- ChequingAccount
+Account <|-- SavingsAccount
+InterestBearing <|.. SavingsAccount
 @enduml

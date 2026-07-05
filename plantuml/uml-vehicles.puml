@@ -25,7 +25,7 @@ class ElectricCar {
   + charge() : void
 }
 
-Car --|> Vehicle
-ElectricCar --|> Car
-ElectricCar ..|> Chargeable
+Vehicle <|-- Car
+Car <|-- ElectricCar
+Chargeable <|.. ElectricCar
 @enduml
