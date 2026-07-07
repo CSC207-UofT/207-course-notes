@@ -989,7 +989,7 @@ class ElectricCar extends Car implements Chargeable {
 You can draw your answer in text with **PlantUML**: a starter file is provided at
 [plantuml/exercises/vehicles-uml-starter.puml](plantuml/exercises/vehicles-uml-starter.puml)
 (one box is filled in for you, with a syntax cheat-sheet in the comments). Open
-it in IntelliJ with the **PlantUML Integration** plugin installed (it uses
+it in IntelliJ with the **PlantUML Integration** (plantuml4idea) plugin installed (it uses
 Graphviz to lay out class diagrams) and a live preview renders beside the file as
 you type — so you can build your diagram and watch it take shape, then check it
 against the solution below. This is the same `.puml` format the diagrams in these
