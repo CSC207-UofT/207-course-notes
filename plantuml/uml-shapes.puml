@@ -30,8 +30,8 @@ class Drawing {
   + totalArea() : double
 }
 
-Circle ..|> Shape
-Rectangle ..|> Shape
-Square --|> Rectangle
-Drawing o--> "*" Shape
+Shape <|.. Circle
+Shape <|.. Rectangle
+Rectangle <|-- Square
+Drawing o-up-> "*" Shape
 @enduml
