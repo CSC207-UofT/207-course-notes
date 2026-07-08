@@ -173,6 +173,20 @@ Now you can call `cancel.addActionListener` just like the code does for `submit`
 When you run it, try entering some text into the name fields and clicking `Cancel`.
 It should clear the text fields.
 
+## 4.4. Exercise
+
+Try a self-contained, runnable version of the button-click idea in this exercise
+under the [exercises](exercises/README.md) folder. Press the green ▶ on `main` to
+open the window and click the button yourself, then run the test (it starts red
+and turns green once your listener works).
+
+- **Exercise 10 — Counter button** (§4.3 handling button clicks). In
+  [CounterPanel.java](exercises/ex10-swing/src/main/java/CounterPanel.java), add an
+  action listener to the button so that each click increments a counter and
+  updates the label to `"Count: N"`. The test clicks the button for you with
+  `button.doClick()` (so it needs no display) and checks the label — run
+  [CounterPanelTest.java](exercises/ex10-swing/src/test/java/CounterPanelTest.java).
+
 ## Further reading
 
 You can visit here for different ways to organize your user interface:
