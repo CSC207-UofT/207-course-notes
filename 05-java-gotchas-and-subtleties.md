@@ -197,3 +197,16 @@ primitive class, see the
 You may be wondering what the purpose of wrapper classes are for the primitives,
 as the above seemed to just suggest that using wrappers can lead to bugs if
 used carelessly. The following chapter discussing Generics in Java should make this clear.
+
+## 5.4. Exercise
+
+Spot and fix the gotchas from this chapter in this exercise under the
+[exercises](exercises/README.md) folder (open the `.java` file, fix the
+`// TODO`s, and run the test — it starts red and turns green once the bugs are
+fixed).
+
+- **Exercise 11 — Gotchas** (shadowing, array copy, autoboxing). The three
+  methods in [Gotchas.java](exercises/ex11-gotchas/src/main/java/Gotchas.java)
+  each contain one of this chapter's classic bugs — a shadowed field, a shallow
+  array copy, and an `==` comparison of `Integer`s. Fix all three and run
+  [GotchasTest.java](exercises/ex11-gotchas/src/test/java/GotchasTest.java).
