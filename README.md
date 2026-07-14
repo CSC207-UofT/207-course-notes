@@ -16,6 +16,7 @@ You may also download the files locally. There are various viewers available to 
 - [Chapter 2. Classes in Java](02-classes-in-java.md)
 - [Chapter 3. Relationships between Classes](03-relationships-between-classes.md)
 - [Chapter 4. GUIs with Swing](04-GUIs-with-swing.md)
+- [APIs, JSON, and Files](apis-json-and-files.md)
 - [Chapter 5. Java Gotchas and Subtleties](05-java-gotchas-and-subtleties.md)
 - [Chapter 6. Generics](06-generics.md)
 - [Chapter 7. Collections](07-collections.md)
