@@ -24,6 +24,7 @@ You may also download the files locally. There are various viewers available to 
 ### Module 2
 - [Chapter 9. Design Principles](09-design-principles.md)
 ### Module 3
+- [Developer Roles](developer-roles.md)
 - [Chapter 10. Introduction to Layered Architectures](10-introduction-to-layered-architectures.md)
 - [Chapter 11. The Clean Architecture](11-clean-architecture.md)
 ### Module 4
