@@ -136,3 +136,15 @@ if you are interested. A tutorial is also available
 > regular classes and `Object` references.
 > This is why you can't do things like `new T()` or check `instanceof T` — the
 > type information isn't available at runtime.
+
+## 6.3. Exercise
+
+Write your own generic code in this exercise under the
+[exercises](exercises/README.md) folder (open the `.java` file, complete the
+`// TODO`s, and run the test — it starts red and turns green when you're done).
+
+- **Exercise 12 — Generic Box** (custom generic class + bounded type parameter).
+  Complete [Box.java](exercises/ex12-generics/src/main/java/Box.java): the
+  instance methods that store and return a value of the box's type `T`, and the
+  bounded generic method `max` (`<T extends Comparable<T>>`). Then run
+  [BoxTest.java](exercises/ex12-generics/src/test/java/BoxTest.java).

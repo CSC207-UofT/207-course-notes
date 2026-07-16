@@ -46,6 +46,7 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 | [ex09-instance-counter](ex09-instance-counter/src/main/java/Robot.java) | 2. Classes in Java | static vs. instance fields |
 | [ex10-swing](ex10-swing/src/main/java/CounterPanel.java) | 4. GUIs with Swing | button clicks (`ActionListener`); matching a layout |
 | [ex11-gotchas](ex11-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing |
+| [ex12-generics](ex12-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make
