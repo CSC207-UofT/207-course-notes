@@ -38,5 +38,6 @@
         <module>ex09-instance-counter</module>
         <module>ex10-swing</module>
         <module>ex11-gotchas</module>
+        <module>ex12-generics</module>
     </modules>
 </project>
