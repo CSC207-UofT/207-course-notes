@@ -177,3 +177,15 @@ control parameters of the data structure that may help ensure these
 properties are maintained. You'll learn all about hash tables in CSC263,
 and then will be well-equipped to make good choices here.
 Something to look forward to!
+
+## 7.3. Exercise
+
+Practice implementing an iterator with this exercise under the
+[exercises](exercises/README.md) folder (open the `.java` file, complete the
+`// TODO`, and run the test — it starts red and turns green when you're done).
+
+- **Exercise 13 — Iterable Week** (`Iterable` / `Iterator`). The `Week` class in
+  [Week.java](exercises/ex13-iterator/src/main/java/Week.java) already declares
+  `implements Iterable<String>`; complete its `iterator()` method so a for-each
+  loop visits the seven days in order, then run
+  [WeekTest.java](exercises/ex13-iterator/src/test/java/WeekTest.java).
