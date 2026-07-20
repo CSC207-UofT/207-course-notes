@@ -39,5 +39,6 @@
         <module>ex10-swing</module>
         <module>ex11-gotchas</module>
         <module>ex12-generics</module>
+        <module>ex13-iterator</module>
     </modules>
 </project>

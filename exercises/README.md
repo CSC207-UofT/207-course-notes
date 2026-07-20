@@ -47,6 +47,7 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 | [ex10-swing](ex10-swing/src/main/java/CounterPanel.java) | 4. GUIs with Swing | button clicks (`ActionListener`); matching a layout |
 | [ex11-gotchas](ex11-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing |
 | [ex12-generics](ex12-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter |
+| [ex13-iterator](ex13-iterator/src/main/java/Week.java) | 7. Collections | `Iterable` / `Iterator` |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make
