@@ -301,7 +301,7 @@ For example, consider the `ActionListener` objects that we attach to `JButton` c
 
 ### ViewModel example
 
-Remember the View part of CLean Architecture? Each View has a corresponding ViewModel that holds the data to be displayed. When the data in the ViewModel changes, the View needs to update itself to reflect the new data. This can be accomplished using the Observer pattern: each View will observe its ViewModel.
+Remember the View part of Clean Architecture? Each View has a corresponding ViewModel that holds the data to be displayed. When the data in the ViewModel changes, the View needs to update itself to reflect the new data. This can be accomplished using the Observer pattern: each View will observe its ViewModel.
 
 ### UML Class Diagram for Observer
 
@@ -486,3 +486,19 @@ Runnable code examples that demonstrate the above patterns and their anti-patter
 If you have `code` marked as your sources root in IntelliJ, you can try running the code.
 
 > **Tip:** You can also generate the UML class diagrams for the code to help visualize the structure of the patterns.
+
+## 12.7. Exercise
+
+Implement a design pattern yourself in this exercise under the
+[exercises](exercises/README.md) folder (open the `.java` files, complete the
+`// TODO`s, and run the test — it starts red and turns green when you're done).
+
+- **Exercise 14 — Strategy** (§12.3.1). This mirrors the chapter's `Map` /
+  `DirectionGenerator` example. Complete the *Context* in
+  [Navigator.java](exercises/ex14-strategy/src/main/java/Navigator.java) so it
+  stores and delegates to a `DirectionGenerator` strategy (and can swap it at
+  runtime), and complete the *concrete strategy*
+  [TransitDirections.java](exercises/ex14-strategy/src/main/java/TransitDirections.java)
+  (using [DrivingDirections.java](exercises/ex14-strategy/src/main/java/DrivingDirections.java)
+  as a model). Then run
+  [NavigatorTest.java](exercises/ex14-strategy/src/test/java/NavigatorTest.java).

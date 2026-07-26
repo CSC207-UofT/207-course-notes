@@ -40,5 +40,6 @@
         <module>ex11-gotchas</module>
         <module>ex12-generics</module>
         <module>ex13-iterator</module>
+        <module>ex14-strategy</module>
     </modules>
 </project>
