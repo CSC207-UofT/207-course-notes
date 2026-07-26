@@ -48,6 +48,7 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 | [ex11-gotchas](ex11-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing |
 | [ex12-generics](ex12-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter |
 | [ex13-iterator](ex13-iterator/src/main/java/Week.java) | 7. Collections | `Iterable` / `Iterator` |
+| [ex14-strategy](ex14-strategy/src/main/java/Navigator.java) | 12. Design Patterns | Strategy pattern |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make
