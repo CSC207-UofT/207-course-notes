@@ -154,7 +154,8 @@ JSONObject person = new JSONObject();
 person.put("name", "Ada");
 person.put("age", 36);
 
-String text = person.toString();      // {"name":"Ada","age":36}
+String text = person.toString();      // e.g. {"name":"Ada","age":36}
+                                      // (key order is not guaranteed)
 String pretty = person.toString(2);   // the same, indented by 2 spaces
 ```
 
@@ -165,14 +166,20 @@ into the code, and lets it save results for next time. The `java.nio.file`
 classes `Files` and `Path` make the common cases short:
 
 ```java
+import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 // Read an entire file into a String:
 String text = Files.readString(Path.of("data.json"));
 
 // Read a file as a list of lines:
 List<String> lines = Files.readAllLines(Path.of("names.txt"));
+
+// Or read it line by line, without loading the whole file at once:
+BufferedReader reader = Files.newBufferedReader(Path.of("names.txt"));
+String line = reader.readLine();   // returns null when there are no more lines
 
 // Write a String to a file (creating or overwriting it):
 Files.writeString(Path.of("output.txt"), "Hello, file!");
@@ -234,11 +241,79 @@ The exact same pattern works for data you fetched from an API: save the JSON
 response to a file once, then load from that file while you develop — no repeated
 API calls, and no rate-limit surprises.
 
+## A complete example you can run
+
+Everything above comes together in a small program in the `code` module that talks
+to a **real** web service: [Open Food Facts](https://world.openfoodfacts.org/), a
+free, open database of food products. It needs **no API key and no sign-up**, so
+you can run it right now:
+
+- [OpenFoodFactsClient.java](code/src/main/java/apis/OpenFoodFactsClient.java) —
+  the data access: builds the URL, makes the request, and parses the JSON.
+- [Product.java](code/src/main/java/apis/Product.java) — the entity: just the data
+  we care about, with no idea where it came from.
+- [CompareProducts.java](code/src/main/java/apis/CompareProducts.java) — press ▶ on
+  its `main` to fetch two products by barcode and compare them.
+
+Running it prints something like:
+
+```
+Nutella (Nutella, Ferrero, Yum yum) — Nutri-Score E, 539 kcal/100g, 56.3g sugar/100g
+coca-cola (Coca-Cola) — Nutri-Score E, 42 kcal/100g, 10.6g sugar/100g
+
+Nutella has more sugar than coca-cola: 56.3g vs 10.6g per 100g.
+```
+
+Try passing the barcode of something in your own kitchen — it is printed on the
+package underneath the bars.
+
+Two details in that code are worth noticing, because they show up with almost every
+real API:
+
+- **The response says more than the HTTP status does.** Open Food Facts answers
+  `200 OK` even for a barcode it has never heard of, and reports the real outcome in
+  a `status` field inside the JSON. Always read the documentation to find out how a
+  service reports failure.
+- **Real data is patchy.** Not every product records every nutrient, so the parsing
+  code uses `optDouble(key, Double.NaN)` rather than `getDouble(key)`. A missing
+  field is normal, not exceptional.
+
+The client also has a `searchByCategory` method, which returns a JSON *array* of
+products — handy for comparing many products at once. Be aware that the search
+endpoint is rate limited far more tightly than the single-product one: a few calls
+in quick succession and it starts replying `503` instead of data. That is exactly
+why `CompareProducts` catches the search failure separately, so one busy endpoint
+doesn't take down the rest of the program.
+
+## Exercise
+
+Practice reading data from a file and turning it into objects with this exercise
+under the [exercises](exercises/README.md) folder (open the `.java` file, complete
+the `// TODO`s, and run the test — it starts red and turns green when you're
+done).
+
+- **Exercise 11 — Number triangle** (reading a file into objects). A *number
+  triangle* is stored as a text file, one row of numbers per line. In
+  [NumberTriangle.java](exercises/ex11-number-triangle/src/main/java/NumberTriangle.java),
+  implement `loadTriangle`, which reads such a file and builds the linked
+  structure of objects it describes, and `retrieve`, which follows a path of
+  `'l'`/`'r'` steps through that structure. Then run
+  [NumberTriangleTest.java](exercises/ex11-number-triangle/src/test/java/NumberTriangleTest.java).
+
+  Note that getting the data out of the file is the heart of this exercise —
+  exactly the [Data Access Engineer's](developer-roles.md) job: taking an external representation (a file) and
+  turning it into the objects the rest of the program works with.
+
 ## Further reading
 
 - Lists of free, public APIs to experiment with:
   [public-apis](https://github.com/public-apis/public-apis) and
   [public-api-lists](https://github.com/public-api-lists/public-api-lists).
+- Other services that need **no API key**, if you want a different subject than
+  food: [Open-Meteo](https://open-meteo.com/) (weather forecasts),
+  [Open Library](https://openlibrary.org/developers/api) (books by ISBN),
+  [TVmaze](https://www.tvmaze.com/api) (television shows, and its top-level
+  response is a JSON array), and [PokéAPI](https://pokeapi.co/).
 - OkHttp documentation: <https://square.github.io/okhttp/>
 - The `org.json` library: <https://github.com/stleary/JSON-java>
 - Java file I/O tutorial:

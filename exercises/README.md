@@ -33,26 +33,37 @@ mvn -P exercises test -pl exercises/ex01-odd-sum
 
 ## Available exercises
 
-| Exercise | Chapter | Topic |
-|----------|---------|-------|
-| [ex01-odd-sum](ex01-odd-sum/src/main/java/OddSum.java) | 1. Introduction to Java | arrays, for-loops |
-| [ex02-first-letters](ex02-first-letters/src/main/java/FirstLetters.java) | 1. Introduction to Java | strings, `StringBuilder` |
-| [ex03-alias-side-effects](ex03-alias-side-effects/src/main/java/Aliasing.java) | 1. Introduction to Java | references vs. primitives, side effects |
-| [ex04-digit-sum](ex04-digit-sum/src/main/java/DigitSum.java) | 1. Introduction to Java | `while` loops, integer arithmetic |
-| [ex05-cleanup](ex05-cleanup/src/main/java/Rectangle.java) | Code Style and Documentation | CheckStyle, JavaDoc |
-| [ex06-overloading](ex06-overloading/src/main/java/MyHashing.java) | 2. Classes in Java | overloading, constructors, static methods |
-| [ex07-equality](ex07-equality/src/main/java/Point.java) | 2. Classes in Java | `toString`, `equals`, `hashCode` |
-| [ex08-comparable](ex08-comparable/src/main/java/Word.java) | 2. Classes in Java | `Comparable` / `compareTo` |
-| [ex09-instance-counter](ex09-instance-counter/src/main/java/Robot.java) | 2. Classes in Java | static vs. instance fields |
-| [ex10-swing](ex10-swing/src/main/java/CounterPanel.java) | 4. GUIs with Swing | button clicks (`ActionListener`); matching a layout |
-| [ex11-gotchas](ex11-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing |
-| [ex12-generics](ex12-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter |
-| [ex13-iterator](ex13-iterator/src/main/java/Week.java) | 7. Collections | `Iterable` / `Iterator` |
-| [ex14-strategy](ex14-strategy/src/main/java/Navigator.java) | 12. Design Patterns | Strategy pattern |
+Exercises are numbered in the order the chapters appear in the
+[table of contents](../README.md). Most are checked by JUnit tests you run
+yourself; a few are design exercises with no automated test — the ones with
+starter files are listed here too. Chapters also contain smaller written
+exercises inline.
+
+| Exercise | Chapter | Topic | Checked by |
+|----------|---------|-------|------------|
+| [ex01-odd-sum](ex01-odd-sum/src/main/java/OddSum.java) | 1. Introduction to Java | arrays, for-loops | tests |
+| [ex02-first-letters](ex02-first-letters/src/main/java/FirstLetters.java) | 1. Introduction to Java | strings, `StringBuilder` | tests |
+| [ex03-alias-side-effects](ex03-alias-side-effects/src/main/java/Aliasing.java) | 1. Introduction to Java | references vs. primitives, side effects | tests |
+| [ex04-digit-sum](ex04-digit-sum/src/main/java/DigitSum.java) | 1. Introduction to Java | `while` loops, integer arithmetic | tests |
+| [ex05-cleanup](ex05-cleanup/src/main/java/Rectangle.java) | Code Style and Documentation | CheckStyle, JavaDoc | CheckStyle (see note below) |
+| [ex06-overloading](ex06-overloading/src/main/java/MyHashing.java) | 2. Classes in Java | overloading, constructors, static methods | tests |
+| [ex07-equality](ex07-equality/src/main/java/Point.java) | 2. Classes in Java | `toString`, `equals`, `hashCode` | tests |
+| [ex08-comparable](ex08-comparable/src/main/java/Word.java) | 2. Classes in Java | `Comparable` / `compareTo` | tests |
+| [ex09-instance-counter](ex09-instance-counter/src/main/java/Robot.java) | 2. Classes in Java | static vs. instance fields | tests |
+| [UML ↔ Java questions](../03-relationships-between-classes.md#exercises)<br>(starter: [vehicles-uml-starter.puml](../plantuml/exercises/vehicles-uml-starter.puml)) | 3. Relationships between Classes | reading and writing UML class diagrams | self-check (answers in the notes) |
+| [ex10-swing](ex10-swing/src/main/java/CounterPanel.java) | 4. GUIs with Swing | button clicks (`ActionListener`) | tests |
+| [ex10-swing](ex10-swing/src/main/java/RegistrationForm.java) | 4. GUIs with Swing | matching a layout | by eye (see §4.4; why in §4.5) |
+| [ex11-number-triangle](ex11-number-triangle/src/main/java/NumberTriangle.java) | APIs, JSON, and Files | reading a file into objects | tests |
+| [ex12-gotchas](ex12-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing | tests |
+| [ex13-generics](ex13-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter | tests |
+| [ex14-iterator](ex14-iterator/src/main/java/Week.java) | 7. Collections | `Iterable` / `Iterator` | tests |
+| [Noun–verb analysis + walk-through](../08-program-specification.md#85-exercises)<br>(starter: [library-uml-starter.puml](../plantuml/exercises/library-uml-starter.puml)) | 8. Program Specification | specification → classes → UML; scenario walk-through | self-check (hints in the notes) |
+| [ex15-dependency-inversion](ex15-dependency-inversion/src/main/java/Manager.java) | 9. Design Principles | Dependency Inversion Principle | tests |
+| [ex16-strategy](ex16-strategy/src/main/java/Navigator.java) | 12. Design Patterns | Strategy pattern | tests |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make
 > `mvn -P exercises -pl exercises/ex05-cleanup checkstyle:check` report **0
 > violations** while keeping the tests green. It is the one exercise module with
-> CheckStyle turned on.
-
+> CheckStyle turned on. The `OrderSummary` refactoring task works the same way:
+> the tests start green and must stay green.

@@ -51,7 +51,7 @@ SwingUtilities.invokeLater(() -> {
     // whatever code you want executed
 });
 ```
-Read the complete example in [MainFrame.java](code/gui/MainFrame.java).
+Read the complete example in [MainFrame.java](code/src/main/java/gui/MainFrame.java).
 
 We will now explore a few of the components that can be added to a `JFrame` to display
 and collect information.
@@ -99,7 +99,7 @@ Here, we create the main `JPanel`, set its layout to vertical (on the Y axis), a
 It isn't all that pretty, but it's simple, and you can use nested `JPanel`s to quickly
 organize your user interface.
 
-Make sure you read and understand the complete example in [NestedPanelsExample.java](code/gui/NestedPanelsExample.java).
+Make sure you read and understand the complete example in [NestedPanelsExample.java](code/src/main/java/gui/NestedPanelsExample.java).
 
 Next, we'll learn the basics of how user interactions work.
 
@@ -149,7 +149,7 @@ This is so weird and fun.
 When you run `ButtonClickExample.java`, you'll see a popup window.
 `JOptionPane.showMessageDialog` does this for us.
 
-Make sure you read and understand the example in [ButtonClickExample.java](code/gui/ButtonClickExample.java).
+Make sure you read and understand the example in [ButtonClickExample.java](code/src/main/java/gui/ButtonClickExample.java).
 
 ### 4.3.1 Exercise: click `Cancel` to clear the text fields
 
@@ -173,10 +173,10 @@ Now you can call `cancel.addActionListener` just like the code does for `submit`
 When you run it, try entering some text into the name fields and clicking `Cancel`.
 It should clear the text fields.
 
-## 4.4. Exercises
+## 4.4 Exercises
 
 Try these self-contained, runnable exercises under the
-[exercises](exercises/README.md) folder. Both located under the `ex10-swing` module.
+[exercises](exercises/README.md) folder. Both are located under the `ex10-swing` module.
 
 - **Exercise 10 — Counter button** (§4.3 handling button clicks). In
   [CounterPanel.java](exercises/ex10-swing/src/main/java/CounterPanel.java), add an

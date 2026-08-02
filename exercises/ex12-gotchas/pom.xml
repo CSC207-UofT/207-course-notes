@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ex11-gotchas</artifactId>
+    <artifactId>ex12-gotchas</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
