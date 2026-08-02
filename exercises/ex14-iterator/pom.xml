@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ex12-generics</artifactId>
+    <artifactId>ex14-iterator</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

@@ -237,7 +237,8 @@ example you can imitate.
 
 ## Exercise: clean it up
 
-The [ex05-cleanup](exercises/ex05-cleanup/src/main/java/Rectangle.java) exercise
+**Exercise 5 — Clean it up** (CheckStyle and JavaDoc). The
+[ex05-cleanup](exercises/ex05-cleanup/src/main/java/Rectangle.java) exercise
 gives you a small class, `Rectangle`, that **works correctly but is written in a
 messy style** — inconsistent spacing and indentation, missing braces, and
 incomplete JavaDoc. Its tests already pass; your job is to fix the *style* without

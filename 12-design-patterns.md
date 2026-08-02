@@ -50,7 +50,7 @@ To connect this back to our analogy: If someone has already proven a theorem thr
 
 > Exercise: As you read about each design pattern, think about how you could "derive" each pattern using one or more of our principles.
 
-### 12.1.1. A Brief History
+### 12.1.3. A Brief History
 
 <img src="https://m.media-amazon.com/images/I/51nL96Abi1L._SY522_.jpg" height=200px align="right" alt="cover of the design patterns book"/>
 
@@ -493,12 +493,12 @@ Implement a design pattern yourself in this exercise under the
 [exercises](exercises/README.md) folder (open the `.java` files, complete the
 `// TODO`s, and run the test — it starts red and turns green when you're done).
 
-- **Exercise 14 — Strategy** (§12.3.1). This mirrors the chapter's `Map` /
+- **Exercise 16 — Strategy** (§12.3.1). This mirrors the chapter's `Map` /
   `DirectionGenerator` example. Complete the *Context* in
-  [Navigator.java](exercises/ex14-strategy/src/main/java/Navigator.java) so it
+  [Navigator.java](exercises/ex16-strategy/src/main/java/Navigator.java) so it
   stores and delegates to a `DirectionGenerator` strategy (and can swap it at
   runtime), and complete the *concrete strategy*
-  [TransitDirections.java](exercises/ex14-strategy/src/main/java/TransitDirections.java)
-  (using [DrivingDirections.java](exercises/ex14-strategy/src/main/java/DrivingDirections.java)
+  [TransitDirections.java](exercises/ex16-strategy/src/main/java/TransitDirections.java)
+  (using [DrivingDirections.java](exercises/ex16-strategy/src/main/java/DrivingDirections.java)
   as a model). Then run
-  [NavigatorTest.java](exercises/ex14-strategy/src/test/java/NavigatorTest.java).
+  [NavigatorTest.java](exercises/ex16-strategy/src/test/java/NavigatorTest.java).

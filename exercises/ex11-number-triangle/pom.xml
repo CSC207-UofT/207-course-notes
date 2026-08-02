@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ex14-strategy</artifactId>
+    <artifactId>ex11-number-triangle</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>

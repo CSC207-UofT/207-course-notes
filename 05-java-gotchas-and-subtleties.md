@@ -205,8 +205,8 @@ Spot and fix the gotchas from this chapter in this exercise under the
 `// TODO`s, and run the test — it starts red and turns green once the bugs are
 fixed).
 
-- **Exercise 11 — Gotchas** (shadowing, array copy, autoboxing). The three
-  methods in [Gotchas.java](exercises/ex11-gotchas/src/main/java/Gotchas.java)
+- **Exercise 12 — Gotchas** (shadowing, array copy, autoboxing). The three
+  methods in [Gotchas.java](exercises/ex12-gotchas/src/main/java/Gotchas.java)
   each contain one of this chapter's classic bugs — a shadowed field, a shallow
   array copy, and an `==` comparison of `Integer`s. Fix all three and run
-  [GotchasTest.java](exercises/ex11-gotchas/src/test/java/GotchasTest.java).
+  [GotchasTest.java](exercises/ex12-gotchas/src/test/java/GotchasTest.java).

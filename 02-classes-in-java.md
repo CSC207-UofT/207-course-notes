@@ -6,7 +6,7 @@ they consist of attributes and methods, both private and public.
 We can inherit from other classes, override methods, and define constructors.
 
 While this section talks about classes at a higher level,
-the file [Monster.java](code/Monster.java) provides a larger example with
+the file [Monster.java](code/src/main/java/Monster.java) provides a larger example with
 in-line explanations which you may find helpful. You'll want to look at this
 file to get a better understanding of the syntax that we use.
 
