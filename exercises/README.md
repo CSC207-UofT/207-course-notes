@@ -60,6 +60,10 @@ exercises inline.
 | [Noun–verb analysis + walk-through](../08-program-specification.md#85-exercises)<br>(starter: [library-uml-starter.puml](../plantuml/exercises/library-uml-starter.puml)) | 8. Program Specification | specification → classes → UML; scenario walk-through | self-check (hints in the notes) |
 | [ex15-dependency-inversion](ex15-dependency-inversion/src/main/java/Manager.java) | 9. Design Principles | Dependency Inversion Principle | tests |
 | [ex16-strategy](ex16-strategy/src/main/java/Navigator.java) | 12. Design Patterns | Strategy pattern | tests |
+| [ex17-refactoring](ex17-refactoring/src/main/java/Temperature.java) | 13. Refactoring Techniques | replace constructor with factory method | tests |
+| [ex17-refactoring](ex17-refactoring/src/main/java/OrderSummary.java) | 13. Refactoring Techniques | extract method, split loop, slide statements | tests (already green — keep them that way) |
+| [ex18-regex](ex18-regex/src/main/java/Validators.java) | 14. Regular Expressions | validation with `String.matches` | tests |
+| [ex18-regex](ex18-regex/src/main/java/Extractor.java) | 14. Regular Expressions | extraction with `Pattern` / `Matcher` | tests |
 
 > **Note:** `ex05-cleanup` works differently from the others. Its code is already
 > correct (the tests pass from the start) but messy. The goal is to make

@@ -43,5 +43,7 @@
         <module>ex14-iterator</module>
         <module>ex15-dependency-inversion</module>
         <module>ex16-strategy</module>
+        <module>ex17-refactoring</module>
+        <module>ex18-regex</module>
     </modules>
 </project>

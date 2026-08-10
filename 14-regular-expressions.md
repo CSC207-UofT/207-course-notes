@@ -156,7 +156,7 @@ Formally, as we have discussed, a regex defines a set of strings that fully matc
 However, in practice, most practical regex implementations behave differently.
 They often check whether any _substring_ of the input conforms to the pattern, unless anchors are used.
 
-> In practice, when using regex in a programming langauge like Java, one must carefully read the
+> In practice, when using regex in a programming language like Java, one must carefully read the
 > documentation, as sometimes anchors are implicitly included (i.e., a method will automatically be looking for full matches).
 
 Here is a regular expression which has no anchors.
@@ -237,7 +237,7 @@ various operations related to actually checking for matches and then querying de
 one can use the `group(int group)` method to access a group from the previous match operation. See the documentation
 for additional details.
 
-We also provide [`Demo.java`](code/regex/Demo.java) which contains additional examples.
+We also provide [`Demo.java`](code/src/main/java/regex/Demo.java) which contains additional examples.
 
 ## 14.7. What Can We Do with Regular Expressions?
 
@@ -255,3 +255,29 @@ Broadly, these tasks fall into two categories:
 - Validation: determining whether an entire string conforms to a pattern.
 
 Regex is widely supported across programming languages and tools, making it an essential skill for developers.
+
+## 14.8. Exercises
+
+Practise writing patterns in the `ex18-regex` module under the
+[exercises](exercises/README.md) folder. Both tasks start red and turn green when
+your patterns are correct. They line up with the two categories from §14.7:
+validation and extraction.
+
+- **Exercise 18a — Validators** (validation, `String.matches`). Complete the
+  three methods in
+  [Validators.java](exercises/ex18-regex/src/main/java/Validators.java) so they
+  recognise valid emails, phone numbers of the form `NNN-NNN-NNNN`, and legal
+  Java variable names, then run
+  [ValidatorsTest.java](exercises/ex18-regex/src/test/java/ValidatorsTest.java).
+- **Exercise 18b — Extractor** (extraction, `Pattern` and `Matcher`). Whole-string
+  matching isn't enough when you want to *pull* pieces out of a larger body of text, so
+  this task uses the classes from §14.6. In
+  [Extractor.java](exercises/ex18-regex/src/main/java/Extractor.java), implement
+  `findCourseCodes` (find every course code in a passage of text using
+  `matcher.find()`), `findCourseNumbers` (pull just the digits out using a
+  **capturing group**), and `maskEmails` (replace every email address with `***`).
+  Then run
+  [ExtractorTest.java](exercises/ex18-regex/src/test/java/ExtractorTest.java).
+  Notice that the patterns are compiled once into `static final Pattern`
+  constants and reused — compiling a regex is real work, so you don't want to redo
+  it on every call.
