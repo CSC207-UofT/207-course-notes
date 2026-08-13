@@ -121,7 +121,7 @@ This technique involves refactoring how objects are constructed. The idea is to 
 This technique also involves refactoring how objects are constructed. The idea is to introduce
 a static method that is responsible for returning the instance of the class rather than having the code directly call
 the constructor. This can enhance understandability and hiding the constructor call effectively abstracts
-away the detail of how where the instance of the class actually comes from.
+away the detail of where the instance of the class actually comes from.
 
 > See: https://www.jetbrains.com/help/idea/replace-constructor-with-factory-method.html
 
@@ -129,7 +129,34 @@ away the detail of how where the instance of the class actually comes from.
 
 * * *
 
-## 13.9. Additional Reading:
+## 13.9. Exercises
+
+Practise these refactorings in the `ex17-refactoring` module under the
+[exercises](exercises/README.md) folder.
+
+- **Exercise 17a — Replace Constructor with Factory Method** (§13.8). In
+  [Temperature.java](exercises/ex17-refactoring/src/main/java/Temperature.java),
+  a single `double` constructor makes call sites ambiguous (Celsius or
+  Fahrenheit?). Add the static factory methods `fromCelsius` and `fromFahrenheit`
+  so the intent is clear, then run
+  [TemperatureTest.java](exercises/ex17-refactoring/src/test/java/TemperatureTest.java).
+  (This one starts red and turns green when you're done.)
+- **Exercise 17b — Extract Method and friends** (§13.2, §13.5, §13.6). This one
+  works the other way around: the tests for
+  [OrderSummary.java](exercises/ex17-refactoring/src/main/java/OrderSummary.java)
+  **already pass**, because the code is correct — it is just badly structured. One
+  long method computes a subtotal and counts premium items in the same loop,
+  declares its accumulators far from where they are used, builds a report at the
+  end, and is littered with magic numbers. Apply `Split Loop`, `Slide Statements`,
+  and `Extract Method`, and replace the magic numbers with named constants —
+  **keeping [OrderSummaryTest.java](exercises/ex17-refactoring/src/test/java/OrderSummaryTest.java)
+  green the whole way**. Remember the rule from §13.1: refactoring must not change
+  behaviour. Re-run the tests after each step, and let IntelliJ do the work with
+  **Extract Method** (Ctrl+Alt+M / ⌥⌘M).
+
+* * *
+
+## 13.10. Additional Reading:
 
 Refactoring: second edition by Martin Fowler
 Free first chapter: https://www.thoughtworks.com/content/dam/thoughtworks/documents/books/bk_Refactoring2-free-chapter_en.pdf
@@ -142,7 +169,7 @@ https://objectcomputing.com/resources/publications/sett/february-2002-refactorin
 
 * * *
 
-## 13.10. Helpful links:
+## 13.11. Helpful links:
 
 JetBrains blog post about the Extracting and Inlining, Change Signature, and Renaming (includes a video):
 https://blog.jetbrains.com/idea/2020/12/3-ways-to-refactor-your-code-in-intellij-idea/
