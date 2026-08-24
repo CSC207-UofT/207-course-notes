@@ -155,51 +155,95 @@ Here are a couple user stories for a social media app:
 * As a user, I want to be able to send friend requests so that I can connect with people I know.
 * As a group administrator, I want to be able to hide posts that violate the code of conduct so that others can feel more comfortable participating.
 
-They all follow a simple format: "As a [kind of user], I want to [do a task] so that [I achieve some goal]."
+They follow a common, but optional, format: "As a [kind of user], I want to [accomplish a goal] so that [I receive some benefit]."
 
-User stories are often used to verify with the client that the feature set is aligned with their expectations.
+User stories are short on purpose. They give the team and client a starting point for discussing a feature; they are not usually a complete specification by themselves. A team may add acceptance criteria describing observable conditions that must be true for the story to be considered complete.
 
-Next, a user story will be handed to a UX designer who will decide how the feature should look and work. This of course needs to be integrated into the app, so there are sometimes a lot of decisions to make.
+### Choosing an appropriate scope
+
+User stories can describe work at very different scales. A story that covers many related goals is often called an _epic_, while an implementation task describes work to be done without expressing a user's goal.
+
+For the course project, aim for a story that describes one focused user goal and is small enough for one team member to make meaningful progress on it. As a useful rule of thumb, each story should lead naturally to one use case in the program. This is a course-project heuristic rather than a rule followed by every software team.
+
+| Scope | Example | Assessment |
+| --- | --- | --- |
+| Too broad | As a bank customer, I want an online banking platform so that I can manage all of my accounts. | This is an epic containing many goals, such as viewing an account, transferring money, and paying a bill. |
+| Appropriate | As a bank customer, I want to view the transactions in my savings account so that I can review my spending. | This describes one user goal that can become a use case. |
+| Too narrow | Create a table component that displays transactions. | This is an implementation task, not a user story. It does not say who benefits or why. |
+
+The same distinction applies to an e-commerce application. "Manage products" is probably an epic; viewing products, updating a shopping cart, and updating a wish list are separate candidate stories. Creating a list of products or laying out a screen may be tasks needed to complete one of those stories.
+
+Scope depends on the project and the team. If a story contains several distinct user goals, split it. If it only describes a class, algorithm, screen, or other implementation detail, identify the larger user goal that motivates the task.
+
+For another introduction to story scope and acceptance criteria, see Atlassian's [User Stories with Examples and a Template](https://www.atlassian.com/agile/project-management/user-stories).
 
 ## 8.4. Use cases
 
 > Note: we'll cover these ideas in more detail later, but it is useful to start thinking through the process now.
 
-A _use case_ describes the sequence of user interactions necessary to accomplish a feature.
+A _use case_ describes how an actor and a system interact to accomplish a goal. It adds behavioural detail to a user story: what starts the interaction, what normally happens, what can go wrong, and what outcome the system guarantees.
 
-For each user story, someone on the team — could be a UX/UI designer, the programmers, maybe the manager — will write a use case that describes the sequence of interactions between the user and the system to accomplish the user story goal.
+There is no single use-case format used by every software team. Some teams write detailed specifications, while others use a short description, acceptance criteria, or executable scenarios. The lightweight format below is practical for the course project because it makes the important decisions visible without requiring a large document.
 
-There may be several user interactions required to accomplish a feature. For example, to send a friend request, a user might need to search for a person, view their profile, and then click a "Send Friend Request" button. Each of these interactions can be broken down into smaller tasks or user stories if needed.
+### A lightweight use-case format
+
+* **Name:** an active verb phrase that states the actor's goal, such as "Send a friend request."
+* **Primary actor:** the external role that starts the use case in order to achieve a goal. The software system itself is not an actor. Other people or external systems involved may be listed as supporting actors.
+* **Preconditions:** facts that must already be true when the use case begins. They are assumptions, not steps that the use case performs.
+* **Trigger:** the event that starts the use case.
+* **Success outcome:** the observable state of the system after the goal is achieved. A more detailed specification may also state what the system guarantees after failure.
+* **Main success scenario:** a numbered sequence showing the usual successful interaction between the actor and the system.
+* **Extensions:** alternative or failure paths, tied to the step at which they can occur.
+
+Write the steps in terms of the actor's intent and the system's observable response. Include enough detail to remove important ambiguity, but avoid class names, method calls, database operations, and unnecessary interface details. Those are design and implementation decisions. For example, "the user asks to send a friend request" allows the interface designer to choose an appropriate button, menu item, or other control later.
 
 Here is an example use case for the user story about sending a friend request:
 
-**Use Case: Sending a Friend Request**
+**Use Case: Send a Friend Request**
 
-**Actors**: User, System
+**Primary actor:** User sending the request
 
-**Preconditions**: User is logged into the social media app.
+**Preconditions:**
 
-**Main Flow**:
-1. User searches for a person using the search bar.
-2. System displays a list of search results.
-3. User selects a person from the search results.
-4. System displays the selected person's profile.
-5. User clicks the "Send Friend Request" button.
-6. System sends a friend request to the selected person and notifies the user that the request has been sent.
-7. System updates the user's friend list to show the pending request.
-8. System sends a notification to the selected person about the friend request.
-9. Selected person can choose to accept or decline the friend request.
-10. If accepted, the system updates both users' friend lists to show they are now friends.
-11. If declined, the system notifies the user that the request was declined.
+* The user is logged in.
+* The user is viewing another user's profile.
+* The two users are not already friends and there is no pending request between them.
 
-Each of those steps is a single interaction. There may be other related features.
-For example, a user might want to see a list of their pending friend requests, or cancel one they sent earlier.
-Another example is the precondition about the user needing to be logged in prior to this use case being executed.
-As you might imagine, another developer would need to go through this same process to implement a use case for
-logging into the social media app.
+**Trigger:** The user asks the system to send a friend request to the person whose profile is displayed.
 
-Finally, a developer will implement the feature. For each user interaction, they will decide if it results in a user interface event that the program needs to respond to. If so, they will write a listener to handle that event.
-The developer may need to create new classes to represent new kinds of information involved in the user story.
+**Success outcome:** The request is recorded as pending and the other user is notified.
+
+**Main success scenario:**
+
+1. The user asks to send a friend request.
+2. The system checks that a request is currently allowed.
+3. The system records the pending friend request.
+4. The system shows the user that the request is pending.
+5. The system notifies the other user of the request.
+
+**Extensions:**
+
+* **2a.** The other user no longer accepts friend requests from this user.
+  1. The system explains that the request cannot be sent.
+  2. The system does not create a request, and the use case ends.
+* **3a.** The system cannot record the request.
+  1. The system explains that the request was not sent and that the user may try again.
+  2. The use case ends with no pending request.
+
+Searching for a person and viewing their profile happen before this use case and could be use cases of their own. Similarly, the other user accepting or declining the request is a separate goal, **Respond to a Friend Request**, with a different primary actor. Keeping these goals separate makes each use case easier to understand, assign, implement, and test.
+
+### From specification to design
+
+A use case says what behaviour the system must provide, but it does not prescribe the entire user interface or the classes that implement it. The team can next:
+
+* add acceptance criteria or tests for the success and extension paths;
+* sketch the views before and after important interactions, including error states;
+* identify the entities and data access operations involved; and
+* design the Clean Architecture classes that realize the use case.
+
+In Clean Architecture, the use case interactor implements the application-specific rules for the goal. The controller, presenter, view model, and view connect those rules to the user interface. Do not turn every click or screen transition into its own interactor: design around a coherent user goal.
+
+Once the team chooses a scoped story to implement, the [feature development workflow](00-introduction-to-git.md#04-feature-development-workflow) gives one way to organize the implementation and review work.
 
 ## 8.5. Exercises
 
@@ -270,3 +314,36 @@ them.
   awkward.
 
 </details>
+
+### Question 3: From a user story to a use case
+
+Consider a campus study-room booking application.
+
+> **User story:** As a student, I want to reserve an available study room for a particular time so that my group has a place to meet.
+
+Assume the following requirements:
+
+* The student is signed in before attempting to reserve a room.
+* The student has already selected a room, date, and time.
+* A room cannot have two reservations at the same time.
+* After a successful reservation, the system displays a confirmation.
+* A room might become unavailable after the student selects it but before the reservation is submitted.
+
+Write a use case using the lightweight format from this section:
+
+1. Choose a name and identify the primary actor.
+2. State the preconditions, trigger, and success outcome.
+3. Write a main success scenario in which the room is reserved.
+4. Write an extension for the room becoming unavailable. Tie it to a particular step in the main scenario.
+5. Identify one more plausible extension. State what the user observes and whether the system's state changes.
+
+Review your draft with these questions:
+
+* Does the use case pursue one user goal?
+* Are preconditions stated as facts rather than hidden setup steps?
+* Does each main-flow step describe an actor action or an observable system responsibility?
+* Are alternative and failure paths separated from the successful path?
+* Does the success outcome make the use case testable?
+* Have you avoided committing prematurely to UI widgets, classes, methods, or database details?
+
+As a scope check, compare the story above with "As a student, I want to manage all of my room bookings," which is likely an epic, and "Build the room-booking form," which is an implementation task. The exercise story sits between them: it expresses one useful, implementable user goal.
