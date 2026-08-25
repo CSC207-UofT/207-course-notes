@@ -14,6 +14,8 @@ The [CSC207 Learn Git website](https://learngit.teach.cs.toronto.edu/) is the pr
 
 Use that website when you need to learn or review the mechanics of a Git operation. This chapter does not repeat its command-by-command lessons. Instead, it emphasizes the mental model and working practices that matter for the course project.
 
+For these course notes specifically: **fork the repository on GitHub and clone your own fork**, then do your exercise work there. Do not treat the upstream `CSC207-UofT/207-course-notes` repo as the place you push to. Step-by-step setup is in the [Quickstart guide](QUICKSTART.md#1-fork-and-clone-the-repository).
+
 ## 0.2. A mental model for Git
 
 It helps to distinguish the places in which a change can exist:

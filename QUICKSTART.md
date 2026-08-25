@@ -1,6 +1,8 @@
 # Quickstart: Setting Up and Running the Course Code
 
-This guide walks you through cloning the repository, understanding the project structure, and running Java code — both the raw way (`javac`/`java`) and with Maven.
+This guide walks you through **forking** the repository (required), cloning *your* fork, understanding the project structure, and running Java code — both the raw way (`javac`/`java`) and with Maven.
+
+Students must work on their own fork so they can commit and push exercise solutions and other course work.
 
 ---
 
@@ -81,11 +83,24 @@ sudo apt install git openjdk-11-jdk maven
 
 ---
 
-## 1. Cloning the Repository
+## 1. Fork and Clone the Repository
+
+**Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote, you cannot push there. Fork first, then clone the fork under *your* GitHub account.
+
+1. Open [https://github.com/CSC207-UofT/207-course-notes](https://github.com/CSC207-UofT/207-course-notes) while signed in to GitHub.
+2. Click **Fork** (top right) and create a fork under your account.
+3. Clone *your* fork (replace `YOUR-USERNAME` with your GitHub username):
 
 ```bash
-git clone https://github.com/CSC207-UofT/207-course-notes.git
+git clone https://github.com/YOUR-USERNAME/207-course-notes.git
 cd 207-course-notes
+```
+
+Optional but useful: add the course repo as an `upstream` remote so you can pull updates later:
+
+```bash
+git remote add upstream https://github.com/CSC207-UofT/207-course-notes.git
+git remote -v   # origin → your fork; upstream → CSC207-UofT
 ```
 
 ---
