@@ -1,7 +1,10 @@
 # Exercises
 
-Short, hands-on exercises that accompany the course notes. Each exercise lives
-in its **own Maven module** so that:
+Short, hands-on exercises that accompany the course notes. Complete them on
+**your own fork** of this repository (see [QUICKSTART.md](../QUICKSTART.md#1-fork-and-clone-the-repository))
+so you can commit and push your solutions.
+
+Each exercise lives in its **own Maven module** so that:
 
 - a starter with intentionally-incomplete code only breaks *its own* module —
   you can still press the green ▶ on any other exercise in IntelliJ; and

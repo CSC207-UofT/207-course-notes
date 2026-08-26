@@ -3,8 +3,10 @@ This repository contains various Markdown (MD) files as the course notes.
 
 ## Start here
 
+**Fork this repository and work on your own fork.** Do not clone the upstream `CSC207-UofT/207-course-notes` repo directly for day-to-day work, you will not be able to push your exercise solutions and notes edits there. On GitHub, click **Fork**, then clone *your* fork. Details are in the [Quickstart guide](QUICKSTART.md).
+
 - [Developer Roles: A Course Roadmap](developer-roles.md) explains how the topics in the course contribute to building a complete application.
-- The [Quickstart guide](QUICKSTART.md) helps you set up the repository and run your first Java program.
+- The [Quickstart guide](QUICKSTART.md) helps you fork the repository, set it up locally, and run your first Java program.
 
 To read the course notes: select the chapter you're interested in. GitHub will parse it for you, so you can read it within the GitHub interface.
 
@@ -52,4 +54,4 @@ You may also download the files locally. There are various viewers available to 
 ## Raising issues
 If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.
 
-You may also create fork this repository and create a pull request if you wish to make revisions directly, though we will be reviewing and accepting these manually.
+You may also open a pull request from your fork if you wish to propose revisions to the upstream notes; we will review and accept these manually.
