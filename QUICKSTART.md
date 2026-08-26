@@ -85,16 +85,29 @@ sudo apt install git openjdk-11-jdk maven
 
 ## 1. Fork and Clone the Repository
 
-**Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote, you cannot push there. Fork first, then clone the fork under *your* GitHub account.
+**Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote — you cannot push there. Fork first, then clone the fork under *your* GitHub account.
 
 1. Open [https://github.com/CSC207-UofT/207-course-notes](https://github.com/CSC207-UofT/207-course-notes) while signed in to GitHub.
 2. Click **Fork** (top right) and create a fork under your account.
-3. Clone *your* fork (replace `YOUR-USERNAME` with your GitHub username):
+3. On your fork’s GitHub page, click **Code** and copy the HTTPS URL (it should look like `https://github.com/YOUR-USERNAME/207-course-notes.git`).
+
+### Clone with IntelliJ (recommended)
+
+Cloning through IntelliJ opens the project in the right folder for you — no hunting for where `git clone` put the files.
+
+- **Welcome screen** (no project open): click **Clone Repository**, paste your fork URL, choose a directory, and click **Clone**.
+- **Already have a project open**: **File → New → Project from Version Control…**, paste the same URL, choose a directory, and click **Clone**.
+
+IntelliJ will then offer to open the project; accept that and continue with [Section 5](#5-opening-in-intellij-idea) for Maven setup.
+
+### Or clone from the terminal
 
 ```bash
 git clone https://github.com/YOUR-USERNAME/207-course-notes.git
 cd 207-course-notes
 ```
+
+Then open that folder in IntelliJ as described in [Section 5](#5-opening-in-intellij-idea).
 
 Optional but useful: add the course repo as an `upstream` remote so you can pull updates later:
 
@@ -268,6 +281,8 @@ In IntelliJ you don't use `-P` — open the **Maven** tool window, expand **Prof
 ---
 
 ## 5. Opening in IntelliJ IDEA
+
+If you cloned with IntelliJ in [Section 1](#1-fork-and-clone-the-repository), the project should already be open — skip to step 3. Otherwise:
 
 1. Launch IntelliJ and choose **File → Open**
 2. Select the root `207-course-notes/` folder (the one containing `pom.xml`)
