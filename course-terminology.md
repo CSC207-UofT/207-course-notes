@@ -29,33 +29,45 @@ instantiate
 
 # Java topics and OOP concepts
 
-encapsulation
+**Encapsulation**: The boundary around a class such that outside that boundary that data is hidden and only some of the functions are known. In Java this concept is implemented with the
+public, protected and private keywords. 
 
-inheritance
+**Inheritance**: When a class (the subclass) automatically acquires the fields and methods of another class (the superclass), 
+allowing code reuse and the creation of hierarchical relationships. In Java, this is done using the _extends_ keyword.
 
-"lookup rules" for a running program
+**"lookup rules" for a running program**: How a running program decides which variable or function to use.
 
-interface
 
-abstract class, abstract method
+**Interface:** in Java defines a contract for what a class can do, without specifying how it does it.
 
-generics
+**Abstract Method** A method that does not have an implementation (i.e., it only has a signature).
 
-"loose coupling, high cohesion"
+**Abstract Classes** Classes that are not meant to be initialized directly. 
+* If a class extends an abstract class; then, it has to implement all the abstract functions or be declared an abstract class. 
 
-polymorphism
+**Generics** A way for programmers to generalize the type that a class or method works with. They allow us to reuse the same 
+code for various input types without needing to cast things constantly. For example, public class Box<T>
 
-UML (unified modelling language)
+**Loose coupling:** Classes depend on each other as little as possible. (Related to Dependency Inversion Principle).
 
-"design" of a program
+**High cohesion:** Classes single well focused responsibility. (Think Single Responsibility Principle).
 
-class diagram
+**Polymorphism** The ability of an object to take on many forms. In Java, this means that an object can be treated as an instance of its own class, 
+any superclass, or any interface it implements
 
-composition of classes
+**UML (unified modelling language)** visually show classes or interfaces, their variables and methods, and how they inherit or implement each other.
 
-dependency
+**"design" of a program**: how classes should interact with each other, often represented using UML diagrams.
 
-Dependency Injection
+**class diagram**: A UML diagram showing a class’s name, its instance variables with types, and its methods with arguments and return types.
+
+**composition of classes**: How classes use other classes inside their methods.
+
+**dependency**: Anything a class or module needs to run. ClassA is dependent on ClassB if change in code to ClassB required change in code in ClassA.
+If a class uses the _new_ keyword, it is dependent on the other class.
+
+**Dependency Injection**: A design pattern where an object receives its dependencies from an external source. For example define the dependency
+as an instance variable through the constructor rather than writing API api = new API(); 
 
 # Design
 
