@@ -1,0 +1,37 @@
+@startuml
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+hide empty members
+
+interface Shape {
+  + area() : double
+}
+
+class Circle {
+  - radius : double
+  + Circle(radius : double)
+  + area() : double
+}
+
+class Rectangle {
+  - width : double
+  - height : double
+  + Rectangle(width : double, height : double)
+  + area() : double
+}
+
+class Square {
+  + Square(side : double)
+}
+
+class Drawing {
+  - shapes : List<Shape>
+  + add(shape : Shape) : void
+  + totalArea() : double
+}
+
+Shape <|.. Circle
+Shape <|.. Rectangle
+Rectangle <|-- Square
+Drawing o-up-> "*" Shape
+@enduml

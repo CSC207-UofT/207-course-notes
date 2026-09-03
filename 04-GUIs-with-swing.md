@@ -51,7 +51,7 @@ SwingUtilities.invokeLater(() -> {
     // whatever code you want executed
 });
 ```
-Read the complete example in [MainFrame.java](code/gui/MainFrame.java).
+Read the complete example in [MainFrame.java](code/src/main/java/gui/MainFrame.java).
 
 We will now explore a few of the components that can be added to a `JFrame` to display
 and collect information.
@@ -99,7 +99,7 @@ Here, we create the main `JPanel`, set its layout to vertical (on the Y axis), a
 It isn't all that pretty, but it's simple, and you can use nested `JPanel`s to quickly
 organize your user interface.
 
-Make sure you read and understand the complete example in [NestedPanelsExample.java](code/gui/NestedPanelsExample.java).
+Make sure you read and understand the complete example in [NestedPanelsExample.java](code/src/main/java/gui/NestedPanelsExample.java).
 
 Next, we'll learn the basics of how user interactions work.
 
@@ -149,7 +149,7 @@ This is so weird and fun.
 When you run `ButtonClickExample.java`, you'll see a popup window.
 `JOptionPane.showMessageDialog` does this for us.
 
-Make sure you read and understand the example in [ButtonClickExample.java](code/gui/ButtonClickExample.java).
+Make sure you read and understand the example in [ButtonClickExample.java](code/src/main/java/gui/ButtonClickExample.java).
 
 ### 4.3.1 Exercise: click `Cancel` to clear the text fields
 
@@ -172,6 +172,53 @@ Now you can call `cancel.addActionListener` just like the code does for `submit`
 
 When you run it, try entering some text into the name fields and clicking `Cancel`.
 It should clear the text fields.
+
+## 4.4 Exercises
+
+Try these self-contained, runnable exercises under the
+[exercises](exercises/README.md) folder. Both are located under the `ex10-swing` module.
+
+- **Exercise 10 — Counter button** (§4.3 handling button clicks). In
+  [CounterPanel.java](exercises/ex10-swing/src/main/java/CounterPanel.java), add an
+  action listener to the button so that each click increments a counter and
+  updates the label to `"Count: N"`. The test clicks the button for you with
+  `button.doClick()` (so it needs no display) and checks the label — run
+  [CounterPanelTest.java](exercises/ex10-swing/src/test/java/CounterPanelTest.java).
+- **Match the layout** (§4.1–4.2, no automated test). Open
+  [RegistrationForm.java](exercises/ex10-swing/src/main/java/RegistrationForm.java)
+  and press ▶ on `main`. Everything is currently crammed into a single row.
+  Rearrange the components (using nested panels and layout managers) so the window
+  matches this target:
+
+  ![Target layout: two stacked labelled fields with Submit and Cancel buttons centred below](images/swing-layout-target.png)
+
+  There is no test for this one — you verify it by running it and comparing with
+  the picture, which is exactly the point of the next section.
+
+## 4.5. Testing UI code
+
+You may have noticed that the counter exercise *did* have a test but the layout
+exercise did not. That is deliberate. It is usually easy to test the **logic**
+behind a UI — the counter test simply calls `button.doClick()` and checks the
+label's text, without ever opening a window — but it is much harder to
+meaningfully test how a UI **looks**.
+
+Automated tests of appearance tend to be **brittle**. A test that compares a
+screenshot pixel-by-pixel, for example, can break when nothing is actually wrong:
+a different font, operating system, look-and-feel, screen resolution, or a few
+pixels of spacing will all make it "fail" even though the interface is perfectly
+fine. Tests that break for reasons unrelated to real bugs quickly get ignored or
+deleted.
+
+The practical takeaways:
+
+- **Keep logic out of the UI.** If the interesting behaviour lives in ordinary
+  methods (not tangled into event handlers), you can test it directly — as the
+  counter exercise does. Later chapters on architecture return to this idea of
+  separating concerns.
+- **Test behaviour and structure, not pixels.** Firing an event and checking a
+  resulting value (or asserting that a component exists) is stable; asserting that
+  the window looks *exactly* a certain way is not.
 
 ## Further reading
 

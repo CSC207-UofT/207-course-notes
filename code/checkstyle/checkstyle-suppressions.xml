@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.0//EN"
+    "https://checkstyle.org/dtds/suppressions_1_0.dtd">
+
+<!--
+    Google Java Style is now enforced on all files under code/src/main/java.
+    Add a <suppress .../> entry here only if a specific file must be exempted.
+-->
+<suppressions>
+</suppressions>

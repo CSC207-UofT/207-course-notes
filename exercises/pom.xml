@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cs.toronto.edu.csc207</groupId>
+        <artifactId>course-notes</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!--
+      Aggregator for the hands-on exercises.
+
+      Each exercise is its OWN module so that an intentionally-incomplete
+      starter only breaks its own module: you can still press the green ▶
+      on any other exercise in IntelliJ, and `mvn compile` at the repo root
+      stays green because this aggregator is only built under the
+      `exercises` profile (see the root pom.xml).
+
+      To add a new exercise: create a sibling folder with its own pom.xml
+      (copy ex01-odd-sum/pom.xml and change the artifactId) and list it
+      under <modules> below.
+    -->
+    <artifactId>exercises</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ex01-odd-sum</module>
+        <module>ex02-first-letters</module>
+        <module>ex03-alias-side-effects</module>
+        <module>ex04-digit-sum</module>
+        <module>ex05-cleanup</module>
+        <module>ex06-overloading</module>
+        <module>ex07-equality</module>
+        <module>ex08-comparable</module>
+        <module>ex09-instance-counter</module>
+        <module>ex10-swing</module>
+        <module>ex11-number-triangle</module>
+        <module>ex12-gotchas</module>
+        <module>ex13-generics</module>
+        <module>ex14-iterator</module>
+        <module>ex15-dependency-inversion</module>
+        <module>ex16-strategy</module>
+        <module>ex17-refactoring</module>
+        <module>ex18-regex</module>
+    </modules>
+</project>

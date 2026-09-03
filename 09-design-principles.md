@@ -186,6 +186,57 @@ For example, which principles align with how Java requires the parent's construc
 
 Each time you encounter new code or a UML class diagram, you should begin to assess its design through this new perspective based on the SOLID principles.
 
-## 9.4. Beyond SOLID
+## 9.4. Exercises: applying the principles
+
+### Applying the DIP in code
+
+Practice the Dependency Inversion Principle with this exercise under the
+[exercises](exercises/README.md) folder (open the `.java` file, complete the
+`// TODO`s, and run the test — it starts red and turns green when you're done).
+
+- **Exercise 15 — Dependency Inversion** (§9.2.5). This is the managers-and-workers
+  example from above, in code. In
+  [Manager.java](exercises/ex15-dependency-inversion/src/main/java/Manager.java),
+  the high-level `Manager` depends directly on the concrete `Worker` class, so it
+  ignores any `SuperWorker` you hand it. Make `Manager` depend on the `IWorker`
+  abstraction instead, then run
+  [ManagerTest.java](exercises/ex15-dependency-inversion/src/test/java/ManagerTest.java).
+
+  Note what the fix does *not* require: no second field, no second setter, and no
+  `if` per worker type. One of the tests even hands `Manager` an implementation of
+  `IWorker` that did not exist when `Manager` was written — that is the payoff of
+  depending on an abstraction.
+
+### Which principle is violated?
+
+Consider this class:
+
+```java
+public class Report {
+    public String generate() { /* ... */ }         // builds the report text
+    public void saveToFile(String path) { /* ... */ }  // writes it to disk
+    public void email(String address) { /* ... */ }    // emails it
+}
+```
+
+Which SOLID principle is most clearly violated here, and how would you fix it?
+
+<details>
+<summary>Show answer</summary>
+
+The **Single Responsibility Principle** (§9.2.1). `Report` has three unrelated
+reasons to change: the report's content/format, how files are written, and how
+email is sent. A change to any one of them forces you to edit this one class.
+
+A fix is to split the responsibilities into separate classes — for example a
+`Report` that only knows how to produce the text, plus a `ReportFileWriter` and a
+`ReportEmailer` that each handle one form of output. If you then define an
+abstraction — say a `ReportOutput` interface that both writers implement — and
+have the calling code depend on that interface rather than on the two concrete
+classes, you are applying the DIP as well.
+
+</details>
+
+## 9.5. Beyond SOLID
 
 Principles are nice, but often it is what has been established based on them that is truly practical for programmers. We'll explore how these principles lead to layered architectures and patterns that we can apply when designing programs.

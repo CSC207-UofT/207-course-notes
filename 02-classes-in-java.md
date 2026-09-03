@@ -6,7 +6,7 @@ they consist of attributes and methods, both private and public.
 We can inherit from other classes, override methods, and define constructors.
 
 While this section talks about classes at a higher level,
-the file [Monster.java](code/Monster.java) provides a larger example with
+the file [Monster.java](code/src/main/java/Monster.java) provides a larger example with
 in-line explanations which you may find helpful. You'll want to look at this
 file to get a better understanding of the syntax that we use.
 
@@ -295,3 +295,30 @@ names = new ArrayList<>(); // not allowed — reassignment is forbidden
 Final methods cannot be overridden by subclasses and final classes cannot be subclassed.
 Using `final` helps enforce immutability and design constraints, potentially
 making your code safer and easier to reason about.
+
+## 2.9. Exercises
+
+Practice the class features from this chapter with these small exercises under the
+[exercises](exercises/README.md) folder. Each is its own Maven module — open the
+`.java` file, complete the `// TODO`s, and run the matching test (the tests start
+red and turn green as you go). See [exercises/README.md](exercises/README.md) for
+the one-time step of enabling the `exercises` profile in IntelliJ.
+
+- **Exercise 6 — Overloading** (overloaded constructors and methods, static
+  methods). Complete
+  [MyHashing.java](exercises/ex06-overloading/src/main/java/MyHashing.java) so the
+  two constructors and the three `hash` overloads behave as documented, then run
+  [MyHashingTest.java](exercises/ex06-overloading/src/test/java/MyHashingTest.java).
+- **Exercise 7 — Equality** (`toString`, `equals`, `hashCode`). Override the three
+  methods in [Point.java](exercises/ex07-equality/src/main/java/Point.java) so two
+  points with the same coordinates are equal, then run
+  [PointTest.java](exercises/ex07-equality/src/test/java/PointTest.java).
+- **Exercise 8 — Comparable** (`compareTo`). Complete
+  [Word.java](exercises/ex08-comparable/src/main/java/Word.java) so words are
+  ordered by length, then run
+  [WordTest.java](exercises/ex08-comparable/src/test/java/WordTest.java).
+- **Exercise 9 — Instance counter** (static vs. instance fields). Complete the
+  constructor and getters in
+  [Robot.java](exercises/ex09-instance-counter/src/main/java/Robot.java) so all
+  Robots share one count while each has its own id, then run
+  [RobotTest.java](exercises/ex09-instance-counter/src/test/java/RobotTest.java).

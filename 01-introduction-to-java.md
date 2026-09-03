@@ -1787,3 +1787,39 @@ The situation gets trickier when we have objects that contain other objects.
 The bottom line is this: know whether you are passing a primitive or a reference
 type and whether your objects are mutable — at each level of their structure.
 Memory model diagrams offer a concise visual way to represent that.
+
+## 1.10. Exercises
+
+Now try writing some Java yourself. Each exercise is a small, self-contained
+Maven module under the [exercises](exercises/README.md) folder that you can run
+directly in IntelliJ.
+
+The exercises are kept behind a Maven **profile** called `exercises` — a named
+group of build settings that is off by default, so an unfinished exercise can't
+break the main build. You activate it once: in IntelliJ open the **Maven** tool
+window (right edge), expand **Profiles**, tick **`exercises`**, and click
+**Reload All Maven Projects**; the exercise modules then appear and their green ▶
+run/test buttons light up. From the command line the equivalent is
+`mvn -P exercises test`. See [exercises/README.md](exercises/README.md) and
+[§4 Profiles in QUICKSTART.md](QUICKSTART.md#profiles) for more information.
+
+- **Exercise 1 — Odd-index sum** (arrays and for-loops). Open
+  [OddSum.java](exercises/ex01-odd-sum/src/main/java/OddSum.java) and complete the
+  `oddSum` method. Press the green ▶ next to `main` to run it, then open
+  [OddSumTest.java](exercises/ex01-odd-sum/src/test/java/OddSumTest.java) and press ▶
+  to run the tests — they start red and turn green once your implementation is
+  correct.
+- **Exercise 2 — First letters** (strings and `StringBuilder`). Complete
+  `firstLetters` in
+  [FirstLetters.java](exercises/ex02-first-letters/src/main/java/FirstLetters.java) so
+  it returns the first character of each word (e.g. `"Good Morning"` → `"GM"`), and
+  run [FirstLettersTest.java](exercises/ex02-first-letters/src/test/java/FirstLettersTest.java).
+- **Exercise 3 — Aliasing and side effects** (references vs. primitives). In
+  [Aliasing.java](exercises/ex03-alias-side-effects/src/main/java/Aliasing.java),
+  implement `addInPlace` (modifies the array the caller passed in) and `addCopy`
+  (returns a new array, leaving the original untouched), then run
+  [AliasingTest.java](exercises/ex03-alias-side-effects/src/test/java/AliasingTest.java).
+- **Exercise 4 — Digit sum** (`while` loops). Complete `digitSum` in
+  [DigitSum.java](exercises/ex04-digit-sum/src/main/java/DigitSum.java) so it sums the
+  digits of an integer, and run
+  [DigitSumTest.java](exercises/ex04-digit-sum/src/test/java/DigitSumTest.java).

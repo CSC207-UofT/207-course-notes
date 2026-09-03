@@ -1,0 +1,29 @@
+@startuml
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+hide empty members
+
+' Your task (Chapter 3, Question 2): draw the UML class diagram for the
+' Vehicle / Car / ElectricCar / Chargeable code.
+'
+' Define each type as a box, then connect them with the right arrows. One box
+' (Chargeable) is filled in as an example — complete the other three and add the
+' relationships.
+'
+' PlantUML cheat-sheet:
+'   interface Name { + method() : Type }
+'   abstract class Name { # field : Type }
+'   class Name { - field : Type }
+'   Parent    <|-- Child    ' generalization: Child extends Parent
+'   Interface <|.. Class    ' realization:    Class implements Interface
+' (Putting the parent/interface on the LEFT of the arrow keeps it on top.)
+
+interface Chargeable {
+  + charge() : void
+}
+
+' TODO: add "abstract class Vehicle", "class Car", and "class ElectricCar"
+'       (with their fields and methods), then add the arrows between all four
+'       types.
+
+@enduml

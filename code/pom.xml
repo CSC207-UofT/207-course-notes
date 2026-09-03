@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cs.toronto.edu.csc207</groupId>
+        <artifactId>course-notes</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>code</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <!-- Used by the "APIs, JSON, and Files" chapter examples. -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <!-- A copy of checkstyle 10.26.1's google_checks.xml lives in
+                         the repo so the IDE (CheckStyle-IDEA) and Maven can point at the exact
+                         same rules. Update it if the checkstyle version is bumped. -->
+                    <configLocation>checkstyle/google_checks.xml</configLocation>
+                    <suppressionsLocation>checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <!-- google_checks.xml reports at severity 'warning'; treat those as
+                         violations so the build actually enforces the style. -->
+                    <violationSeverity>warning</violationSeverity>
+                    <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Auto-formatter. Not bound to any phase, so a normal build never
+                 runs it; invoke it on demand:
+                   mvn spotless:apply   reformats all Java to Google Java Style
+                   mvn spotless:check   verifies formatting without modifying
+                 google-java-format is pinned to 1.17.0: newer releases require
+                 JDK 17/21, while this still runs on JDK 11, and its output is
+                 verified to pass the CheckStyle config above. -->
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.43.0</version>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>1.17.0</version>
+                        </googleJavaFormat>
+                    </java>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

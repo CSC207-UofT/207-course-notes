@@ -1,59 +1,97 @@
-# Chapter 0: Introduction to Git
-Throughout this course and most future programming endeavors, you will be using version control systems to manage your code. Git is one common version control system and will be the primary focus for this course.
+# Chapter 0: Working with Git in CSC207
 
-## 0.1. What is Version Control?
-Version control systems are just that: a way for us to control the versions of our code. This means tracking the changes that we've made, and control our revisions.
+Git is the version control system used in this course. It records the history of a project and lets team members develop changes independently before combining them. GitHub hosts a shared copy of a Git repository and adds collaboration tools such as issues, pull requests, and code review; Git and GitHub are related, but they are not the same thing.
 
-Think of how you would work together with others (or with yourself across multiple machines) on a coding-based project: do you send around a `.zip` file of the latest version of your code? Do you send snippets of the changes you want made to someone else, who has the master copy? Do you work using a collaborative software (like Google Docs), updating your code in the same place?
+## 0.1. Learn Git interactively
 
-All of the mentioned possibilities have shortcomings: either it's hard to keep track of your current version or find out what revisions were made at each step, or it might be hard to work independently. If you make a mistake and need to roll back your changes, you'd either have to find an older version or your code or manually revert things! That's awfully tedious!
+The [CSC207 Learn Git website](https://learngit.teach.cs.toronto.edu/) is the primary resource for learning Git commands and practising them in a guided environment. It covers:
 
-Version control doesn't have any of these shortcomings: everyone works on their own independent version and the version control system lets you merge your changes in as needed, keeping track of revisions as they're made.
+* the basic workflow: cloning, inspecting changes, staging, committing, reading history, and publishing work;
+* branching and merging;
+* correcting mistakes;
+* working safely with a team; and
+* advanced tools for rewriting or moving work.
 
+Use that website when you need to learn or review the mechanics of a Git operation. This chapter does not repeat its command-by-command lessons. Instead, it emphasizes the mental model and working practices that matter for the course project.
 
-## 0.2. How version control works
-In version control systems, there is a **master** repository: a copy of the latest versions of all files. People **clone** the repository to get their own local copy, which they work on independently.
+For these course notes specifically: **fork the repository on GitHub and clone your own fork**, then do your exercise work there. Do not treat the upstream `CSC207-UofT/207-course-notes` repo as the place you push to. Step-by-step setup is in the [Quickstart guide](QUICKSTART.md#1-fork-and-clone-the-repository).
 
-As people make changes and reach a state that they want reflected in the master repository, they **push** their changes in. Similarly, anyone who wants the latest version of the repository will **pull** the changes.
+## 0.2. A mental model for Git
 
-There are many other features of version control, but the above is the general concept and the simplest explanation for how we use version control systems.
+It helps to distinguish the places in which a change can exist:
 
-## 0.3. Git
-Git is the specific type of version control that we'll be using in this course.
+| Location | What it represents |
+| --- | --- |
+| Working tree | The files currently visible and editable on your computer. |
+| Staging area | The changes selected for the next commit. |
+| Local repository | The commits and branches stored on your computer. |
+| Remote repository | A shared copy of the repository, commonly hosted on GitHub. |
 
-In git, the master repository is also known as the **origin**. We use the command `git clone <url>` to get a local copy of the repository. This is similar to just downloading all of the files, but with the fancy addition of having a way to track which files we've altered via `git status`.
+A commit records a snapshot in your **local** repository. Pushing publishes local commits to a remote repository; it does not create the commit. Fetching or pulling obtains work published by other people. A branch identifies a line of development and allows several lines of work to proceed without changing the same shared branch directly.
 
-### 0.3.1. Making changes to the origin
-After modifying, adding, and removing files as needed, we likely want these changes to be made in the master repository. To do this, we use `git add <files>` to add all of the files that we've changed and that we want to change in the master repository.
+The name `main` commonly refers to a repository's default branch. The name `origin` commonly refers to the remote from which a repository was cloned. A branch and a remote serve different purposes, and neither name is mandatory.
 
-Following the `add` command is `git commit -m "<message>"`, which we use to describe what changes we've made (e.g. `git commit -m "Fixing a bug in X"`). Finally, to make these changes in our repository, we finish with `git push`!
+### Everyday commands at a glance
 
-Thus the general workflow for making changes is as follows:
-- `git status`: Lets us see what files have changed in our local copy
-- `git add <files>`: Lets us add ("stage") files that we want to modify in the origin.
-- `git commit -m "<message>"`: Saves our changes to the local repository, labelling the added changes with a message to describe our changes.
-- `git push`: Pushes changes to the origin repository
+The following commands form the core vocabulary for most course-project work. The [Learn Git website](https://learngit.teach.cs.toronto.edu/) provides guided practice and explains their options in more detail.
 
-One caveat to this workflow: if there are changes in the master repository that you don't have yet in your local version, you'll need to **pull** these revisions.
+| Command | Purpose |
+| --- | --- |
+| `git clone <url>` | Create a local repository from an existing remote repository. This is normally done once when beginning work on a project. |
+| `git status` | Show the current branch and the state of files in the working tree and staging area. This is a good command to run whenever you are unsure what Git will do next. |
+| `git pull` | Download changes from a remote branch and integrate them into the current local branch. |
+| `git switch -c <branch-name>` | Create a branch and switch to it. Use a focused branch for a feature or bug fix. |
+| `git switch <branch-name>` | Switch between existing local branches. |
+| `git add <file>` | Stage a file's current changes for the next commit. Staging a file does not publish it. |
+| `git commit -m "<message>"` | Record the staged changes as a commit in the local repository. |
+| `git push` | Publish local commits to a remote repository. The first push of a new branch may require Git to be told which remote branch to use. |
+| `git log` | Inspect commit history. |
+| `git merge <branch-name>` | Integrate another local branch into the current branch. On the course project, changes are commonly merged into `main` through a reviewed pull request instead. |
 
-### 0.3.2. Pulling new revisions
-As you work with a repository, you'll likely need to copy over any changes into your local repository. To do this, you can use a simple `git pull` command.
+A typical feature therefore moves through this sequence: update `main`, create a branch, edit and inspect files, stage the intended changes, commit them locally, push the branch, and open a pull request. You will repeat the inspect–stage–commit cycle as the feature develops; a feature does not need to fit into one large commit.
 
-At this point, you may have to do a bit of additional work: adding/committing local changes or manually handling some merge conflicts.
+## 0.3. Course project expectations
 
-### 0.3.3. Branches
-Sometimes you'll want to work on an entire feature in a separate repository: committing your changes directly to the master branch might not make sense, as you'll only want to merge your changes in once you finish the feature.
+Your team should agree on its exact conventions, but the following practices are good defaults for the course project:
 
-In cases like this, it's best to make a new **branch**: this is a spinoff of the master repository, in which you can commit changes without worrying about the master branch until you're ready to merge it in.
+* Track planned work with GitHub issues or an equivalent project-management tool.
+* Develop each focused feature or bug fix on its own branch rather than committing directly to `main`.
+* Make small commits whose messages explain one meaningful change.
+* Inspect the staged changes before every commit. Do not commit generated build output, IDE-specific state, credentials, API keys, or other secrets.
+* Use pull requests for review and discuss uncertain design decisions with teammates.
+* Keep published history stable. In particular, do not force-push a shared branch or rewrite commits that teammates may already be using without coordinating with them.
 
-To create a new branch and use it, you can use `git checkout -b <branch name>`. This is shorthand for `git branch <branch name>` followed by `git checkout <branch name>`: the first creates a new branch, and the 2nd switches your local repository to the new branch. The commits you make will now go to `<branch name>` instead of the origin.
+These practices make changes easier to understand and review, and reduce the chance that one person's work will disrupt someone else's.
 
-If you want to switch branches, just use `git checkout <branch>` to change to that branch.
+## 0.4. Feature development workflow
 
-When you want to finally merge your branch into the master repository, you simply checkout your master branch, and then run `git merge <branch name>`. However, a nicer method is to make a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request), such that people can see and review the changes you're trying to push in.
+On a team project, a small, repeatable workflow makes it easier to coordinate work and review changes. The following is one suggested workflow rather than a rigid rule:
 
-## 0.4. More resources on Git
-There is extensive documentation surrounding git, which you'll likely discover as you use it. Instead of rewriting everything, we've collected a few such resources for you:
+1. **Choose a focused feature or bug.** Start from a user story or issue that is small enough to complete without mixing several goals. Create an issue if one does not exist, and assign it to yourself so that teammates know the work is in progress.
+2. **Update your local `main` branch and create a feature branch.** Give the branch a short, descriptive name such as `feature/upload-file` or `bugfix/save-likes`.
+3. **Decide how you will verify the change.** For a new feature, write a test for its basic behaviour. For a bug, first write a test that reproduces the problem. Thinking about the test also helps clarify the interface and expected result.
+4. **Implement the change in small steps.** Write clear method signatures and Javadoc before filling in complicated logic. Make focused commits with messages that describe one change; a message containing "and" may be a sign that the commit should be split.
+5. **Test at several levels.** Run the focused tests, add important edge cases, and then run the full test suite. Also run the application and try the feature through its real user interface.
+6. **Push the branch and open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).** Summarize what changed, explain how it was tested, mention any unresolved questions, and request reviews from teammates. Respond to feedback with additional commits on the same branch.
+7. **Finish cleanly.** After the pull request is merged, update your local `main` branch, remove branches that are no longer needed, and check that no intended work remains uncommitted.
 
+The details may vary by team, but the core idea is stable: take ownership of one focused piece of work, make its behaviour verifiable, develop it on a branch, and let teammates review it before merging. Keeping features small also reduces merge conflicts and makes defects easier to locate.
+
+## 0.5. When something goes wrong
+
+Git is designed to preserve work, and many mistakes are recoverable. Before trying to fix a problem:
+
+1. Stop and inspect the current state. Determine whether the affected changes are uncommitted, staged, committed locally, or already pushed.
+2. Read the relevant **Correcting Mistakes** or **Working with a Team** lesson on the [Learn Git website](https://learngit.teach.cs.toronto.edu/).
+3. Preserve work you are unsure about before using a command that discards changes or rewrites history.
+4. If the affected commits have been shared, coordinate with your team. A new commit that reverses an earlier change is usually safer than rewriting published history.
+
+Do not reach for an "emergency override" simply because Git reports a conflict or rejects a push. Those messages usually indicate that Git is protecting work that must be reviewed or integrated.
+
+## 0.6. More resources on Git
+
+The interactive course website should be your starting point. These resources provide additional explanation and reference material:
+
+- [CSC207 Learn Git](https://learngit.teach.cs.toronto.edu/)
 - [BetterExplained: A visual guide to version control](https://betterexplained.com/articles/a-visual-guide-to-version-control/)
 - [GitHub: Quickstart](https://docs.github.com/en/get-started/quickstart)

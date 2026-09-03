@@ -727,3 +727,283 @@ If you are not the author of the class, you cannot make it `Comparable`.
 Your only option is to define one or more comparators.
 
 If you are the author of the class, you have both options available to you!
+
+## 3.8. UML Class Diagrams
+
+When a design has more than a couple of classes, a picture is often clearer than
+the code. A **UML class diagram** is a standard, language-independent way to
+sketch the classes in a system and the relationships between them (inheritance, interfaces, "has-a"). 
+You have  already seen such diagrams in the design-patterns material; here we cover just
+enough notation to *read* one and *translate* between a diagram and Java.
+
+### Reading a class box
+
+Each class is drawn as a box with up to three compartments:
+
+```
+┌─────────────────────────┐
+│        ClassName        │   ← name (italic if the class is abstract;
+├─────────────────────────┤      «interface» above the name for an interface)
+│ - field : Type          │   ← attributes (fields)
+├─────────────────────────┤
+│ + method(p : Type) : R  │   ← operations (methods)
+└─────────────────────────┘
+```
+
+- A member's **visibility** is shown by a symbol: `+` public, `-` private,
+  `#` protected.
+- The form is `name : Type` for a field and `name(param : Type) : ReturnType`
+  for a method.
+- **Static** members are <u>underlined</u>; **abstract** classes and methods are
+  written in *italics*.
+
+### Relationships and how they map to Java
+
+The three relationships you will use most in this course each have their own
+arrow, drawn pointing from the class that "depends" to the one it depends on:
+
+| In the diagram | Means | In Java |
+|---|---|---|
+| solid line, **hollow triangle** ▷ pointing at the parent | **generalization** (a subclass *is-a* superclass) | `class Sub extends Super` |
+| **dashed** line, hollow triangle ▷ pointing at the interface | **realization** (a class *implements* an interface) | `class C implements I` |
+| solid line/arrow → (often with a multiplicity like `*` or `1`) | **association** (a class *has-a* reference to another) | a field of that type, e.g. `private List<Other> others;` |
+
+### A worked example
+
+![UML diagram of a small Shape hierarchy](images/uml-shapes.png)
+
+Reading the arrows: `Circle` and `Rectangle` **implement** `Shape` (dashed
+triangles), `Square` **extends** `Rectangle` (solid triangle), and `Drawing`
+**has** any number of `Shape`s (the `*` association). That diagram corresponds
+directly to this Java:
+
+```java
+interface Shape {
+    double area();
+}
+
+class Circle implements Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle implements Shape {
+    private double width;
+    private double height;
+
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public double area() {
+        return width * height;
+    }
+}
+
+class Square extends Rectangle {
+    public Square(double side) {
+        super(side, side);
+    }
+}
+
+class Drawing {
+    private List<Shape> shapes = new ArrayList<>();
+
+    public void add(Shape shape) {
+        shapes.add(shape);
+    }
+
+    public double totalArea() {
+        double total = 0;
+        for (Shape shape : shapes) {
+            total += shape.area();
+        }
+        return total;
+    }
+}
+```
+
+> Diagrams are deliberately *abstractions*: they leave out method bodies (and
+> often constructors and trivial getters) so the structure stays readable. The
+> goal is to communicate the design, not to duplicate the code.
+
+You do not have to draw these by hand: in IntelliJ you can right-click a class
+and choose **Diagrams → Show Diagram** to generate one from existing code (this
+needs IntelliJ Ultimate, free for students).
+
+### How to create UML diagrams
+
+PlantUML allows you to define diagrams using plain, human-readable text.
+Below is a breakdown of how to write the code and generate the final image.
+
+#### The Syntax
+
+- Structure Enclosure: Every diagram must start with @startuml and end with @enduml.
+
+- Formatting Commands (`skinparam`): `skinparam dpi 150` increases the sharpness and resolution of the output image.
+
+- `skinparam classAttributeIconSize 0` forces the diagram to use text symbols `(+, -)` for visibility instead of colored shapes.
+
+- `hide empty members` cleans up the visual by hiding fields or methods sections if they are blank.
+
+- Defining Elements: You declare types using keywords like interface or class, followed by their names. 
+  Inside the curly braces `{...}`, you define fields and methods using access modifiers:
+
+  - `-` (Minus) indicates a private member (e.g., `- radius : double`).
+
+  - `+` (Plus) indicates a public member (e.g., `+ area() : double`).
+
+- Defining Relationships: Relationships are drawn using arrows between classes:
+
+  - `..|>` represents Interface Realization/Implementation (dashed line with an open arrow).
+
+  - `--|>` represents Inheritance/Generalization (solid line with an open arrow).
+
+  - `o-->` represents Aggregation (a hollow diamond pointing to the owner/container). The "*" indicates multiplicity (e.g., Drawing holds multiple Shape objects).
+
+For example see the code for generating the above figure in [uml-shapes.puml](plantuml/uml-shapes.puml).
+
+2. Generating the Figure
+   Once your code is written, you can easily compile it into a visual diagram: copy your code and paste it directly into the official [PlantUML Online Server](https://www.plantuml.com/plantuml/uml). It will instantly render the image for you to view or download.
+
+### Exercises
+
+**Question 1 — from UML to Java.** Write the Java declarations (class/interface
+headers, fields, and method signatures — you can leave the method bodies as
+`// ...`) for the following diagram. Watch the arrow styles: which class
+`extends`, and which `implements`?
+
+![UML diagram of an Account hierarchy](images/uml-accounts.png)
+
+<details>
+<summary>Show answer</summary>
+
+```java
+abstract class Account {
+    protected double balance;
+
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        // ...
+    }
+
+    public abstract boolean withdraw(double amount);
+}
+
+interface InterestBearing {
+    void addInterest();
+}
+
+class ChequingAccount extends Account {
+    private double overdraftLimit;
+
+    public ChequingAccount(double balance) {
+        super(balance);
+    }
+
+    public boolean withdraw(double amount) {
+        // ...
+    }
+}
+
+class SavingsAccount extends Account implements InterestBearing {
+    private double rate;
+
+    public SavingsAccount(double balance) {
+        super(balance);
+    }
+
+    public boolean withdraw(double amount) {
+        // ...
+    }
+
+    public void addInterest() {
+        // ...
+    }
+}
+```
+
+Note one thing the diagram does *not* show: because `Account` does not have a
+no-argument constructor, each subclass needs a constructor that calls
+`super(balance)`. UML
+leaves such details out, so you fill them in when you write the code.
+
+</details>
+
+**Question 2 — from Java to UML.** Draw the UML class diagram for the code below.
+Show each class/interface as a box (with its fields and methods) and the correct
+arrow between each pair.
+
+```java
+interface Chargeable {
+    void charge();
+}
+
+abstract class Vehicle {
+    protected String make;
+
+    public Vehicle(String make) {
+        this.make = make;
+    }
+
+    public abstract int maxSpeed();
+}
+
+class Car extends Vehicle {
+    public Car(String make) {
+        super(make);
+    }
+
+    public int maxSpeed() {
+        return 200;
+    }
+}
+
+class ElectricCar extends Car implements Chargeable {
+    private int batteryLevel;
+
+    public ElectricCar(String make) {
+        super(make);
+    }
+
+    public int maxSpeed() {
+        return 250;
+    }
+
+    public void charge() {
+        batteryLevel = 100;
+    }
+}
+```
+
+You can draw your answer in text with **PlantUML**: a starter file is provided at
+[plantuml/exercises/vehicles-uml-starter.puml](plantuml/exercises/vehicles-uml-starter.puml)
+(one box is filled in for you, with a syntax cheat-sheet in the comments). Open
+it in IntelliJ with the **PlantUML Integration** (plantuml4idea) plugin installed (it uses
+Graphviz to lay out class diagrams) and a live preview renders beside the file as
+you type — so you can build your diagram and watch it take shape, then check it
+against the solution below. This is the same `.puml` format the diagrams in these
+notes are written in.
+
+<details>
+<summary>Show answer</summary>
+
+`ElectricCar` extends `Car`, which extends `Vehicle` (two solid-triangle
+generalization arrows), and `ElectricCar` also implements `Chargeable` (a
+dashed-triangle realization arrow). `Vehicle` is abstract (italic), as is its
+`maxSpeed` method.
+
+![UML diagram of a Vehicle hierarchy](images/uml-vehicles.png)
+
+</details>

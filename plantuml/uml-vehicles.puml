@@ -1,0 +1,31 @@
+@startuml
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+hide empty members
+
+interface Chargeable {
+  + charge() : void
+}
+
+abstract class Vehicle {
+  # make : String
+  + Vehicle(make : String)
+  + {abstract} maxSpeed() : int
+}
+
+class Car {
+  + Car(make : String)
+  + maxSpeed() : int
+}
+
+class ElectricCar {
+  - batteryLevel : int
+  + ElectricCar(make : String)
+  + maxSpeed() : int
+  + charge() : void
+}
+
+Vehicle <|-- Car
+Car <|-- ElectricCar
+Chargeable <|.. ElectricCar
+@enduml
