@@ -60,6 +60,7 @@ You may also download the files locally. There are various viewers available to 
 ---
 
 ## Raising issues
-If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`. We will be using the issues system on GitHub to make revisions and updates to the course notes. You may use this to request additional resources or explanations on material, though we recommend referring to the course discussion board before making such requests here.
+If you notice any issues within the course notes, simply go to the `Issues` tab and open a `New issue`.
+Requests for additional resources or explanations on material should be directed to the course discussion board during the term.
 
 You may also open a pull request from your fork if you wish to propose revisions to the upstream notes; we will review and accept these manually.
