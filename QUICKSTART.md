@@ -1,8 +1,8 @@
 # Quickstart: Setting Up and Running the Course Code
 
-This guide walks you through **forking** the repository (required), cloning *your* fork, understanding the project structure, and running Java code — both the raw way (`javac`/`java`) and with Maven.
+This guide walks you through **forking** the repository (required), cloning *your* fork, understanding the project structure, and running Java code.
 
-Students must work on their own fork so they can commit and push exercise solutions and other course work.
+Students must work on their own fork so they can commit and push exercise solutions for course credit.
 
 ---
 
@@ -16,7 +16,7 @@ Students must work on their own fork so they can commit and push exercise soluti
 | **IntelliJ IDEA** | Any recent | *Optional but highly recommended* |
 
 
-### 🛠️ Installation Guide by Platform
+### Installation Guide by Platform
 
 #### Windows
 
@@ -78,14 +78,15 @@ sudo apt install git openjdk-11-jdk maven
 ```
 
 #### Installing IntelliJ IDEA
-- All Platforms: [Community Edition](https://www.jetbrains.com/idea/download/) is free and sufficient for this course
-- UofT Students: University of Toronto students can get the Ultimate edition free via [JetBrains for Students](https://www.jetbrains.com/community/education/)
+- All Platforms: [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) is free and sufficient for this course
+- UofT Students: University of Toronto students can get access to premium JetBrains products via [JetBrains for Students](https://www.jetbrains.com/community/education/)
 
 ---
 
 ## 1. Fork and Clone the Repository
 
-**Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote — you cannot push there. Fork first, then clone the fork under *your* GitHub account.
+**Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote — you cannot push your work there.
+Fork first, then clone the fork under *your* GitHub account.
 
 1. Open [https://github.com/CSC207-UofT/207-course-notes](https://github.com/CSC207-UofT/207-course-notes) while signed in to GitHub.
 2. Click **Fork** (top right) and create a fork under your account.
@@ -93,7 +94,7 @@ sudo apt install git openjdk-11-jdk maven
 
 ### Clone with IntelliJ (recommended)
 
-Cloning through IntelliJ opens the project in the right folder for you — no hunting for where `git clone` put the files.
+Cloning through IntelliJ is the easiest way to get started.
 
 - **Welcome screen** (no project open): click **Clone Repository**, paste your fork URL, choose a directory, and click **Clone**.
 - **Already have a project open**: **File → New → Project from Version Control…**, paste the same URL, choose a directory, and click **Clone**.
@@ -150,7 +151,7 @@ Before using a build tool it helps to understand what's happening under the hood
 
 ### Writing a Hello World
 
-Create a file called `HelloWorld.java`:
+Suppose we created a file called `HelloWorld.java` which contained:
 
 ```java
 public class HelloWorld {
@@ -162,7 +163,9 @@ public class HelloWorld {
 
 ### Compiling with `javac`
 
-`javac` is the Java compiler. It reads `.java` source files and produces `.class` bytecode files that the JVM can execute:
+`javac` is the Java compiler. It reads `.java` source files and produces `.class` bytecode files that the JVM can execute.
+
+For the above `HelloWorld.java`, we could compile it as:
 
 ```bash
 javac HelloWorld.java     # produces HelloWorld.class
@@ -170,7 +173,9 @@ javac HelloWorld.java     # produces HelloWorld.class
 
 ### Running with `java`
 
-`java` launches the JVM and runs the bytecode:
+`java` launches the JVM and runs the bytecode.
+
+For the above example, we could then run our program with:
 
 ```bash
 java HelloWorld           # prints: Hello, World!
@@ -196,7 +201,8 @@ Managing classpaths and directories by hand gets tedious quickly — that's why 
 
 ## 4. Using Maven
 
-Maven automates compilation, dependency management, testing, and packaging. Run all commands from the repository root:
+Maven automates compilation, dependency management, testing, and packaging.
+Run all commands from the repository root:
 
 ```bash
 cd 207-course-notes   # the folder containing the top-level pom.xml
@@ -263,7 +269,9 @@ mvn -P exercises test               # build + test code AND all exercises
 mvn -P exercises test -pl exercises/ex01-odd-sum   # just one exercise
 ```
 
-We keep the exercises behind a profile on purpose: a starter exercise may ship with intentionally-incomplete code that does not compile yet, and we don't want that to break the default build. The profile is declared in the root [pom.xml](pom.xml):
+We keep the exercises behind a profile on purpose: a starter exercise may contain intentionally-incomplete code that does not compile yet,
+and we don't want that to break the default build.
+The profile is declared in the root [pom.xml](pom.xml):
 
 ```xml
 <profiles>
@@ -276,7 +284,9 @@ We keep the exercises behind a profile on purpose: a starter exercise may ship w
 </profiles>
 ```
 
-In IntelliJ you don't use `-P` — open the **Maven** tool window, expand **Profiles**, and tick **`exercises`**, then click **Reload All Maven Projects**. The exercise modules then appear in the project and you can press the green ▶ on any of them. See [exercises/README.md](exercises/README.md) for more.
+In IntelliJ you don't use `-P` — open the **Maven** tool window, expand **Profiles**, and tick **`exercises`**, then click **Reload All Maven Projects**.
+The exercise modules then appear in the project and you can press the green ▶ on any of them.
+See [exercises/README.md](exercises/README.md) for more.
 
 ---
 
