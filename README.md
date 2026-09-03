@@ -14,6 +14,11 @@ You may also download the files locally. There are various viewers available to 
 
 ## Table of Contents
 
+### Getting Started
+
+- [Quickstart guide](QUICKSTART.md)
+- [Developer Roles: A Course Roadmap](developer-roles.md)
+
 ### Basics of Git and Java
 
 - [Chapter 0. Working with Git in CSC207](00-introduction-to-git.md)
