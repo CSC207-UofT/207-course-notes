@@ -1,6 +1,7 @@
 # Quickstart: Setting Up and Running the Course Code
 
-This guide walks you through **forking** the repository (required), cloning *your* fork, understanding the project structure, and running Java code.
+This guide walks you through **forking** the repository (required), cloning *your* fork,
+understanding the project structure, and running Java code.
 
 Students must work on their own fork so they can commit and push exercise solutions for course credit.
 
