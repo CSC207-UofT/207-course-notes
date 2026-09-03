@@ -33,7 +33,8 @@ winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
 
 3. Extract the downloaded folder to a permanent location (e.g., `C:\Program Files\maven\`).
 
-4. Search your Windows Start Menu for "Environment Variables", click Environment Variables, find Path under "System Variables", click edit, and add the path to your Maven bin folder (e.g., `C:\Program Files\maven\bin`).
+4. Search your Windows Start Menu for "Environment Variables", click Environment Variables, find Path under "System Variables",
+   click edit, and add the path to your Maven bin folder (e.g., `C:\Program Files\maven\bin`).
 
 #### Windows Subsystem for Linux (WSL)
 
@@ -141,7 +142,8 @@ git remote -v   # origin → your fork; upstream → CSC207-UofT
 
 Maven enforces this standard layout so every Maven project looks the same.
 
-The `code/target/` directory (Maven build output) and `.idea/` (IntelliJ config) are excluded from Git via `.gitignore` — see [Section 7](#7-whats-in-gitignore) for details.
+The `code/target/` directory (Maven build output) and `.idea/` (IntelliJ config) are excluded
+from Git via `.gitignore` — see [Section 7](#7-whats-in-gitignore) for details.
 
 ---
 
@@ -183,7 +185,8 @@ java HelloWorld           # prints: Hello, World!
 
 ### Packages and directory structure
 
-In a real project, classes live in **packages**. Java requires that the source file's location matches the package name, and that you compile and run from the **root of the source tree**, not from inside the package folder.
+In a real project, classes live in **packages**. Java requires that the source file's location matches the package name,
+and that you compile and run from the **root of the source tree**, not from inside the package folder.
 
 For example, `HelloWorld.java` in this repo declares `package cs.toronto.edu.csc207.hello;`. To compile and run it by hand:
 
@@ -193,7 +196,8 @@ javac cs/toronto/edu/csc207/hello/HelloWorld.java
 java cs.toronto.edu.csc207.hello.HelloWorld
 ```
 
-Running `java HelloWorld` from inside the package folder fails because the JVM looks for a class named `HelloWorld` but the bytecode declares itself as `cs.toronto.edu.csc207.hello.HelloWorld`.
+Running `java HelloWorld` from inside the package folder fails because the JVM looks for a class named `HelloWorld` but
+the bytecode declares itself as `cs.toronto.edu.csc207.hello.HelloWorld`.
 
 Managing classpaths and directories by hand gets tedious quickly — that's why we use Maven.
 
@@ -254,7 +258,8 @@ mvn compile -pl code
 
 ### Profiles
 
-A **profile** is a named bundle of Maven configuration that is *off by default* and only applied when you ask for it. Profiles let one `pom.xml` describe more than one kind of build — for example "the normal build" versus "the normal build plus the exercises."
+A **profile** is a named bundle of Maven configuration that is *off by default* and only applied when you ask for it.
+Profiles let one `pom.xml` describe more than one kind of build — for example "the normal build" versus "the normal build plus the exercises."
 
 This repo uses a profile called `exercises`. The default build only compiles the `code` module:
 
@@ -284,8 +289,9 @@ The profile is declared in the root [pom.xml](pom.xml):
 </profiles>
 ```
 
-In IntelliJ you don't use `-P` — open the **Maven** tool window, expand **Profiles**, and tick **`exercises`**, then click **Reload All Maven Projects**.
-The exercise modules then appear in the project and you can press the green ▶ on any of them.
+In IntelliJ, you don't use `-P` — open the **Maven** tool window, expand **Profiles**, and tick **`exercises`**,
+then click **Reload All Maven Projects**.
+The exercise modules then appear in the project, and you can press the green ▶ on any of them.
 See [exercises/README.md](exercises/README.md) for more.
 
 ---
@@ -370,4 +376,5 @@ The root `.gitignore` excludes files that are either generated on demand or mach
 | `.DS_Store` | macOS filesystem metadata |
 | `hs_err_pid*`, `replay_pid*` | JVM crash logs |
 
-Never commit build artifacts or IDE-generated files. Anyone cloning the repo can regenerate them by running `mvn compile` or opening the project in IntelliJ.
+Never commit build artifacts or IDE-generated files.
+Anyone cloning the repo can regenerate them by running `mvn compile` or opening the project in IntelliJ.
