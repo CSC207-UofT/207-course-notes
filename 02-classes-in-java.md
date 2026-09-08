@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 2: Classes in Java](#chapter-2-classes-in-java)
+  - [2.1. Classes](#21-classes)
+  - [2.2. Variables in classes](#22-variables-in-classes)
+  - [2.3. Visibility and Access Modifiers](#23-visibility-and-access-modifiers)
+  - [2.4. Constructors](#24-constructors)
+  - [2.5. Overloading methods](#25-overloading-methods)
+  - [2.6. Overriding methods](#26-overriding-methods)
+  - [2.7. Class (static) methods](#27-class-static-methods)
+  - [2.8 Keyword `final`](#28-keyword-final)
+  - [2.9. Exercises](#29-exercises)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 2: Classes in Java
 
 ## 2.1. Classes

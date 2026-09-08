@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 8: Program Specification](#chapter-8-program-specification)
+  - [8.1. From specification to classes: noun–verb analysis](#81-from-specification-to-classes-nounverb-analysis)
+  - [8.2. Checking your design: scenario walk-throughs](#82-checking-your-design-scenario-walk-throughs)
+  - [8.3. User stories](#83-user-stories)
+  - [8.4. Use cases](#84-use-cases)
+  - [8.5. Exercises](#85-exercises)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 8: Program Specification
 
 Now that we have the fundamentals of OOP in Java out of the way, we are ready to think more deeply about how we go about developing a program.

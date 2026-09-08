@@ -1,3 +1,15 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 5: Java Gotchas and Subtleties](#chapter-5-java-gotchas-and-subtleties)
+  - [5.1. Shadowing](#51-shadowing)
+  - [5.2. Array Copy](#52-array-copy)
+  - [5.3. Autoboxing](#53-autoboxing)
+  - [5.4. Exercise](#54-exercise)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 5: Java Gotchas and Subtleties
 
 In this chapter we'll highlight a few aspects of Java that sometimes get overlooked

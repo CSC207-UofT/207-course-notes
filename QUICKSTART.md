@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Quickstart: Setting Up and Running the Course Code](#quickstart-setting-up-and-running-the-course-code)
+  - [Prerequisites](#prerequisites)
+  - [1. Fork and Clone the Repository](#1-fork-and-clone-the-repository)
+  - [2. Project Structure](#2-project-structure)
+  - [3. Java Basics: Compiling and Running by Hand](#3-java-basics-compiling-and-running-by-hand)
+  - [4. Using Maven](#4-using-maven)
+  - [5. Opening in IntelliJ IDEA](#5-opening-in-intellij-idea)
+  - [6. Test Folder Structure](#6-test-folder-structure)
+  - [7. What's in `.gitignore`?](#7-whats-in-gitignore)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Quickstart: Setting Up and Running the Course Code
 
 This guide walks you through **forking** the repository (required), cloning *your* fork,
@@ -90,6 +106,24 @@ sudo apt install git openjdk-11-jdk maven
 **Work on your own fork.** Do not clone `CSC207-UofT/207-course-notes` as your day-to-day remote — you cannot push your work there.
 Fork first, then clone the fork under *your* GitHub account.
 
+
+### Getting a GitHub Account
+We will be using GitHub for many of the coding tasks this term and for the team project.
+As such, you will need to create a GitHub account if you don't already have one.
+As a student, you can also sign up for the [GitHub Student Developer Pack](https://education.github.com/pack), which gives you free
+access to a number of great software development tools.
+
+There are instructions at https://www.jetbrains.com/help/idea/github.html outlining how to set up
+your GitHub account so that it properly authenticates when IntelliJ accesses your remote repositories
+on GitHub. In particular, you will need to generate and use a **token** as it describes.
+
+> An alternative to using tokens through IntelliJ is to set up GitHub Authentication using the CLI via a personal access token (PAT).
+> Note: If you want to interact with a git repository hosted on GitHub from the command line, then you will need to do this;
+> GitHub has [offical documentation about creating and managing PATs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+> Additional instructions will also be available on Quercus during the term.
+
+Once you have a GitHub account, you can continue to fork and clone your repo:
+
 1. Open [https://github.com/CSC207-UofT/207-course-notes](https://github.com/CSC207-UofT/207-course-notes) while signed in to GitHub.
 2. Click **Fork** (top right) and create a fork under your account.
 3. On your fork’s GitHub page, click **Code** and copy the HTTPS URL (it should look like `https://github.com/YOUR-USERNAME/207-course-notes.git`).
@@ -151,6 +185,9 @@ from Git via `.gitignore` — see [Section 7](#7-whats-in-gitignore) for details
 ## 3. Java Basics: Compiling and Running by Hand
 
 Before using a build tool it helps to understand what's happening under the hood.
+
+> Note, this is also described later in the course notes, but we mention it briefly here just to motivate
+> why we are using Maven.
 
 ### Writing a Hello World
 

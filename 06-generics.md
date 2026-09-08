@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 6: Generics](#chapter-6-generics)
+  - [6.1. Custom Generic Classes](#61-custom-generic-classes)
+  - [6.2. bounded type parameters](#62-bounded-type-parameters)
+  - [6.3. Exercise](#63-exercise)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 6: Generics
 
 Generics are a way for programmers to generalize the type that a class

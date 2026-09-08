@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 7: Collections](#chapter-7-collections)
+  - [7.1. Implementations](#71-implementations)
+  - [7.2. The Java Collections Framework](#72-the-java-collections-framework)
+  - [7.3. Exercise](#73-exercise)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
 # Chapter 7: Collections
 

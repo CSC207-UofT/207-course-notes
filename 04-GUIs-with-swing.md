@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 4: Graphical user interfaces in Java](#chapter-4-graphical-user-interfaces-in-java)
+  - [4.1 Creating and showing a window in Java](#41-creating-and-showing-a-window-in-java)
+  - [4.2 Java Swing visual components](#42-java-swing-visual-components)
+  - [4.3 Handling button clicks](#43-handling-button-clicks)
+  - [4.4 Exercises](#44-exercises)
+  - [4.5. Testing UI code](#45-testing-ui-code)
+  - [Further reading](#further-reading)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 4: Graphical user interfaces in Java
 Now that we are familiar with the basics of programming in Java, we'll take our next step
 towards making a visual Java application: creating a basic user interface.

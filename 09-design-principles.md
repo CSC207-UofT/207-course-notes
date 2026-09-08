@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 9: Design principles](#chapter-9-design-principles)
+  - [9.1. Toward a set of software design principles](#91-toward-a-set-of-software-design-principles)
+  - [9.2. The SOLID principles](#92-the-solid-principles)
+  - [9.3. Exercise: examples of SOLID in Java](#93-exercise-examples-of-solid-in-java)
+  - [9.4. Exercises: applying the principles](#94-exercises-applying-the-principles)
+  - [9.5. Beyond SOLID](#95-beyond-solid)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 9: Design principles
 
 ## 9.1. Toward a set of software design principles

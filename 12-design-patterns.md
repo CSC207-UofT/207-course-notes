@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 12: Design Patterns](#chapter-12-design-patterns)
+  - [12.1 What is a Design Pattern?](#121-what-is-a-design-pattern)
+  - [12.2. Creational Patterns](#122-creational-patterns)
+  - [12.3. Behavioural Patterns](#123-behavioural-patterns)
+  - [12.4. Structural Patterns](#124-structural-patterns)
+  - [12.5. Summary](#125-summary)
+  - [12.6 Code Examples](#126-code-examples)
+  - [12.7. Exercise](#127-exercise)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 12: Design Patterns
 
 By the end of this chapter, you should be familiar with:
