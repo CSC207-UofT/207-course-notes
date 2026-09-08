@@ -19,7 +19,11 @@
 This guide walks you through **forking** the repository (required), cloning *your* fork,
 understanding the project structure, and running Java code.
 
-Students must work on their own fork so they can commit and push exercise solutions for course credit.
+> Note: You must work on their own fork so you can commit and push exercise solutions for course credit.
+
+> If you encounter any errors during software installation, please don't hesitate to ask for help;
+> during lab and in office hours we can help ensure that you have everything you need to get started
+> with the programming elements of the course. You can also post questions on Piazza.
 
 ---
 
@@ -32,6 +36,11 @@ Students must work on their own fork so they can commit and push exercise soluti
 | **Maven**| 3.9 or later | `mvn -version` |
 | **IntelliJ IDEA** | Any recent | *Optional but highly recommended* |
 
+> Note: after installing your JDK, you may need to restart your IDE or terminal before the commands
+> above for checking their versions will run. In general, restarting your IDE may be required after
+> installing new software.
+
+> Note: `mvn -version` may require your terminal to be run as an Administrator if on Windows
 
 ### Installation Guide by Platform
 
@@ -45,6 +54,11 @@ winget install --id Git.Git -e --source winget
 :: Install OpenJDK 11 (Eclipse Temurin)
 winget install --id EclipseAdoptium.Temurin.11.JDK -e --source winget
 ```
+
+  > Note: In the course we will be using Maven primarily through IntelliJ IDEA, so if you have
+  > trouble with the following step then you will still be able to use Maven through your IDE since a
+  > version of Maven is bundled with IntelliJ IDEA. It is just if you want to directly run these
+  > commands that installing Maven is necessary.
 
 2. Install Apache Maven: Because Maven is not natively supported by WinGet, download the Binary zip archive directly from [maven.apache.org](https://maven.apache.org/download.cgi).
 
@@ -72,6 +86,8 @@ sudo apt install git openjdk-11-jdk maven
 ```
 
 #### macOS
+
+We recommend using Homebrew for installation.
 
 Open your terminal and run:
 
@@ -312,6 +328,11 @@ mvn -P exercises test               # build + test code AND all exercises
 mvn -P exercises test -pl exercises/ex01-odd-sum   # just one exercise
 ```
 
+> Note: you may see errors indicating that the tests are not passing when you run them initially.
+> This is expected until you complete an exercise. Carefully read the error message to understand
+> what the error is indicating. It may take a bit of time to get comfortable parsing the
+> Maven output.
+
 We keep the exercises behind a profile on purpose: a starter exercise may contain intentionally-incomplete code that does not compile yet,
 and we don't want that to break the default build.
 The profile is declared in the root [pom.xml](pom.xml):
@@ -340,7 +361,14 @@ If you cloned with IntelliJ in [Section 1](#1-fork-and-clone-the-repository), th
 
 1. Launch IntelliJ and choose **File → Open**
 2. Select the root `207-course-notes/` folder (the one containing `pom.xml`)
+
+  > You may see a warning that your project doesn't have a Project JDK defined.
+  > Choose the JDK that you installed (E.g., Eclipse Temurin 11). This warning may also
+  > appear later when you try running a program.
 3. IntelliJ detects Maven and shows a **"Load Maven Project"** notification in the bottom-right — click it
+
+  > Note: sometimes this won't appear; in that case, right-click the pom.xml file and select the option
+  > to link the Maven Project. See also the troubleshooting note below if you have any issues here.
 4. Wait for indexing to complete (progress bar in the bottom right)
 
 ### Running a class with a `main` method
@@ -348,10 +376,15 @@ If you cloned with IntelliJ in [Section 1](#1-fork-and-clone-the-repository), th
 - Open any `.java` file that has a `main` method (e.g., [HelloWorld.java](code/src/main/java/cs/toronto/edu/csc207/hello/HelloWorld.java))
 - Click the green **▶** icon in the gutter next to `main`, or right-click → **Run**
 
+> Note: this HelloWorld.java file is deeply nested in the code/src directory; clicking the link above
+> can quickly open the file for you in your IDE.
+
 ### Running tests
 
-- Right-click the `src/test/java` folder → **Run 'All Tests'**
+- Right-click the `code/src/test/java` folder → **Run 'All Tests'**
 - Or click the **▶** gutter icon next to any individual `@Test` method
+
+> Note: it may say **Run "Tests in 'java'"**, depending on your OS, instead of **Run 'All Tests'**.
 
 ### Troubleshooting: project not recognised as Maven
 
