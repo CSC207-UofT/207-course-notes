@@ -114,6 +114,9 @@ sudo apt install git openjdk-11-jdk maven
 #### Installing IntelliJ IDEA
 - All Platforms: [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) is free and sufficient for this course
 - UofT Students: University of Toronto students can get access to premium JetBrains products via [JetBrains for Students](https://www.jetbrains.com/community/education/)
+  > Note: if applying for the developer pack, JetBrains requires that you provide a personal email address
+  > and your student email address. These need to be different email addresses, or you may encounter
+  > problems with getting access. 
 
 ---
 
