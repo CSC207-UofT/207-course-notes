@@ -1,3 +1,19 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 3: Relationships between Classes](#chapter-3-relationships-between-classes)
+  - [3.1. Inheritance](#31-inheritance)
+  - [3.2. Interfaces](#32-interfaces)
+  - [3.3. super](#33-super)
+  - [3.4. Polymorphism](#34-polymorphism)
+  - [3.5. Casting](#35-casting)
+  - [3.6. Comparable](#36-comparable)
+  - [3.7. Comparator](#37-comparator)
+  - [3.8. UML Class Diagrams](#38-uml-class-diagrams)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 3: Relationships between Classes
 
 ## 3.1. Inheritance

@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 0: Working with Git in CSC207](#chapter-0-working-with-git-in-csc207)
+  - [0.1. Learn Git interactively](#01-learn-git-interactively)
+  - [0.2. A mental model for Git](#02-a-mental-model-for-git)
+  - [0.3. Course project expectations](#03-course-project-expectations)
+  - [0.4. Feature development workflow](#04-feature-development-workflow)
+  - [0.5. When something goes wrong](#05-when-something-goes-wrong)
+  - [0.6. More resources on Git](#06-more-resources-on-git)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 0: Working with Git in CSC207
 
 Git is the version control system used in this course. It records the history of a project and lets team members develop changes independently before combining them. GitHub hosts a shared copy of a Git repository and adds collaboration tools such as issues, pull requests, and code review; Git and GitHub are related, but they are not the same thing.

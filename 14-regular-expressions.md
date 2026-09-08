@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 14: Regular Expressions](#chapter-14-regular-expressions)
+  - [Learning Objectives](#learning-objectives)
+  - [14.1. What is a regular expression?](#141-what-is-a-regular-expression)
+  - [14.2. Some Useful Regex Symbols with Examples](#142-some-useful-regex-symbols-with-examples)
+  - [14.3. Repeating Patterns with Quantifiers](#143-repeating-patterns-with-quantifiers)
+  - [14.4. Example: A Pattern for Java Instance Variable Names](#144-example-a-pattern-for-java-instance-variable-names)
+  - [14.5. Special symbols](#145-special-symbols)
+  - [14.6. Regex in Java](#146-regex-in-java)
+  - [14.7. What Can We Do with Regular Expressions?](#147-what-can-we-do-with-regular-expressions)
+  - [14.8. Exercises](#148-exercises)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 14: Regular Expressions
 
 ## Learning Objectives

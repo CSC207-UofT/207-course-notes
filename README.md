@@ -10,8 +10,6 @@ This repository contains various Markdown (MD) files as the course notes.
 
 To just read the course notes: select the chapter you're interested in. GitHub will parse it for you, so you can read it within the GitHub interface.
 
-You may also download the files locally. There are various viewers available to read MD files such as the Markdown Viewer extension on Chrome. IntelliJ can also parse MD files.
-
 ## Table of Contents
 
 ### Getting Started
@@ -22,34 +20,49 @@ You may also download the files locally. There are various viewers available to 
 ### Basics of Git and Java
 
 - [Chapter 0. Working with Git in CSC207](00-introduction-to-git.md)
+
 - [Chapter 1. Introduction to Java](01-introduction-to-java.md)
+
+  - [1.0 Why learn Java?](01-introduction-to-java.md#10-why-learn-java)
+
+  - [1.1 A first look at Java](01-introduction-to-java.md#11-a-first-look-at-java)
+
+  - [1.2 Variables and Types](01-introduction-to-java.md#12-variables-and-types)
+
+  - [1.3 Reference and Primitive Types](01-introduction-to-java.md#13-reference-types-and-primitive-types)
+
+  - [1.4 Strings](01-introduction-to-java.md#14-strings)
+
+  - [1.5 Classes](01-introduction-to-java.md#15-classes-in-java)
+
+  - [1.6 Arrays](01-introduction-to-java.md#16-arrays)
+
+  - [1.7 Aliases](01-introduction-to-java.md#17-aliases)
+
+  - [1.8 Control Structures](01-introduction-to-java.md#18-control-structures)
+
+  - [1.9 Parameters](01-introduction-to-java.md#19-parameters)
+
+  - [1.10 Exercises](01-introduction-to-java.md#110-exercises)
+
 - [Code Style and Documentation (CheckStyle & JavaDoc)](code-style-and-documentation.md)
 
-### OOP in Java
+### Java
 
 - [Chapter 2. Classes in Java](02-classes-in-java.md)
 - [Chapter 3. Relationships between Classes](03-relationships-between-classes.md)
-
-### More Java
-
 - [Chapter 4. GUIs with Swing](04-GUIs-with-swing.md)
 - [Chapter 5. Java Gotchas and Subtleties](05-java-gotchas-and-subtleties.md)
 - [Chapter 6. Generics](06-generics.md)
 - [Chapter 7. Collections](07-collections.md)
 - [APIs, JSON, and Files](apis-json-and-files.md)
+
+### Design and Architecture
+
 - [Chapter 8. Program Specification](08-program-specification.md)
-
-### Design Principles
-
 - [Chapter 9. Design Principles](09-design-principles.md)
-
-### Software Architecture
-
 - [Chapter 10. Introduction to Layered Architectures](10-introduction-to-layered-architectures.md)
 - [Chapter 11. The Clean Architecture](11-clean-architecture.md)
-
-### Design Patterns
-
 - [Chapter 12. Design Patterns](12-design-patterns.md)
 - [Chapter 13. Refactoring Techniques](13-refactoring-techniques.md)
 

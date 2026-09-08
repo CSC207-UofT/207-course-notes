@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 11: The Clean Architecture](#chapter-11-the-clean-architecture)
+  - [11.1. The Dependency Rule](#111-the-dependency-rule)
+  - [11.2. The Clean Architecture Engine](#112-the-clean-architecture-engine)
+  - [11.3. Clean Architecture By Layer](#113-clean-architecture-by-layer)
+  - [11.4. Our CA Engine in Action](#114-our-ca-engine-in-action)
+  - [11.5. The Main Component](#115-the-main-component)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 11: The Clean Architecture
 
 In the last chapter, we explored how software systems can be organized into layers that separate high-level policies from low-level details.

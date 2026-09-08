@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 1: Introduction to Java](#chapter-1-introduction-to-java)
+  - [1.0 Why Learn Java?](#10-why-learn-java)
+  - [1.1. A first look at Java](#11-a-first-look-at-java)
+  - [1.2. Variables and Types](#12-variables-and-types)
+  - [1.3. Reference Types and Primitive Types](#13-reference-types-and-primitive-types)
+  - [1.4. Strings](#14-strings)
+  - [1.5. Classes in Java](#15-classes-in-java)
+  - [1.6. Arrays](#16-arrays)
+  - [1.7. Aliases](#17-aliases)
+  - [1.8. Control Structures](#18-control-structures)
+  - [1.9. Parameters](#19-parameters)
+  - [1.10. Exercises](#110-exercises)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 1: Introduction to Java
 
 ## 1.0 Why Learn Java?

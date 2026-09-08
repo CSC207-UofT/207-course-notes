@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [APIs, JSON, and Files](#apis-json-and-files)
+  - [Calling a web API](#calling-a-web-api)
+  - [JSON](#json)
+  - [Reading and writing files](#reading-and-writing-files)
+  - [Saving and loading your data](#saving-and-loading-your-data)
+  - [A complete example you can run](#a-complete-example-you-can-run)
+  - [Exercise](#exercise)
+  - [Further reading](#further-reading)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # APIs, JSON, and Files
 
 So far our programs have been self-contained: everything they need is created in

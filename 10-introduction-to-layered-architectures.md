@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 10: Introduction to layered architectures](#chapter-10-introduction-to-layered-architectures)
+  - [10.1. Event-driven programming: a network of objects](#101-event-driven-programming-a-network-of-objects)
+  - [10.2. Layers and coupling](#102-layers-and-coupling)
+  - [10.3. Model View Controller (MVC) architecture pattern](#103-model-view-controller-mvc-architecture-pattern)
+  - [10.4. Model View Presenter (MVP) architecture pattern](#104-model-view-presenter-mvp-architecture-pattern)
+  - [10.5. More fine-grained layered architectures](#105-more-fine-grained-layered-architectures)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 10: Introduction to layered architectures
 
 “Low coupling, high cohesion” is one of the most important concepts in the software development industry. It’s a guiding principle for organizing code so that different parts of a program are easy to understand, test, and change independently.

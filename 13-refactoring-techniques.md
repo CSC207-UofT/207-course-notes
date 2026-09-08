@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chapter 13: Refactoring Techniques](#chapter-13-refactoring-techniques)
+  - [13.1. What is refactoring?](#131-what-is-refactoring)
+  - [13.2. `Extract Method`](#132-extract-method)
+  - [13.3. `Change Method Declaration`](#133-change-method-declaration)
+  - [13.4. `Encapsulate Fields`](#134-encapsulate-fields)
+  - [13.5. `Split Loop`](#135-split-loop)
+  - [13.6. `Slide Statements`](#136-slide-statements)
+  - [13.7. `Replace Constructor with Builder`](#137-replace-constructor-with-builder)
+  - [13.8. `Replace Constructor with Factory Method`](#138-replace-constructor-with-factory-method)
+  - [13.9. Exercises](#139-exercises)
+  - [13.10. Additional Reading:](#1310-additional-reading)
+  - [13.11. Helpful links:](#1311-helpful-links)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chapter 13: Refactoring Techniques
 
 This chapter covers some common refactoring techniques. For each technique, there is a short description

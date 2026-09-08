@@ -1,3 +1,16 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Code Style and Documentation](#code-style-and-documentation)
+  - ["Clean as You Code"](#clean-as-you-code)
+  - [Code style and CheckStyle](#code-style-and-checkstyle)
+  - [Documentation with JavaDoc](#documentation-with-javadoc)
+  - [Exercise: clean it up](#exercise-clean-it-up)
+  - [Summary](#summary)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Code Style and Documentation
 
 Once your code *works*, you are only halfway done. Code is read far more often
