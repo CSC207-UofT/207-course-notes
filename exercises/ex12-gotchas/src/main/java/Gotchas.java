@@ -28,8 +28,7 @@ public class Gotchas {
    * @param name the new name
    */
   public void setName(String name) {
-    // TODO: assign the parameter to the FIELD (hint: use `this`).
-    name = name;
+    this.name = name;
   }
 
   /**
@@ -41,9 +40,13 @@ public class Gotchas {
    * @return a copy whose inner arrays are also copies (nothing shared with grid)
    */
   public static int[][] deepCopy(int[][] grid) {
-    // TODO: build a new outer array and copy EACH inner array too, so that
-    //       nothing is shared with `grid`.
-    return grid.clone();
+    int[][] new_list = new int[grid.length][];
+
+    for (int i = 0; i < grid.length; i++){
+      new_list[i] = grid[i].clone();
+    }
+
+    return new_list;
   }
 
   /**
@@ -57,7 +60,8 @@ public class Gotchas {
    * @return true iff a and b hold the same int value
    */
   public static boolean sameValue(Integer a, Integer b) {
-    // TODO: compare the VALUES, not the references.
-    return a == b;
+    int aValue = a;
+    int bValue = b;
+    return aValue == bValue;
   }
 }
