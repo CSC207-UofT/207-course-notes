@@ -60,6 +60,7 @@ To just read the course notes: select the chapter you're interested in. GitHub w
 ### Design and Architecture
 
 - [Chapter 8. Program Specification](08-program-specification.md)
+  - [Embedded Ethics](embedded-ethics.md)
 - [Chapter 9. Design Principles](09-design-principles.md)
 - [Chapter 10. Introduction to Layered Architectures](10-introduction-to-layered-architectures.md)
 - [Chapter 11. The Clean Architecture](11-clean-architecture.md)
