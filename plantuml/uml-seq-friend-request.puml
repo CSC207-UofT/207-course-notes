@@ -1,0 +1,23 @@
+@startuml
+
+actor User
+participant "Client" as Client
+participant "sender: User" as Sender
+participant "recipient: User" as Recipient
+
+User -> Client: ask to send friend request
+
+Client -> Sender: isFriendWith(recipient)
+Sender --> Client: false
+
+Client -> Sender: hasPendingRequestWith(recipient)
+Sender --> Client: false
+
+create participant "request: FriendRequest" as Request
+Client -> Request: FriendRequest(sender, recipient)
+
+Client -> Recipient: addPendingRequest(request)
+
+Client --> User: show request as pending
+
+@enduml
