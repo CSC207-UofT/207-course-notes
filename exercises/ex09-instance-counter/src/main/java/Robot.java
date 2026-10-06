@@ -27,10 +27,9 @@ public class Robot {
    * @param name this Robot's name
    */
   public Robot(String name) {
-    // TODO: set this.name; set this.id to the current value of count (so the
-    //       first Robot gets id 0); then increase count by 1.
-    this.id = 0;
-    this.name = null;
+    this.id = count;
+    this.name = name;
+    count++;
   }
 
   /**
@@ -39,8 +38,7 @@ public class Robot {
    * @return the shared Robot count
    */
   public static int getCount() {
-    // TODO
-    return 0;
+    return count;
   }
 
   /**
@@ -49,8 +47,7 @@ public class Robot {
    * @return this Robot's id
    */
   public int getId() {
-    // TODO
-    return 0;
+    return this.id;
   }
 
   /**
@@ -59,7 +56,6 @@ public class Robot {
    * @return this Robot's name
    */
   public String getName() {
-    // TODO
-    return null;
+    return this.name;
   }
 }
