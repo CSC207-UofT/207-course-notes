@@ -7,7 +7,8 @@
   - [8.2. Checking your design: scenario walk-throughs](#82-checking-your-design-scenario-walk-throughs)
   - [8.3. User stories](#83-user-stories)
   - [8.4. Use cases](#84-use-cases)
-  - [8.5. Exercises](#85-exercises)
+  - [8.5. Sequence diagrams](#85-sequence-diagrams)
+  - [8.6. Exercises](#86-exercises)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -258,7 +259,98 @@ In Clean Architecture, the use case interactor implements the application-specif
 
 Once the team chooses a scoped story to implement, the [feature development workflow](00-introduction-to-git.md#04-feature-development-workflow) gives one way to organize the implementation and review work.
 
-## 8.5. Exercises
+## 8.5. Sequence diagrams
+
+A **UML sequence diagram** is a useful way to make a scenario walk-through
+concrete. While a class diagram shows the structure of a design, a sequence
+diagram shows how particular objects interact over time to carry out a
+scenario.
+
+> It is similar to the distinction between reading code and tracing an actual execution of the code.
+
+Note: UML also has Use Case diagrams; these are another way to visually
+represent use cases, but they are more abstract than sequence diagrams.
+We won't discuss Use Case diagrams here, but you are welcome to use them
+when reasoning about and organizing the use cases for your programs.
+
+### From classes to objects
+
+Recall the main success scenario for **Send a Friend Request** from [§8.4](#84-use-cases):
+
+1. The user asks to send a friend request.
+2. The system checks that a request is currently allowed.
+3. The system records the pending friend request.
+4. The system shows the user that the request is pending.
+5. The system notifies the other user of the request.
+
+Suppose our current design includes `User` and `FriendRequest`:
+
+![UML Class Diagram for the User and FriendRequest classes](images/uml-user-friend-request.png)
+
+A class diagram describes types of objects. A sequence diagram instead shows
+particular objects participating in a scenario. For example, this scenario
+involves two different instances of `User`: the `sender` and the `recipient`.
+
+We can walk through part of the scenario like this:
+
+![Sequence Diagram for Friend Request Use Case](images/uml-seq-friend-request.png)
+
+Time proceeds from top to bottom. The vertical lines are **lifelines**, showing
+the objects involved in the interaction. Horizontal arrows show **messages**
+between them. In the Java programs we are designing, these messages correspond
+to **method calls**: one object calls a method on another object.
+
+> You can think of a sequence diagram as somewhat like a call stack
+> turned on its side. It shows method calls between particular objects,
+> with time proceeding from top to bottom rather than showing
+> the active calls stacked on top of one another.
+
+The `sender` and `recipient` already exist when this scenario begins. The
+`FriendRequest` is created during the interaction, so its lifeline begins at
+that point.
+
+For now, `Client` is simply a placeholder for whatever code coordinates the
+interaction with our entity objects. We will consider where that responsibility
+belongs when we study program architecture later in the course.
+
+> You may also see `System` or other names used instead of `Client`.
+
+### Using a sequence diagram to check a design
+
+When constructing the sequence diagram, check that every message (method call)
+sent to an object is supported by a method in its class on the class diagram.
+If the scenario requires a method call that the receiving object's class
+does not support, the walk-through has revealed a possible gap in the design.
+
+A sequence diagram may also reveal design questions. For example, our use case
+says that the other user must be notified of the friend request, but our current
+design does not say which part of the program is responsible for that.
+
+There may be several reasonable ways to answer questions like this. Different
+answers may lead to different designs. Walking through a scenario helps us
+identify these questions and evaluate whether our design supports the behaviour
+we need.
+
+A program will typically have one class diagram describing its overall
+design, but we can draw many sequence diagrams for it. Each sequence diagram
+walks through a particular scenario that the design needs to support.
+
+For example, the same class diagram might be used to walk through sending a
+friend request, accepting a friend request, and removing a friend. Each scenario
+checks a different part of the design. Ultimately, the class design must support
+all of the program’s use cases.
+
+Class diagrams and sequence diagrams therefore give us complementary views:
+
+- A **class diagram** shows the classes, their responsibilities, and their
+  relationships.
+- A **sequence diagram** shows how particular objects collaborate through
+  method calls over time to carry out one scenario.
+
+In the next chapter, we'll learn about **design principles**,
+which will help us assess the quality of a class design.
+
+## 8.6. Exercises
 
 These are written design exercises: there is no code to run and no automated
 test. Work them on paper (or in a `.puml` file) and, ideally, compare answers

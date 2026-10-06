@@ -1,0 +1,27 @@
+@startuml
+
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+hide empty members
+hide circle
+left to right direction
+
+class User {
+    - username: String
+    - friends: List<User>
+    - pendingRequests: List<FriendRequest>
+    + isFriendWith(user: User): boolean
+    + hasPendingRequestWith(user: User): boolean
+    + addPendingRequest(request: FriendRequest)
+}
+
+class FriendRequest {
+    - sender: User
+    - recipient: User
+    + FriendRequest(sender: User, recipient: User)
+}
+
+User  --> FriendRequest : contains
+FriendRequest --> User : depends on
+
+@enduml

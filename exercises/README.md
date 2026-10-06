@@ -60,7 +60,7 @@ exercises inline.
 | [ex12-gotchas](ex12-gotchas/src/main/java/Gotchas.java) | 5. Java Gotchas and Subtleties | shadowing, array copy, autoboxing | tests |
 | [ex13-generics](ex13-generics/src/main/java/Box.java) | 6. Generics | custom generic class, bounded type parameter | tests |
 | [ex14-iterator](ex14-iterator/src/main/java/Week.java) | 7. Collections | `Iterable` / `Iterator` | tests |
-| [Noun–verb analysis + walk-through](../08-program-specification.md#85-exercises)<br>(starter: [library-uml-starter.puml](../plantuml/exercises/library-uml-starter.puml)) | 8. Program Specification | specification → classes → UML; scenario walk-through | self-check (hints in the notes) |
+| [Noun–verb analysis + walk-through](../08-program-specification.md#86-exercises)<br>(starter: [library-uml-starter.puml](../plantuml/exercises/library-uml-starter.puml)) | 8. Program Specification | specification → classes → UML; scenario walk-through | self-check (hints in the notes) |
 | [ex15-dependency-inversion](ex15-dependency-inversion/src/main/java/Manager.java) | 9. Design Principles | Dependency Inversion Principle | tests |
 | [ex16-strategy](ex16-strategy/src/main/java/Navigator.java) | 12. Design Patterns | Strategy pattern | tests |
 | [ex17-refactoring](ex17-refactoring/src/main/java/Temperature.java) | 13. Refactoring Techniques | replace constructor with factory method | tests |
