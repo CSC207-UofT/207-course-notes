@@ -3,6 +3,12 @@ skinparam dpi 200
 hide empty members
 title Adapter (with Inheritance)
 
+class Client
+
+interface Target {
+  +doThis(y : NewInputType) : NewOutputType
+}
+
 class Adapter {
   +doThis(y : NewInputType) : NewOutputType
 }
@@ -10,6 +16,8 @@ class LegacyComponent {
   +doThat(x : LegacyInputType) : LegacyOutputType
 }
 
+Client --> Target : uses
+Adapter ..|> Target
 Adapter --|> LegacyComponent : inherits
 
 note left of Adapter::doThis

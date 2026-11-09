@@ -1,8 +1,7 @@
 /**
  * Exercise (Chapter 12: Design Patterns) — the Strategy pattern.
  *
- * {@code Navigator} is the <em>Context</em> (the chapter calls it {@code Map};
- * we use {@code Navigator} to avoid clashing with {@code java.util.Map}). It
+ * {@code Navigator} is the <em>Context</em> from the chapter's example. It
  * holds a {@link DirectionGenerator} strategy and delegates to it, so the same
  * Navigator can produce driving or transit directions just by swapping the
  * strategy — without changing this class.

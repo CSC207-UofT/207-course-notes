@@ -3,12 +3,12 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Chapter 12: Design Patterns](#chapter-12-design-patterns)
-  - [12.1 What is a Design Pattern?](#121-what-is-a-design-pattern)
+  - [12.1. What is a Design Pattern?](#121-what-is-a-design-pattern)
   - [12.2. Creational Patterns](#122-creational-patterns)
   - [12.3. Behavioural Patterns](#123-behavioural-patterns)
   - [12.4. Structural Patterns](#124-structural-patterns)
   - [12.5. Summary](#125-summary)
-  - [12.6 Code Examples](#126-code-examples)
+  - [12.6. Code Examples](#126-code-examples)
   - [12.7. Exercise](#127-exercise)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -20,7 +20,7 @@ By the end of this chapter, you should be familiar with:
 - what the three broad categories of design patterns are,
 - and what two example design patterns from each category look like.
 
-## 12.1 What is a Design Pattern?
+## 12.1. What is a Design Pattern?
 
 **Design patterns** are descriptions of popular solutions to commonly-experienced programming problems. If a less convenient solution has been implemented instead, we call that an **anti-pattern**.
 If code displays an anti-pattern, you can improve the design of the code by refactoring to implement a design pattern instead.
@@ -59,7 +59,7 @@ These patterns are intended to be more practically applicable and less abstract 
 > - Pattern: The Observer pattern solves the problem of notifying multiple objects when one changes.
 
 Design patterns are built on design principles, just as mathematical theorems are built on axioms. As such, you can find some programmers who don't really buy into the notion of learning these patterns at all, since by following their design principles they will inevitably arrive at code following the pattern.
-What we do gain from design principles though is a common language to communicate more complex design ideas with other programmers.
+What we do gain from design patterns though is a common language to communicate more complex design ideas with other programmers.
 
 To connect this back to our analogy: If someone has already proven a theorem through careful, rigorous application of a set of axioms, would you ever bother to replicate that work — or would you just use their result and apply it to your task at hand?
 
@@ -67,10 +67,11 @@ To connect this back to our analogy: If someone has already proven a theorem thr
 
 ### 12.1.3. A Brief History
 
-<img src="https://m.media-amazon.com/images/I/51nL96Abi1L._SY522_.jpg" height=200px align="right" alt="cover of the design patterns book"/>
+<img src="images/gof-design-patterns-cover.jpg" height=200px align="right" alt="cover of the design patterns book"/>
 
-The idea of design patterns was first published by the Gang of Four in 1995.
-The original book described 23 patterns: 11 _behavioural_, 5 _creational_, and 7 _structural_ patterns.
+Design patterns were popularized by the "Gang of Four" (Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides)
+in their 1994 book, _Design Patterns: Elements of Reusable Object-Oriented Software_.
+The book described 23 patterns: 11 _behavioural_, 5 _creational_, and 7 _structural_ patterns.
 More patterns have been added since, and other authors have written many more books on the topic.
 
 In the following, we will look at the three categories of patterns, and consider two examples of patterns from each category.
@@ -102,10 +103,10 @@ There are several variations of the Factory pattern, but they all share the same
 
 ### Simple Factory example
 
-If your program requires `Shape` objects, but doesn't need to know if they are rectangles, circles, triangles, or any other shape that you might want to include in the future, you can instantiate those classes using a `ShapeFactory` class.
+If your program requires `Shape` objects, but doesn't need to know if they are rectangles, circles, triangles, or any other shape that you might want to include in the future, you can instantiate those classes using a `SimpleShapeFactory` class.
 
 ```java
-public class ShapeFactory { 
+public class SimpleShapeFactory {
     public Shape getShape(String shapeType) {
         switch(shapeType) {
             case "Rectangle": 
@@ -126,22 +127,24 @@ public class ShapeFactory {
 The user can then input a string to make shapes:
 
 ```java
-ShapeFactory shapeFactory = new ShapeFactory();
+SimpleShapeFactory shapeFactory = new SimpleShapeFactory();
 Shape shape = shapeFactory.getShape(userInput);
 // do something with the shape...
 ```
 
-> Note: you will sometimes see variants of this where the `getShape` method would be defined to be _static_, in which case
-> the code simplifies to:
->
-> `Shape shape = ShapeFactory.getShape(userInput);
-> 
-> since we don't need to create an instance of the `ShapeFactory` at all!
+Note: you will sometimes see variants of this where the `getShape` method would be defined to be _static_,
+in which case the code simplifies to:
+
+```java
+Shape shape = SimpleShapeFactory.getShape(userInput);
+```
+
+since we don't need to create an instance of the `SimpleShapeFactory` at all!
 
 ### Abstract Factory example
 
 Let's look at the same example, but written using an abstract factory instead.
-With the simple factory, we ended up with conditional logic inside the `ShapeFactory.getShape` method based on what kind of `Shape` was requested.
+With the simple factory, we ended up with conditional logic inside the `SimpleShapeFactory.getShape` method based on what kind of `Shape` was requested.
 When adding a new shape, this means we need to modify this method.
 
 With this observation, an abstract factory can be used to shift this conditional logic out of this method entirely. This means
@@ -193,6 +196,9 @@ Of course, if we decided on which factory to use based on user input, then that 
 would again appear, but where this logic appears in the code has changed. Most notably,
 once we have determined which factory we are using, there is no longer any conditional logic anywhere else in our code.
 
+> **Note:** we've simplified things by having each factory make just one kind of product. A full Abstract Factory usually creates a
+> _family_ of related objects (e.g. a `DarkThemeFactory` that makes matching buttons _and_ checkboxes).
+
 ### UML Class Diagram for the Abstract Factory
 
 The Abstract Factory can be represented with a UML class diagram as below:
@@ -211,7 +217,7 @@ We'll end off our discussion of factories with a quick summary of how the key as
 | Aspect           | Simple Factory                                 | Abstract Factory                                  |
 |------------------|------------------------------------------------|---------------------------------------------------|
 | Creation logic   | All in one class                               | Distributed across subclasses                     |
-| Adding new types | Add a new if-statement (modify existing code)  | Add a new factory subclass (extend existing code) |
+| Adding new types | Add a new case (modify existing code)          | Add a new factory subclass (extend existing code) |
 | Client usage     | Client specifies type through String parameter | Client chooses the factory                        |
 
 ---
@@ -222,17 +228,18 @@ We'll end off our discussion of factories with a quick summary of how the key as
 
 **Solution:** Use a step-by-step “builder” that assembles the object piece by piece, then gives you the finished product.
 
-Recall the Hatchimal `toString` method:
+You have already used a builder without realizing it. Consider this `toString` method for a `Hatchimal` class
+(a collectible toy with a `name` and a `rarity`), which uses a `StringBuilder` to build its result:
 
 ```java
-    public String toString() {
-        return new StringBuilder()
-                 .append("Hatchimal{")
-                 .append("name='").append(name).append('\'')
-                 .append(", rarity=").append(rarity)
-                 .append('}')
-                 .toString();
-        }
+public String toString() {
+    return new StringBuilder()
+            .append("Hatchimal{")
+            .append("name='").append(name).append('\'')
+            .append(", rarity=").append(rarity)
+            .append('}')
+            .toString();
+}
 ```
 
 This follows a pattern:
@@ -240,7 +247,7 @@ This follows a pattern:
 - Add parts to it step-by-step. (Here, by calling `append()` multiple times)
 - Get the final product. (Here, by calling the builder's `toString()` method)
 
-You may also recognize this pattern from the `Okhttp` code we used to make API calls previously:
+You may also recognize this pattern from the [OkHttp](apis-json-and-files.md) code we used to make API calls previously:
 
 ```java
 Request request = new Request.Builder()
@@ -260,12 +267,13 @@ The Builder pattern can be represented using a UML class diagram as below:
 
 ![](images/builder.png)
 
-> Note that this is a simplified version of what you may find if you look up the Builder pattern online. We present this version, as it is what you will most likely come across in practice.
+> Note that this is a simplified version of what you may find if you look up the Builder pattern online.
+> We present this version, as it is what you will most likely come across in practice.
 
 ## 12.3. Behavioural Patterns
 
-Behavioral patterns focus on how objects interact and communicate.
-They address the question of how responsibilities and behaviors are distributed across the objects in our system, and how those objects communicate to get things done. We'll consider the Strategy and Observer patterns as two representative examples of behavioural patterns.
+Behavioural patterns focus on how objects interact and communicate.
+They address the question of how responsibilities and behaviours are distributed across the objects in our system, and how those objects communicate to get things done. We'll consider the Strategy and Observer patterns as two representative examples of behavioural patterns.
 
 ### 12.3.1. Strategy
 
@@ -273,24 +281,24 @@ They address the question of how responsibilities and behaviors are distributed 
 
 **Solution:** Implement each algorithm in its own class and make them interchangeable, so that you can change the algorithm without changing the code that uses it.
 
-For example, consider a class called `Map` that requires a `getDirections` method, which should return a different `String` depending on whether the directions are for driving or public transit.
+For example, consider a class called `Navigator` that requires a `getDirections` method, which should return a different `String` depending on whether the directions are for driving or public transit.
 ```java
-public class Map {
+public class Navigator {
 
-	private DirectionGenerator dg;
+    private DirectionGenerator generator;
 
-	public Map(DirectionGenerator dg) {
-	    this.dg = dg;
-	  }
+    public Navigator(DirectionGenerator generator) {
+        this.generator = generator;
+    }
 
-	public getDirections() {
-	    dg.getDirections();
-	   }
+    public String getDirections(String destination) {
+        return generator.getDirections(destination);
+    }
 }
 ```
 
 We call the `DirectionGenerator` interface the Strategy and have classes `DrivingDirections` and `TransitDirections` implement it.
-When the `Map` class is instantiated, it is given an object implementing the Strategy.
+When the `Navigator` class is instantiated, it is given an object implementing the Strategy.
 
 ### UML Class Diagram for Strategy
 
@@ -298,7 +306,7 @@ Here is the UML for the Strategy pattern:
 
 ![](images/strategy.png)
 
-In our example, the `Map` is the Context. `DirectionGenerator` is the Strategy interface, and `DrivingDirections` and `TransitDirections` are the Concrete Strategies.
+In our example, the `Navigator` is the Context. `DirectionGenerator` is the Strategy interface, and `DrivingDirections` and `TransitDirections` are the Concrete Strategies.
 
 > Notes:
 > - Setting which Strategy to use is often done either through the constructor (like in the example) or a setter (like in the UML class diagram).
@@ -349,12 +357,16 @@ Here is a simple ViewModel that uses `PropertyChangeSupport` to notify its Obser
 ```java
 public class ViewModel<T> {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
-    
+    private T state;
+
+    // Other methods (e.g. getState and setState) not shown.
+
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.support.addPropertyChangeListener(listener);
     }
 
-    // This gets called by the Presenter when it is done updating the ViewModel. (Note that this delegates to a helper method.
+    // This gets called by the Presenter when it is done updating the ViewModel.
+    // (Note that this delegates the work of notifying the Observers to the PropertyChangeSupport object.)
     public void firePropertyChanged() {
         this.support.firePropertyChange("state", null, this.state);
     }
@@ -362,7 +374,6 @@ public class ViewModel<T> {
     public void firePropertyChanged(String propertyName) {
         this.support.firePropertyChange(propertyName, null, this.state);
     }
-    
 }
 ```
 
@@ -370,7 +381,7 @@ public class ViewModel<T> {
 
 ## 12.4. Structural Patterns
 
-Structural patterns focus on how classes and objects are combined to form larger systems. Unlike creational patterns, which deal with _how objects are created_, and behavioral patterns, which deal with _how objects interact and share responsibilities_, structural patterns address _how components are connected and organized_. They often solve problems such as presenting a simplified, unified interface to a complex subsystem or adapting incompatible interfaces. We’ll consider the Adapter and Façade patterns as two representative examples of structural patterns.
+Structural patterns focus on how classes and objects are combined to form larger systems. Unlike creational patterns, which deal with _how objects are created_, and behavioural patterns, which deal with _how objects interact and share responsibilities_, structural patterns address _how components are connected and organized_. They often solve problems such as presenting a simplified, unified interface to a complex subsystem or adapting incompatible interfaces. We’ll consider the Adapter and Façade patterns as two representative examples of structural patterns.
 
 ### 12.4.1. Façade
 
@@ -378,12 +389,16 @@ Structural patterns focus on how classes and objects are combined to form larger
 
 **Solution:** Create a simple client-facing class (the _façade_) that provides methods for common tasks while hiding the subsystem's complex details.
 
-For example, you may recall the `EmployeeFacade` class in the "Single Responsibility Principle" section of the SOLID slides that contained variables of type:
-- `EmployeeCalculator` that is responsibility for calculating the employee's pay,
-- `EmployeeReporter` that reports the employee's hours, and
-- `EmployeeSaver` that sends the updated employee information to a database.
+For example, imagine an `Employee` class that calculates an employee's pay, reports their hours, and saves their data to a database.
+These are three different responsibilities, likely requested by three different people (accounting, HR, and the database administrators),
+so the Single Responsibility Principle tells us to split them into three classes:
+- `PayCalculator`, which is responsible for calculating the employee's pay,
+- `HourReporter`, which reports the employee's hours, and
+- `EmployeeSaver`, which sends the updated employee information to a database.
 
-When you call `employee.calculatePay()` here is the code that is executed. Note that it delegates work to one of those three objects using the appropriate private variable:
+The catch is that client code now has to know about all three classes.
+An `EmployeeFacade` solves this. It holds one of each object and gives clients a single, simple class to call.
+When you call `calculatePay()` on an `EmployeeFacade`, here is the code that runs. Note that it just delegates the work to the appropriate object:
 
 ```java
 public class EmployeeFacade {
@@ -391,12 +406,12 @@ public class EmployeeFacade {
     private PayCalculator payCalculator;
     private HourReporter hourReporter;
     private EmployeeSaver employeeSaver;
-    
+
     public float calculatePay() {
-       return this.payCalculator.calculatePay();  // Notice the 1-line delegation 
+        return this.payCalculator.calculatePay();  // Notice the 1-line delegation
     }
-    
-    // The other methods go here and are structured the same way. They delegate to the appropriate object.
+
+    // The other methods (e.g. reportHours and save) are structured the same way. They delegate to the appropriate object.
 }
 ```
 
@@ -425,63 +440,102 @@ Here is the UML class diagram for the Façade pattern:
 
 Suppose we have a class called `Ticket` that was originally written for a lottery program. If the number on your ticket matches a randomly selected number, you win.
 
-Now imagine we want to reuse that `Ticket` class in a program that sells tickets for a movie theatre. The original class doesn’t support seat numbers, so we need to adapt it. Here is how this might look using our delegation and inheritance versions of the adapter pattern:
+```java
+// The legacy class from the lottery program. We can't (or don't want to) change it.
+public class Ticket {
+    public void sell() { ... }       // marks the ticket as sold
+    public int getNumber() { ... }   // the ticket's lottery number
+}
+```
+
+Now imagine we want to reuse that `Ticket` class in a program that sells tickets for a movie theatre.
+The box office code in that program already works with anything that implements the following `Sellable` interface:
+
+```java
+// The interface the movie theatre's client code expects.
+public interface Sellable {
+    void sellTo(String customerName);
+    String getDescription();
+}
+```
+
+`Ticket` doesn't implement `Sellable`, its method names and parameters don't match, and it has no notion of seat numbers.
+An adapter bridges the gap. Here is how this might look using our delegation and inheritance versions of the adapter pattern:
 
 ### With Delegation
 
 ```java
-public class MovieTicket {
+public class MovieTicket implements Sellable {
 
-    private Ticket ticket = new Ticket(); // the class being adapted
-    private String seatNumber;
+    private final Ticket ticket = new Ticket(); // the legacy class being adapted
+    private final String seatNumber;
 
     public MovieTicket(String seatNumber) {
         this.seatNumber = seatNumber;
     }
 
-    public void sellTicket() {
-        // delegate work to the Ticket class and add extra behavior
-        ticket.sell();
-        System.out.println("Seat: " + seatNumber);
+    @Override
+    public void sellTo(String customerName) {
+        ticket.sell();  // delegate the work to the legacy Ticket
+        System.out.println("Sold seat " + seatNumber + " to " + customerName);
+    }
+
+    @Override
+    public String getDescription() {
+        return "Movie ticket #" + ticket.getNumber() + ", seat " + seatNumber;
     }
 }
 ```
 
-Here, `MovieTicket` acts as an adapter by holding a `Ticket` instance and delegating calls to it. We add new functionality (seat numbers) without modifying the original `Ticket` class.
+Here, `MovieTicket` acts as an adapter by implementing the `Sellable` interface the client expects, while holding a `Ticket` instance and delegating calls to it.
+We also add new functionality (seat numbers) without modifying the original `Ticket` class.
 
 ### With Inheritance
 
 ```java
-public class MovieTicket extends Ticket {
+public class MovieTicket extends Ticket implements Sellable {
 
-    private String seatNumber;
+    private final String seatNumber;
 
     public MovieTicket(String seatNumber) {
         super(); // initialize the Ticket part
         this.seatNumber = seatNumber;
     }
-    
-    public void sellTicket() {
-        // reuse parent's sell method and add extra behavior
-        super.sell();
-        System.out.println("Seat: " + seatNumber);
+
+    @Override
+    public void sellTo(String customerName) {
+        sell();  // reuse the inherited method from Ticket
+        System.out.println("Sold seat " + seatNumber + " to " + customerName);
+    }
+
+    @Override
+    public String getDescription() {
+        return "Movie ticket #" + getNumber() + ", seat " + seatNumber;
     }
 }
 ```
 
-Here, `MovieTicket` adapts the original `Ticket` class by extending it.
+Here, `MovieTicket` adapts the original `Ticket` class by extending it and implementing `Sellable`.
+One downside is that `MovieTicket` now also exposes `Ticket`'s own `sell()` and `getNumber()` methods to its clients.
+
+Either way, the client code only depends on the `Sellable` interface, and it doesn't know that a lottery `Ticket` is doing some of the work:
+
+```java
+Sellable item = new MovieTicket("H12");
+item.sellTo("Alex");
+System.out.println(item.getDescription());
+```
 
 ### UML Class Diagrams for Adapter
 
-Here are the UML class diagrams for the two variants of the Adapter pattern. The first version uses delegation and the second version uses inheritance:
+Here are the UML class diagrams for the two variants of the Adapter pattern. The first version uses delegation and the second version uses inheritance.
+In our example, `Sellable` is the Target, `MovieTicket` is the Adapter, `Ticket` is the LegacyComponent, and the box office code is the Client.
 
 ![](images/adapter-delegation.png)
 
 ![](images/adapter-inheritance.png)
 
-
-
-----
+---
 
 ## 12.5. Summary
 
@@ -490,15 +544,16 @@ The following table briefly summarizes the three categories of design patterns w
 | **Category of Pattern** | **Focus**                            | **Key Question**                                                                                                      | **Representative Patterns** |
 |-------------------------|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------|
 | **Creational**          | Object creation                      | Who is responsible for creating each object in our system?                                                            | Factory, Builder            |
-| **Behavioral**          | Object interaction and communication | How are responsibilities and behaviors distributed across objects, and how do objects communicate to get things done? | Strategy, Observer          |
+| **Behavioural**         | Object interaction and communication | How are responsibilities and behaviours distributed across objects, and how do objects communicate to get things done? | Strategy, Observer          |
 | **Structural**          | Object and class organization        | How can we connect and organize objects to work together?                                                             | Adapter, Façade             |
 
 ---
 
-## 12.6 Code Examples
+## 12.6. Code Examples
 
-Runnable code examples that demonstrate the above patterns and their anti-patterns are included in the `code/designpatterns` directory.
-If you have `code` marked as your sources root in IntelliJ, you can try running the code.
+Runnable code examples that demonstrate the above patterns and their anti-patterns are included in the [`code/src/main/java/designpatterns`](code/src/main/java/designpatterns) directory.
+If you open this repository in IntelliJ as a Maven project (see the [QUICKSTART](QUICKSTART.md#5-opening-in-intellij-idea)),
+`code/src/main/java` is set up as the sources root automatically, so you can run any of the `Main` classes directly.
 
 > **Tip:** You can also generate the UML class diagrams for the code to help visualize the structure of the patterns.
 
@@ -508,7 +563,7 @@ Implement a design pattern yourself in this exercise under the
 [exercises](exercises/README.md) folder (open the `.java` files, complete the
 `// TODO`s, and run the test — it starts red and turns green when you're done).
 
-- **Exercise 16 — Strategy** (§12.3.1). This mirrors the chapter's `Map` /
+- **Exercise 16 — Strategy** (§12.3.1). This mirrors the chapter's `Navigator` /
   `DirectionGenerator` example. Complete the *Context* in
   [Navigator.java](exercises/ex16-strategy/src/main/java/Navigator.java) so it
   stores and delegates to a `DirectionGenerator` strategy (and can swap it at
