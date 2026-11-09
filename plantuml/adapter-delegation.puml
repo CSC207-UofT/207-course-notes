@@ -3,16 +3,22 @@ skinparam dpi 200
 hide empty members
 title Adapter (with Delegation)
 
-hide empty members
+class Client
+
+interface Target {
+  +doThis(y : NewInputType) : NewOutputType
+}
 
 class Adapter {
-  +doThis(y : NewInputType) : NewOutputType
   -legacy: LegacyComponent
+  +doThis(y : NewInputType) : NewOutputType
 }
 class LegacyComponent {
   +doThat(x : LegacyInputType) : LegacyOutputType
 }
 
+Client --> Target : uses
+Adapter ..|> Target
 Adapter --> LegacyComponent : delegates
 
 note left of Adapter::doThis

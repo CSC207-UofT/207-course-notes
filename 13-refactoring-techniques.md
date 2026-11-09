@@ -85,9 +85,11 @@ involves changing the access modifiers on your instance variables, introducing g
 access to your data, and updating any client or implementation code to use the getters and setters where the data was
 directly accessed previously.
 
-> * You can use IntelliJ's support for this to save you time. Declare your instance variables, then select `Refactoring -> Encapsulate Fields...`
-> * Declaring an instance variable to be public will be flagged by SonarQube. You can read more about the issue at
-https://rules.sonarsource.com/java/RSPEC-1104/ along with ways to fix it, with one of the ways being to encapsulate fields.
+> * You can use IntelliJ's support for this to save you time. Declare your instance variables, then select `Refactor | Encapsulate Fields...`
+> * Static analysis tools will often flag public instance variables, since any code anywhere can then change the field and break the class's invariants.
+>   For example, [SonarQube](https://www.sonarsource.com/products/sonarqube/) is a popular tool that automatically checks code for bugs and code smells like this one.
+>   It has plugins for IDEs such as IntelliJ ([SonarQube for IDE](https://plugins.jetbrains.com/plugin/7973-sonarqube-for-ide)), which highlight issues as you type and explain how to fix them.
+>   Encapsulating the field is one such fix.
 
 > See: https://www.jetbrains.com/help/idea/encapsulate-fields.html
 
@@ -139,7 +141,7 @@ This technique involves refactoring how objects are constructed. The idea is to 
 
 This technique also involves refactoring how objects are constructed. The idea is to introduce
 a static method that is responsible for returning the instance of the class rather than having the code directly call
-the constructor. This can enhance understandability and hiding the constructor call effectively abstracts
+the constructor. This can enhance understandability, and hiding the constructor call effectively abstracts
 away the detail of where the instance of the class actually comes from.
 
 > See: https://www.jetbrains.com/help/idea/replace-constructor-with-factory-method.html
@@ -177,28 +179,21 @@ Practise these refactorings in the `ex17-refactoring` module under the
 
 ## 13.10. Additional Reading:
 
-Refactoring: second edition by Martin Fowler
-Free first chapter: https://www.thoughtworks.com/content/dam/thoughtworks/documents/books/bk_Refactoring2-free-chapter_en.pdf
-
-Overview of refactoring which highlights some of these and other refactoring techniques supported by IntelliJ:
-https://www.jetbrains.com/help/idea/tutorial-introduction-to-refactoring.html
-
-Old but still interesting overview of refactoring in IntelliJ (exact features differ now of course)
-https://objectcomputing.com/resources/publications/sett/february-2002-refactoring-with-idea
+- _Refactoring_ (Second Edition) by Martin Fowler.
+  Free first chapter: https://www.thoughtworks.com/content/dam/thoughtworks/documents/books/bk_Refactoring2-free-chapter_en.pdf
+- Overview of refactoring which highlights some of these and other refactoring techniques supported by IntelliJ:
+  https://www.jetbrains.com/help/idea/refactoring-source-code.html
 
 * * *
 
 ## 13.11. Helpful links:
 
-JetBrains blog post about the Extracting and Inlining, Change Signature, and Renaming (includes a video):
-https://blog.jetbrains.com/idea/2020/12/3-ways-to-refactor-your-code-in-intellij-idea/
-
-Related to the above, JetBrains has a GitHub repo with examples used in various resources they provide:
-Repo: https://github.com/JetBrains/intellij-samples
-
-Gregor Riegler has a video demonstrating a series of refactorings.
-Video: https://www.youtube.com/watch?v=sIceCgI6QO0
-Repo: https://github.com/gregorriegler/refactoring-split-phase
-
-Here is a practice refactoring challenge: https://github.com/emilybache/Theatrical-Players-Refactoring-Kata.
-It is based on the Refactoring (Second Edition) textbook by Martin Fowler.
+- JetBrains blog post about Extracting and Inlining, Change Signature, and Renaming (includes a video):
+  https://blog.jetbrains.com/idea/2020/12/3-ways-to-refactor-your-code-in-intellij-idea/
+- Related to the above, JetBrains has a GitHub repo with examples used in various resources they provide:
+  https://github.com/JetBrains/intellij-samples
+- Gregor Riegler has a video demonstrating a series of refactorings.
+  - Video: https://www.youtube.com/watch?v=sIceCgI6QO0
+  - Repo: https://github.com/gregorriegler/refactoring-split-phase
+- Here is a practice refactoring challenge: https://github.com/emilybache/Theatrical-Players-Refactoring-Kata.
+  It is based on the _Refactoring_ (Second Edition) textbook by Martin Fowler.
