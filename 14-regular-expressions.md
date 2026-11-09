@@ -19,7 +19,7 @@
 
 ## Learning Objectives
 
-- Understand the basic syntax of regular expressions (regex)
+- Understand the basic syntax of regular expressions (regex).
 - Determine whether a given string _conforms_ to a given regex.
 - Apply regular expressions in Java.
 
@@ -46,7 +46,7 @@ We use `[` and `]` to define a choice of symbols. So `[abc]` will match "a", "b"
 
 By inserting a hyphen (`-`) we can specify a range. So `[a-z]` will match any lower case letter such as "a", "h", or "x". 
 
-Other examples include `[0-9]` or `\d` which both match any digit such as "0", "2", or "7", and `[a-zA-z0-9]' which will match strings like "b", "R", and "2".
+Other examples include `[0-9]` or `\d` which both match any digit such as "0", "2", or "7", and `[a-zA-Z0-9]` which will match strings like "b", "R", and "2".
 
 Postal codes in Toronto all start with `M` and then alternate between numbers and letters, with a space in the middle.
 For example, "M0A 1B2" is a Toronto postal code.
@@ -95,7 +95,7 @@ The following table lists some common character classes:
 While quantifiers allow us to repeat patterns, we may also want to repeat the _exact same_ matching characters.
 To do this, we need to specify a **group** with `(` and `)`.
 
-For example, suppose that we want a regex that will match any phone number of the form `xxx-xxx-xxxx` that starts with the same first three digits,
+For example, suppose that we want a regex that will match any phone number of the form `xxx-xxx-xxxx` whose first three digits are all the same,
 such as "**222**-987-5406", "**000**-232-3232", "**111**-111-1114".
 The following regex uses a group to accomplish this:
 
@@ -106,7 +106,7 @@ The second `\1` indicates that it needs to be repeated once more, so that same c
 
 ### 14.3.3. Multiple Groups
 
-Each group is assigned a number based on the order in which its open bracket appears from left to right.
+Each group is assigned a number based on the order in which its opening parenthesis appears from left to right.
 For this reason, the only group in the above example was group `1`, which we wrote as `\1` when we wanted to refer to it later in the regex.
 
 For example, `(([de])f)\2\1` will repeat both groups. The strings that match are:
@@ -138,7 +138,7 @@ This is called an **anchor**.
 In the leftmost set of brackets, we are given all lowercase letters to choose from,
 so the first character must be one of these 26 possible letters.
 
-The second character must come from the second set of square brackets: `[a-zA-Z0-9]*`.
+Any remaining characters must come from the second set of square brackets: `[a-zA-Z0-9]*`.
 
 > Recall that the `*` quantifier means zero or more occurrences of the preceding element.
 
@@ -147,7 +147,9 @@ Lastly, the `$` signifies the end of the string. This is another anchor.
 Putting this all together, we have that a conforming string must
 consist of a first character from `a-z`, followed by zero
 or more lowercase letters, uppercase letters, or digits.
-Reading this, we recognize that this is precisely how we define a valid variable name in Java!
+Reading this, we recognize that this is precisely the Java naming convention for variable names!
+
+> Java itself also allows other characters, such as `_` and `$`, in variable names; the convention is stricter than the language.
 
 With our regex in hand, we can try it out on a few examples:
 
@@ -170,7 +172,7 @@ In the previous example, we introduced anchors:
 - `$` matches the end of a string.
 
 Formally, as we have discussed, a regex defines a set of strings that fully match the pattern.
-However, in practice, most practical regex implementations behave differently.
+However, most practical regex implementations behave differently.
 They often check whether any _substring_ of the input conforms to the pattern, unless anchors are used.
 
 > In practice, when using regex in a programming language like Java, one must carefully read the
@@ -182,8 +184,8 @@ Here is a regular expression which has no anchors.
 
 Because there are no anchors, a string will conform to this regex if _any_ substring contained within it conforms to the regex.
 
-For example, the string "cCaA" conforms and so does "ABCcCcAa1A23",
-since they both contain a substring, "cCcA", that is consistent with the regex.
+For example, the string "cCaA" conforms (the whole string is consistent with the regex), and so does "ABCcCcAa1A23",
+since it contains the substring "cCcA", which is consistent with the regex.
 
 A string like "cCa1A" does not conform though, since the "1" is inconsistent with the pattern.
 
@@ -198,13 +200,13 @@ backslash (`\`) escape character can be combined with certain other characters t
 things like a newline character (`\n`) or a tab character (`\t`). This is also the case in regex.
 Another example of this are the built-in character classes, like `\s` and `\d`.
 
-Just inside a square bracket, `^` has another meaning
+As the first character inside square brackets, `^` has another meaning
 besides being an anchor as we saw before: it matches any character _except_ the contents of the square brackets.
 
 For example, `[^aeiouAEIOU]` matches anything that _isn’t_ a vowel.
 
 
-### 14.5.1 Escaping the Meaning of a Symbol
+### 14.5.1. Escaping the Meaning of a Symbol
 
 What if we wanted to include a period in our conforming string?
 To match strings like "1.2" or "3.8" we need some way to force a period to be included.
