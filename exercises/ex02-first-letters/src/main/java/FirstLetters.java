@@ -26,6 +26,13 @@ public class FirstLetters {
      */
     public static String firstLetters(String words) {
         // TODO: complete
-        return "";
+        String sentence = ("");
+        for (int i = 0; i < words.length(); i ++){
+            char letter = words.charAt(i);
+            if (letter >= 'A' && letter <= 'Z'){
+                sentence += letter;
+            }
+        }
+        return sentence;
     }
 }
